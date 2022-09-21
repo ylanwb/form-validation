@@ -70,7 +70,7 @@ function App() {
       setError("Must be 18 or older to sign up");
     }
     if ( Number(cutDate) > 1996 || Number(cutDate) === 0 ) {
-      setError("Must be 18 or older to sign up v2")
+      setError("Date of birth must be below 1996")
     }
   };
   return (

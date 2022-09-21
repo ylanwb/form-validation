@@ -4,6 +4,7 @@ const Password = (props) => {
     <input
       type="password"
       placeholder="Password"
+      required
       value={value}
       onChange={(e) => handleChange(e.target.value)}
     />

@@ -3,6 +3,7 @@ const Email = (props) => {
       return <input
       type="email" 
       placeholder="Email"
+      required
       value={value}
       onChange={(e) => handleChange(e.target.value)}
       />;

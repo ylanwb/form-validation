@@ -1,6 +1,10 @@
+* {
+  font-family: monospace;
+}
 .mainContainer {
   width: 100vw;
   height: 100vh;
+  background-color: skyblue;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,22 +12,57 @@
 .contentContainer {
   width: 65%;
   height: 70%;
-  border: 1.5px solid #ccc;
-  border-radius: 4px;
+  /* border: 1.5px solid #ccc; */
+  border-radius: 25px;
   display: flex;
+  justify-content: space-between;
 }
 .signInContainer {
-  width: 50%;
+  width: 45%;
   height: 100%;
-  border-right: 1px solid #ccc;
+  /* border: 1.5px solid #ccc; */
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: steelblue;
 }
 .signUpContainer {
-  width: 50%;
+  width: 45%;
   height: 100%;
   display: flex;
+  /* border: 1.5px solid #ccc; */
+  border-radius: 25px;
   flex-direction: column;
+  background-color: deepskyblue;
   align-items: center;
+}
+input {
+  width: 60%;
+  height: 3.5%;
+  margin-bottom: 25px;
+  border: none;
+  background: none;
+  outline: none;
+  border-bottom: 1px solid white;
+  color: white;
+}
+::placeholder {
+  color: white;
+}
+button {
+  padding: 20px;
+  width: 200px;
+  border: none;
+  background-color: skyblue;
+  color: white;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+h1 {
+  color: white;
+}
+#dob {
+  color-scheme: dark;
 }
