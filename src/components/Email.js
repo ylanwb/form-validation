@@ -1,12 +1,14 @@
 const Email = (props) => {
-      const { value, handleChange} = props;
-      return <input
-      type="email" 
-      placeholder="Email"
+  const { name, handleChange } = props;
+  return (
+    <input
+      type="email"
       required
-      value={value}
-      onChange={(e) => handleChange(e.target.value)}
-      />;
-    };
-    
-    export default Email;
+      name={name}
+      onChange={(e) => handleChange(e)}
+      placeholder="Email"
+    />
+  );
+};
+
+export default Email;

@@ -1,12 +1,12 @@
 const Password = (props) => {
-  const { value, handleChange } = props;
+  const { name, handleChange, placeholder } = props;
   return (
     <input
       type="password"
-      placeholder="Password"
+      placeholder={placeholder}
       required
-      value={value}
-      onChange={(e) => handleChange(e.target.value)}
+      name={name}
+      onChange={(e) => handleChange(e)}
     />
   );
 };

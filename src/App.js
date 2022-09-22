@@ -1,11 +1,28 @@
 import "./App.css";
 import { useState } from "react";
+import * as yup from "yup";
 import Age from "./components/Age";
 import Button from "./components/Button";
 import Email from "./components/Email";
 import Name from "./components/Name";
 import Password from "./components/Password";
 import Dob from "./components/Dob";
+
+const validationSchema = yup.object().shape({
+  name: yup.string().min(4, "Name must be more than 4 letters").required(),
+  email: yup.string().email("Invalid Email").required(),
+  age: yup
+    .number()
+    .min(18, "You must be 18+ to sign up")
+    .typeError("Age is required")
+    .required(),
+  dob: yup.date().required(),
+  password: yup
+    .string()
+    .min(8, "Password must be more than 8 letters")
+    .required(),
+  confirmPassword: yup.string().required(),
+});
 
 const initialValues = {
   name: "",
@@ -18,60 +35,21 @@ const initialValues = {
 
 function App() {
   const [inputValues, setInputValues] = useState(initialValues);
-  const [error, setError] = useState("");
+  const [formErrors, setFormErrors] = useState(initialValues);
 
-  function isValidEmail(email) {
-    return /\S+@\S+\.\S+/.test(email);
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-  const handleNameInputChange = (value) => {
-    setInputValues({ ...inputValues, name: value });
-  };
-  const handleEmailInputChange = (value) => {
-    setInputValues({ ...inputValues, email: value });
-  };
-  const handleAgeInputChange = (value) => {
-    setInputValues({ ...inputValues, age: value });
-  };
-  const handlePasswordInputChange = (value) => {
-    setInputValues({ ...inputValues, password: value });
-  };
-  const handleConfPasswordInputChange = (value) => {
-    setInputValues({ ...inputValues, confPassword: value });
-  };
-
-  const handleDobInputChange = (value) => {
-    setInputValues({ ...inputValues, dob: value });
-  };
-
-  const handleSubmitButton = () => {
-    const cutDate = inputValues.dob.substring(0, 4)
-    console.log(Number(cutDate))
-
-    
-    if (inputValues.name.length < 4) {
-      setError("Name must be more than 4 characters");
-    }
-    if (!isValidEmail(inputValues.email)) {
-      setError("Email is invalid");
-    } else {
-      setError("");
-    }
-    if ((inputValues.name.length < 4) & !isValidEmail(inputValues.email)) {
-      setError("Name and Email Invalid");
-    }
-    if (inputValues.password.length < 8) {
-      setError("Password must be more than 8 characters");
-    }
-    if (inputValues.confPassword !== inputValues.password) {
-      setError("Invalid Confirm Password");
-    }
-    if (inputValues.age < 18) {
-      setError("Must be 18 or older to sign up");
-    }
-    if ( Number(cutDate) > 1996 || Number(cutDate) === 0 ) {
-      setError("Date of birth must be below 1996")
-    }
+    yup
+      .reach(validationSchema, name)
+      .validate(value)
+      .then((valid) => {
+        setInputValues({ ...inputValues, [name]: value });
+        setFormErrors({ ...formErrors, [name]: "" });
+      })
+      .catch((err) => {
+        setFormErrors({ ...formErrors, [name]: err.message });
+      });
   };
   return (
     <div className="mainContainer">
@@ -79,28 +57,30 @@ function App() {
         <div className="signInContainer">
           <h1>Sign in</h1>
           <Name />
-          <Password />
+          <Password placeholder={"Password"} />
           <Button />
         </div>
         <div className="signUpContainer">
           <h1>Sign up</h1>
-          <Name value={inputValues.name} handleChange={handleNameInputChange} />
-          <Email
-            value={inputValues.email}
-            handleChange={handleEmailInputChange}
-          />
-          <Age value={inputValues.age} handleChange={handleAgeInputChange} />
-          <Dob value={inputValues.dob} handleChange={handleDobInputChange} />
+          <Name name="name" handleChange={handleChange} />
+          <Email name="email" handleChange={handleChange} />
+          <Age name="age" handleChange={handleChange} />
+          <Dob name="dob" handleChange={handleChange} />
           <Password
-            value={inputValues.password}
-            handleChange={handlePasswordInputChange}
+            name="password"
+            handleChange={handleChange}
+            placeholder={"Password"}
           />
           <Password
-            value={inputValues.confPassword}
-            handleChange={handleConfPasswordInputChange}
+            name="confirmPassword"
+            handleChange={handleChange}
+            placeholder={"Confirm password"}
           />
-          <p style={{ color: "red" }}>{error}</p>
-          <Button onClick={handleSubmitButton} />
+          <p style={{ color: "red" }}>{formErrors.name}</p>
+          <p style={{ color: "red" }}>{formErrors.email}</p>
+          <p style={{ color: "red" }}>{formErrors.age}</p>
+          <p style={{ color: "red" }}>{formErrors.password}</p>
+          <Button />
         </div>
       </div>
     </div>

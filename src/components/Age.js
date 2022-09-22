@@ -1,12 +1,12 @@
 const Age = (props) => {
-  const { value, handleChange } = props;
+  const { name, handleChange } = props;
   return (
     <input
       type="number"
+      name={name}
       placeholder="Age"
       required
-      value={value}
-      onChange={(e) => handleChange(e.target.value)}
+      onChange={(e) => handleChange(e)}
     />
   );
 };

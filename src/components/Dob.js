@@ -1,13 +1,12 @@
 const Dob = (props) => {
-  const { value, handleChange } = props;
+  const { name, handleChange } = props;
   return (
     <input
       type="date"
-      value={value}
-      required
+      name={name}
       id="dob"
       placeholder="Dob"
-      onChange={(e) => handleChange(e.target.value)}
+      onChange={(e) => handleChange(e)}
     />
   );
 };

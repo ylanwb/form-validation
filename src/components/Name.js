@@ -1,11 +1,11 @@
 const Name = (props) => {
-  const { value, handleChange } = props;
+  const { name, handleChange } = props;
   return (
     <input
       type="text"
       required
-      value={value}
-      onChange={(e) => handleChange(e.target.value)}
+      name={name}
+      onChange={(e) => handleChange(e)}
       placeholder="Name"
     />
   );
