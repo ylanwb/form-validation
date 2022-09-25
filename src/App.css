@@ -1,6 +1,12 @@
 * {
   font-family: monospace;
 }
+nput:-internal-autofill-selected {
+  appearance: menulist-button;
+  background-image: none !important;
+  background-color: skyblue !important;
+  color: fieldtext !important;
+}
 .mainContainer {
   width: 100vw;
   height: 100vh;
@@ -11,11 +17,11 @@
 }
 .contentContainer {
   width: 65%;
-  height: 70%;
+  height: 80%;
   /* border: 1.5px solid #ccc; */
   border-radius: 25px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .signInContainer {
   width: 45%;

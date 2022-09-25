@@ -7,6 +7,7 @@ import Email from "./components/Email";
 import Name from "./components/Name";
 import Password from "./components/Password";
 import Dob from "./components/Dob";
+import { object } from "yup/lib/locale";
 
 const validationSchema = yup.object().shape({
   name: yup.string().min(4, "Name must be more than 4 letters").required(),
@@ -16,12 +17,22 @@ const validationSchema = yup.object().shape({
     .min(18, "You must be 18+ to sign up")
     .typeError("Age is required")
     .required(),
-  dob: yup.date().required(),
+  dob: yup
+    .date()
+    .test("DOB", "Date of Birth should be after 2004", (value) => {
+      const newDate = String(value);
+      const newerDate = newDate.substr(11, 4);
+      return Number(newerDate) < 2004;
+    })
+    .required(),
   password: yup
     .string()
     .min(8, "Password must be more than 8 letters")
     .required(),
-  confirmPassword: yup.string().required(),
+  confirmPassword: yup
+    .string()
+    .min(8, "Password must be more than 8 letters")
+    .required(),
 });
 
 const initialValues = {
@@ -30,16 +41,19 @@ const initialValues = {
   age: "",
   dob: "",
   password: "",
-  confPassword: "",
+  confirmPassword: "",
 };
 
 function App() {
   const [inputValues, setInputValues] = useState(initialValues);
-  const [formErrors, setFormErrors] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState({
+    ...initialValues,
+    required: "",
+  });
+  const [successful, setSuccessful] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     yup
       .reach(validationSchema, name)
       .validate(value)
@@ -51,39 +65,73 @@ function App() {
         setFormErrors({ ...formErrors, [name]: err.message });
       });
   };
+
+  const handleSubmit = () => {
+    if (inputValues.password !== inputValues.confirmPassword) {
+      setFormErrors({ ...formErrors, required: "Password needs to match" });
+    }
+    if (
+      inputValues.name === "" ||
+      inputValues.age === "" ||
+      inputValues.email === "" ||
+      inputValues.password === "" ||
+      inputValues.dob === ""
+    ) {
+      setFormErrors({ ...formErrors, required: "All the inputs are required" });
+      setSuccessful(false);
+    } else if (
+      formErrors.name === "" ||
+      formErrors.age === "" ||
+      formErrors.email === "" ||
+      formErrors.dob === "" ||
+      formErrors.password === ""
+    ) {
+      console.log("here");
+      setSuccessful(true);
+    }
+  };
+
   return (
-    <div className="mainContainer">
-      <div className="contentContainer">
-        <div className="signInContainer">
-          <h1>Sign in</h1>
-          <Name />
-          <Password placeholder={"Password"} />
-          <Button />
-        </div>
-        <div className="signUpContainer">
-          <h1>Sign up</h1>
-          <Name name="name" handleChange={handleChange} />
-          <Email name="email" handleChange={handleChange} />
-          <Age name="age" handleChange={handleChange} />
-          <Dob name="dob" handleChange={handleChange} />
-          <Password
-            name="password"
-            handleChange={handleChange}
-            placeholder={"Password"}
-          />
-          <Password
-            name="confirmPassword"
-            handleChange={handleChange}
-            placeholder={"Confirm password"}
-          />
-          <p style={{ color: "red" }}>{formErrors.name}</p>
-          <p style={{ color: "red" }}>{formErrors.email}</p>
-          <p style={{ color: "red" }}>{formErrors.age}</p>
-          <p style={{ color: "red" }}>{formErrors.password}</p>
-          <Button />
+    <>
+      <div className="mainContainer">
+        <div className="contentContainer">
+          {successful ? (
+            <div className="signInContainer">
+              <h1>Sign in</h1>
+              <Name />
+              <Password placeholder={"Password"} />
+              <Button />
+            </div>
+          ) : (
+            <div className="signUpContainer">
+              <h1>Sign up</h1>
+              <Name name="name" handleChange={handleChange} />
+              <Email name="email" handleChange={handleChange} />
+              <Age name="age" handleChange={handleChange} />
+              <Dob name="dob" handleChange={handleChange} />
+              <Password
+                name="password"
+                handleChange={handleChange}
+                placeholder={"Password"}
+              />
+              <Password
+                name="confirmPassword"
+                handleChange={handleChange}
+                placeholder={"Confirm password"}
+              />
+              <span style={{ color: "red" }}>{formErrors.name}</span>
+              <span style={{ color: "red" }}>{formErrors.email}</span>
+              <span style={{ color: "red" }}>{formErrors.age}</span>
+              <span style={{ color: "red" }}>{formErrors.dob}</span>
+              <span style={{ color: "red" }}>{formErrors.password}</span>
+              <span style={{ color: "red" }}>{formErrors.confirmPassword}</span>
+              <span style={{ color: "red" }}>{formErrors.required}</span>
+              <Button onClick={handleSubmit} />
+            </div>
+          )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
