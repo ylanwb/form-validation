@@ -8,6 +8,7 @@ import Name from "./components/Name";
 import Password from "./components/Password";
 import Dob from "./components/Dob";
 import { object } from "yup/lib/locale";
+import { auth } from "./firebase";
 
 const validationSchema = yup.object().shape({
   name: yup.string().min(4, "Name must be more than 4 letters").required(),
