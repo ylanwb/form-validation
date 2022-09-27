@@ -1,3 +1,4 @@
+import React from "react";
 const Password = (props) => {
   const { name, handleChange, placeholder } = props;
   return (

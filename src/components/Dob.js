@@ -1,3 +1,4 @@
+import React from "react";
 const Dob = (props) => {
   const { name, handleChange } = props;
   return (

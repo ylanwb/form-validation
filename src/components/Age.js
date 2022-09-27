@@ -1,3 +1,4 @@
+import React from "react";
 const Age = (props) => {
   const { name, handleChange } = props;
   return (
