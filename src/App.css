@@ -1,12 +1,6 @@
 * {
   font-family: monospace;
 }
-nput:-internal-autofill-selected {
-  appearance: menulist-button;
-  background-image: none !important;
-  background-color: skyblue !important;
-  color: fieldtext !important;
-}
 .mainContainer {
   width: 100vw;
   height: 100vh;
@@ -71,4 +65,19 @@ h1 {
 }
 #dob {
   color-scheme: dark;
+}
+.signInMainContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 0s ease-in-out 0s;
+    transition-delay: 50000s;
+}
+input:-webkit-autofill{
+  -webkit-text-fill-color: white !important;
 }

@@ -56,7 +56,7 @@ const SignInForm = () => {
     }
   };
   return (
-    <div>
+    <div className="signInMainContainer">
       {isSignedIn && <div>{user.email}</div>}
       {!isSignedIn && (
         <div className="signInContainer">
