@@ -1,15 +1,13 @@
 import React from "react";
-const Age = (props) => {
+export const Email = (props) => {
   const { name, handleChange } = props;
   return (
     <input
-      type="number"
-      name={name}
-      placeholder="Age"
+      type="email"
       required
+      name={name}
       onChange={(e) => handleChange(e)}
+      placeholder="Email"
     />
   );
 };
-
-export default Age;

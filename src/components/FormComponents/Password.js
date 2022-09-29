@@ -1,5 +1,5 @@
 import React from "react";
-const Password = (props) => {
+export const Password = (props) => {
   const { name, handleChange, placeholder } = props;
   return (
     <input
@@ -11,5 +11,3 @@ const Password = (props) => {
     />
   );
 };
-
-export default Password;

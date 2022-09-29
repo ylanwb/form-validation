@@ -1,8 +1,9 @@
 import React from "react";
-const Button = (props) => {
+export const Button = (props) => {
   const { onClick } = props;
   return (
     <button
+    className="button"
       onClick={(e) => {
         e.preventDefault();
         onClick();
@@ -12,5 +13,3 @@ const Button = (props) => {
     </button>
   );
 };
-
-export default Button;

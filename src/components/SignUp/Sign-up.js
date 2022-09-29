@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import * as yup from "yup";
-import Age from "../Age";
-import Button from "../Button";
-import Email from "../Email";
-import Name from "../Name";
-import Password from "../Password";
-import Dob from "../Dob";
+import { Password, Name, Email, Button, Age, Dob } from "../FormComponents";
 import { auth } from "../../firebase";
-import { validationSchema } from "./Sign-Up-Form-Validation";
+import { ValidationSchema } from "./Sign-Up-Form-Validation";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
@@ -31,7 +26,7 @@ const SignUpForm = ({ setSuccessful }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     yup
-      .reach(validationSchema, name)
+      .reach(ValidationSchema, name)
       .validate(value)
       .then((valid) => {
         setInputValues({ ...inputValues, [name]: value });

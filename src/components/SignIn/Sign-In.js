@@ -1,20 +1,23 @@
-import React from "react";
-import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from "react";
 import * as yup from "yup";
-import Button from "../Button";
-import Email from "../Email";
-import Password from "../Password";
 import { auth } from "../../firebase";
-import { validationSchema } from "./Sign-In-Form-Validation";
+import LandingPage from "../../pages/LandingPage";
+import { Password, Button, Email } from "../FormComponents";
+import { ValidationSchema } from "./Sign-In-Form-Validation";
 
-const logInWithEmailAndPassword = async (email, password) => {};
 const initialValues = {
   email: "",
   password: "",
 };
 
-const SignInForm = () => {
+const SignInForm = ({ setSuccessful, setContinue }) => {
+  console.log(setContinue);
+  const handleSubmitButtonTwo = () => {
+    console.log("clicked");
+    setContinue(false);
+    setSuccessful(false);
+  };
   const [inputValues, setInputValues] = useState(initialValues);
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [user, setUser] = useState();
@@ -26,7 +29,7 @@ const SignInForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     yup
-      .reach(validationSchema, name)
+      .reach(ValidationSchema, name)
       .validate(value)
       .then((valid) => {
         setInputValues({ ...inputValues, [name]: value });
@@ -57,7 +60,7 @@ const SignInForm = () => {
   };
   return (
     <div className="signInMainContainer">
-      {isSignedIn && <div>{user.email}</div>}
+      {isSignedIn && <LandingPage email={user.email} />}
       {!isSignedIn && (
         <div className="signInContainer">
           <h1>Sign in</h1>
@@ -71,6 +74,15 @@ const SignInForm = () => {
           <span style={{ color: "red" }}>{formErrors.email}</span>
           <span style={{ color: "red" }}>{formErrors.password}</span>
           <span style={{ color: "red" }}>{formErrors.required}</span>
+          <div className="loginSignUpLink">
+            <span>
+              Don't have an account?
+              <button onClick={handleSubmitButtonTwo} id="signUpLink">
+                {" "}
+                Sign Up.
+              </button>
+            </span>
+          </div>
         </div>
       )}
     </div>

@@ -1,0 +1,13 @@
+.homePageMainContainer {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+.contents {
+    width: 100%;
+    height: 100vh;
+}

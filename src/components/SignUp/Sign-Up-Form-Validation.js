@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const validationSchema = yup.object().shape({
+export const ValidationSchema = yup.object().shape({
   name: yup.string().min(4, "Name must be more than 4 letters").required(),
   email: yup.string().email("Invalid Email").required(),
   age: yup

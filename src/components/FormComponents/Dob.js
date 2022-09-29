@@ -1,15 +1,13 @@
 import React from "react";
-const Name = (props) => {
+export const Dob = (props) => {
   const { name, handleChange } = props;
   return (
     <input
-      type="text"
-      required
+      type="date"
       name={name}
+      id="dob"
+      placeholder="Dob"
       onChange={(e) => handleChange(e)}
-      placeholder="Name"
     />
   );
 };
-
-export default Name;
