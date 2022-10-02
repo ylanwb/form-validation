@@ -6,6 +6,7 @@ import { ValidationSchema } from "./Sign-Up-Form-Validation";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
+import SignUpSuccess from "./SignUpSucess/SignUpSuccessPage";
 
 const initialValues = {
   name: "",
@@ -16,12 +17,13 @@ const initialValues = {
   confirmPassword: "",
 };
 
-const SignUpForm = ({ setSuccessful }) => {
+const SignUpForm = () => {
   const [inputValues, setInputValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({
     ...initialValues,
     required: "",
   });
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,7 +42,7 @@ const SignUpForm = ({ setSuccessful }) => {
   const handleSubmit = async () => {
     if (inputValues.password !== inputValues.confirmPassword) {
       setFormErrors({ ...formErrors, required: "Password needs to match" });
-      setSuccessful(false);
+      setSuccess(false);
     }
     if (
       inputValues.name === "" ||
@@ -51,7 +53,7 @@ const SignUpForm = ({ setSuccessful }) => {
       inputValues.confirmPassword === ""
     ) {
       setFormErrors({ ...formErrors, required: "All the inputs are required" });
-      setSuccessful(false);
+      setSuccess(false);
     } else if (
       formErrors.name === "" ||
       formErrors.age === "" ||
@@ -72,40 +74,45 @@ const SignUpForm = ({ setSuccessful }) => {
             uid: user.uid,
             email: user.email,
           });
-          setSuccessful(true);
+          setSuccess(true);
         })
         .catch((err) => {
           setFormErrors({ ...formErrors, required: err.message });
-          setSuccessful(false);
+          setSuccess(false);
         });
     }
   };
 
   return (
-    <div className="signUpContainer">
-      <h1>Sign up</h1>
-      <Name name="name" handleChange={handleChange} />
-      <Email name="email" handleChange={handleChange} />
-      <Age name="age" handleChange={handleChange} />
-      <Dob name="dob" handleChange={handleChange} />
-      <Password
-        name="password"
-        handleChange={handleChange}
-        placeholder={"Password"}
-      />
-      <Password
-        name="confirmPassword"
-        handleChange={handleChange}
-        placeholder={"Confirm password"}
-      />
-      <span style={{ color: "red" }}>{formErrors.name}</span>
-      <span style={{ color: "red" }}>{formErrors.email}</span>
-      <span style={{ color: "red" }}>{formErrors.age}</span>
-      <span style={{ color: "red" }}>{formErrors.dob}</span>
-      <span style={{ color: "red" }}>{formErrors.password}</span>
-      <span style={{ color: "red" }}>{formErrors.confirmPassword}</span>
-      <span style={{ color: "red" }}>{formErrors.required}</span>
-      <Button onClick={handleSubmit} />
+    <div>
+      {success && <SignUpSuccess />}
+      {!success && (
+        <div className="signUpContainer">
+          <h1>Sign up</h1>
+          <Name name="name" handleChange={handleChange} />
+          <Email name="email" handleChange={handleChange} />
+          <Age name="age" handleChange={handleChange} />
+          <Dob name="dob" handleChange={handleChange} />
+          <Password
+            name="password"
+            handleChange={handleChange}
+            placeholder={"Password"}
+          />
+          <Password
+            name="confirmPassword"
+            handleChange={handleChange}
+            placeholder={"Confirm password"}
+          />
+          <span style={{ color: "red" }}>{formErrors.name}</span>
+          <span style={{ color: "red" }}>{formErrors.email}</span>
+          <span style={{ color: "red" }}>{formErrors.age}</span>
+          <span style={{ color: "red" }}>{formErrors.dob}</span>
+          <span style={{ color: "red" }}>{formErrors.password}</span>
+          <span style={{ color: "red" }}>{formErrors.confirmPassword}</span>
+          <span style={{ color: "red" }}>{formErrors.required}</span>
+          <Button onClick={handleSubmit} />
+        </div>
+      )}
     </div>
   );
 };

@@ -5,18 +5,18 @@ import { auth } from "../../firebase";
 import LandingPage from "../../pages/LandingPage";
 import { Password, Button, Email } from "../FormComponents";
 import { ValidationSchema } from "./Sign-In-Form-Validation";
+import { useNavigate } from "react-router-dom";
+
 
 const initialValues = {
   email: "",
   password: "",
 };
 
-const SignInForm = ({ setSuccessful, setContinue }) => {
-  console.log(setContinue);
+const SignInForm = () => {
+  let navigate = useNavigate()
   const handleSubmitButtonTwo = () => {
-    console.log("clicked");
-    setContinue(false);
-    setSuccessful(false);
+    navigate("/sign-up")
   };
   const [inputValues, setInputValues] = useState(initialValues);
   const [isSignedIn, setIsSignedIn] = useState(false);

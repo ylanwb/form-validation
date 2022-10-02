@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import CheckIcon from "../../Icons/CheckIcon";
 import "./SignUpSucessPage.css";
 
-const SignUpSuccess = ({ setContinue }) => {
+const SignUpSuccess = () => {
+  let navigate = useNavigate()
   const handleContinueButton = () => {
-    setContinue(true);
+    navigate("/")
   };
   return (
     <div id="card" className="animated fadeIn">

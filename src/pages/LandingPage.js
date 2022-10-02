@@ -1,30 +1,15 @@
 import "./LandingPage.css";
-import BlueBox from "../components/Icons/BlueBox";
 import BlueArrow from "../components/Icons/BlueArrow";
 import Stars from "../components/Icons/Stars";
-const LandingPage = ({ email }) => {
+import { Footer } from "../components/Footer";
+import { Header } from "../components/Header";
+
+const LandingPage = ({ user }) => {
   return (
-    //   <div>hello from landing page {email}</div>
     <div className="homePageMainContainer">
       <div className="contents contentOne">
-        <div className="navBar">
-          <div className="navLeftSide">
-            <div className="navLeftSideContent">
-              <span>team</span>
-              <BlueBox id="blueBox" />
-            </div>
-          </div>
-          <div className="navRightSide">
-            <div className="navRightSideContent">
-              <button className="navButton">Products</button>
-              <button className="navButton">Services</button>
-              <button className="navButton">Contact</button>
-              <button className="navButton">Login</button>
-              <button className="navButton">Get Access</button>
-            </div>
-          </div>
-        </div>
         <div className="leftSideOne">
+          <Header user={user} />
           <div className="leftSideOneContent">
             <span className="titleTexts">
               Instant collaborations for remote teams
@@ -65,6 +50,7 @@ const LandingPage = ({ email }) => {
           <div className="rightSideTwoContent">
             <img
               className="meetingsImg"
+              alt="test"
               src={
                 "https://media.discordapp.net/attachments/1004621319901552710/1023528249432748042/unknown.png"
               }
@@ -77,6 +63,7 @@ const LandingPage = ({ email }) => {
           <div className="leftSideThreeContent">
             <img
               className="taskManagementImg"
+              alt="test"
               src={
                 "https://media.discordapp.net/attachments/1004621319901552710/1023528459051483256/unknown.png"
               }
@@ -117,6 +104,7 @@ const LandingPage = ({ email }) => {
           <div className="rightSideFourContent">
             <img
               className="schedulingImg"
+              alt="test"
               src={
                 "https://media.discordapp.net/attachments/1004621319901552710/1023528510834360400/unknown.png"
               }
@@ -147,6 +135,7 @@ const LandingPage = ({ email }) => {
             <div className="userInfo">
               <img
                 className="userPictures"
+                alt="test"
                 src="https://media.discordapp.net/attachments/1004621319901552710/1023528547094118530/unknown.png"
               />
               <span className="titleTextsV3">Amy Klassen</span>
@@ -170,6 +159,7 @@ const LandingPage = ({ email }) => {
             <div className="userInfo">
               <img
                 className="userPictures"
+                alt="test"
                 src="https://media.discordapp.net/attachments/1004621319901552710/1023528587783065610/unknown.png"
               />
               <span className="titleTextsV3">Jane Cooper</span>
@@ -193,6 +183,7 @@ const LandingPage = ({ email }) => {
             <div className="userInfo">
               <img
                 className="userPictures"
+                alt="test"
                 src="https://media.discordapp.net/attachments/1004621319901552710/1023528616069443624/unknown.png"
               />
               <span className="titleTextsV3">Eleanor Pena</span>
@@ -216,12 +207,14 @@ const LandingPage = ({ email }) => {
             <div className="userInfo">
               <img
                 className="userPictures"
+                alt="test"
                 src="https://media.discordapp.net/attachments/1004621319901552710/1023528645890953246/unknown.png"
               />
               <span className="titleTextsV3">random woman</span>
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   );

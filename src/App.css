@@ -31,8 +31,8 @@
   background-color: rgb(255, 255, 255);
 }
 .signUpContainer {
-  width: 45%;
-  height: 100%;
+  width: 30vw;
+  height: 80vh;
   display: flex;
   border: 1.5px solid #ccc;
   border-radius: 25px;
