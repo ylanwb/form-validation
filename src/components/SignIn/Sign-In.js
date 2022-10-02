@@ -77,8 +77,8 @@ const SignInForm = ({ setSuccessful, setContinue }) => {
           <div className="loginSignUpLink">
             <span>
               Don't have an account?
+              {" "}
               <button onClick={handleSubmitButtonTwo} id="signUpLink">
-                {" "}
                 Sign Up.
               </button>
             </span>

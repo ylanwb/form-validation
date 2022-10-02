@@ -1,10 +1,12 @@
 * {
-  font-family: monospace;
+  font-family: 'Mulish', sans-serif;
 }
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
 .mainContainer {
   width: 100vw;
   height: 100vh;
-  background-color: skyblue;
+  background-color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,24 +22,25 @@
 .signInContainer {
   width: 45%;
   height: 100%;
-  /* border: 1.5px solid #ccc; */
+  border: 1.5px solid #ccc;
+  box-shadow: 0px 0px 0.5px 0px;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: steelblue;
+  background-color: rgb(255, 255, 255);
 }
 .signUpContainer {
   width: 45%;
   height: 100%;
   display: flex;
-  /* border: 1.5px solid #ccc; */
+  border: 1.5px solid #ccc;
   border-radius: 25px;
   flex-direction: column;
-  background-color: deepskyblue;
+  background-color: rgb(255, 255, 255);
   align-items: center;
 }
-input {
+.inputComponents {
   width: 60%;
   height: 3.5%;
   margin-top: 25px;
@@ -45,24 +48,24 @@ input {
   border: none;
   background: none;
   outline: none;
-  border-bottom: 1px solid white;
-  color: white;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  color: #000000;
 }
 ::placeholder {
-  color: white;
+  color: rgb(0, 0, 0);
 }
 .button {
   padding: 20px;
   width: 200px;
   border: none;
-  background-color: skyblue;
+  background-color: #0bbef2;
   color: white;
   border-radius: 8px;
   margin-top: 25px;
   cursor: pointer;
 }
 h1 {
-  color: white;
+  color: rgb(0, 0, 0);
 }
 #dob {
   color-scheme: dark;
@@ -73,30 +76,33 @@ h1 {
   display: flex;
   justify-content: center;
 }
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    transition: background-color 0s ease-in-out 0s;
-    transition-delay: 50000s;
+.inputComponents:-webkit-autofill,
+.inputComponents:-webkit-autofill:hover,
+.inputComponents:-webkit-autofill:focus,
+.inputComponents:-webkit-autofill:active {
+  transition: background-color 0s ease-in-out 0s;
+  transition-delay: 50000s;
 }
-input:-webkit-autofill{
-  -webkit-text-fill-color: white !important;
+.inputComponents:-webkit-autofill {
+  -webkit-text-fill-color: rgb(0, 0, 0) !important;
 }
 
 .loginSignUpLink {
   margin-top: 25px;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 #signUpLink {
   cursor: pointer;
-  color: skyblue;
+  color: #4da0fd;
   background: none;
-	border: none;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 #signUpLink:hover {
   text-decoration: underline;
+}
+span {
+  padding-top: 10px;
 }

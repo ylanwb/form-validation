@@ -3,7 +3,7 @@ export const Button = (props) => {
   const { onClick } = props;
   return (
     <button
-    className="button"
+      className="button"
       onClick={(e) => {
         e.preventDefault();
         onClick();

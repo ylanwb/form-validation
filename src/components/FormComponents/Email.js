@@ -3,6 +3,7 @@ export const Email = (props) => {
   const { name, handleChange } = props;
   return (
     <input
+      className="inputComponents"
       type="email"
       required
       name={name}

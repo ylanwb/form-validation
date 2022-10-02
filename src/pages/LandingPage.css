@@ -1,12 +1,323 @@
+/* main page set up start */
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+/* fix overflow-x: hidden on other pages */
 .homePageMainContainer {
-    width: 100vw;
-    position: absolute;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
+  width: 100%;
+  height: max-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  overflow-x: hidden;
 }
 .contents {
-    width: 100%;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
+/* main page set up end */
+
+/* start of content one */
+.contentOne {
+  background-image: url("https://media.discordapp.net/attachments/1004621319901552710/1023527420902527026/unknown.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-bottom: 10px solid #9b9993;
+}
+.leftSideOne {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+}
+.leftSideOneContent {
+  width: 75%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15%;
+}
+.rightSideOne {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+.earlyAccessContainer {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5vh;
+}
+#earlyAccessInputBar {
+  width: 57%;
+  height: 7vh;
+  padding: 0px 0px 0px 25px;
+  font-size: 1.2vw;
+  border-radius: 4px;
+}
+#earlyAccessButton {
+  width: 33%;
+  height: 7vh;
+  background-color: #0bbef2;
+  color: white;
+  font-size: 1vw;
+  border: none;
+  border-radius: 4px;
+}
+/* nav bar start (inside content one) */
+.navBar {
+  width: 100%;
+  height: 10%;
+  display: flex;
+}
+.navLeftSide {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.navLeftSideContent {
+  color: white;
+  font-size: 2vw;
+  font-weight: 800;
+  margin-left: 15%;
+}
+
+.navRightSide {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navRightSideContent {
+  font-size: 1.5vw;
+  font-weight: 600;
+}
+.navButton {
+  border: none;
+  background: none;
+  color: white;
+  font-weight: 900;
+  font-size: 1vw;
+  margin: 0px 25px;
+  border-bottom: 1px solid #9b9993;
+  cursor: pointer;
+}
+.navButton:last-child {
+  padding: 17px 25px;
+  color: #9b9993;
+  border: 2px solid #9b9993;
+  border-radius: 4px;
+}
+/* nav bar end (inside content one) */
+/* content one end */
+
+/* content two start */
+.contentTwo {
+  background-color: #f5f7fa;
+  display: flex;
+}
+.leftSideTwo {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.leftSideTwoContent {
+  padding-left: 15%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.rightSideTwo {
+  width: 55%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rightSideTwoContent {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+/* content two end */
+
+/* content three start */
+.contentThree {
+  background-color: #f5f7fa;
+  display: flex;
+}
+.leftSideThree {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.leftSideThreeContent {
+  margin-left: 5%;
+}
+.rightSideThree {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.rightSideThreeContent {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* content three end */
+
+/* content four start */
+.contentFour {
+  background-color: #f5f7fa;
+  display: flex;
+}
+.leftSideFour {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.leftSideFourContent {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.rightSideFour {
+  width: 50vw;
+  display: flex;
+  align-items: center;
+}
+.rightSideFourContent {
+  width: 100%;
+}
+/* content four end */
+
+/* content five start */
+.contentFive {
+  background-color: #f5f7fa;
+}
+.contentFiveTop {
+  text-align: center;
+  margin-top: 10vh;
+}
+.contentFiveBottom {
+  width: 100vw;
+  height: 45vh;
+  display: flex;
+  margin-top: 20vh;
+  margin-left: 10vw;
+}
+.reviews {
+  width: 20%;
+  height: 100%;
+  margin-right: 40px;
+  background-color: white;
+}
+.starContainer {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.reviewTexts {
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.userInfo {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  margin-top: 10vh;
+}
+/* content five end */
+
+/* all different icons set ups start */
+#blueBox {
+  width: 12px;
+  height: 12px;
+  padding-left: 4px;
+}
+#blueArrow {
+  width: 20px;
+  height: 20px;
+}
+/* all different icons set ups end */
+
+/* all img set ups start */
+.meetingsImg {
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+}
+.taskManagementImg {
+  height: 75vh;
+}
+.schedulingImg {
+  height: 75vh;
+}
+.userPictures {
+  width: 3vw;
+  margin-right: 25px;
+}
+/* all img set ups end */
+
+/* different text set ups start */
+.titleTexts {
+  font-family: "Work Sans", sans-serif;
+  font-size: 3.2vw;
+  font-weight: 800;
+}
+.contentTexts {
+  padding-top: 4vh;
+  padding-right: 10vw;
+  font-size: 1.4vw;
+  font-weight: 600;
+}
+.titleTextsV2 {
+  font-family: "Work Sans", sans-serif;
+  font-size: 3.4vw;
+  font-weight: 800;
+}
+.contentTextsV2 {
+  padding-top: 4.2vh;
+  padding-right: 10vw;
+  font-size: 1.2vw;
+  font-weight: 400;
+}
+.titleTextsV3 {
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.3vw;
+  font-weight: 600;
+}
+.contentTextsV3 {
+  padding-top: 4.2vh;
+  padding-right: 10vw;
+  font-size: 1vw;
+  font-weight: 400;
+}
+.learnMoreTexts {
+  padding-top: 4vh;
+  color: #4da0fd;
+  font-size: 1.2vw;
+  display: flex;
+  align-items: center;
+  width: 8.2vw;
+  justify-content: space-between;
+}
+/* different text set ups end */

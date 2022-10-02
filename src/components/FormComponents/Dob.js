@@ -4,6 +4,7 @@ export const Dob = (props) => {
   return (
     <input
       type="date"
+      className="inputComponents"
       name={name}
       id="dob"
       placeholder="Dob"
