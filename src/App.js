@@ -8,6 +8,7 @@ import SignUpSuccess from "./pages/SignUpPage/SignUpSucess/SignUpSuccessPage";
 import { auth } from "./firebase";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import BlogPage from "./pages/BlogPage/BlogPage";
+import ArticlePage from "./pages/ArticlePage/ArticlePage";
 
 function App() {
   const [user, setUser] = useState();
@@ -25,20 +26,17 @@ function App() {
           <BrowserRouter>
             {user && (
               <Routes>
-                <Route
-                  path="/"
-                  element={<LandingPage user={user} />}
-                />
-                <Route path="/pages/blog" element={<BlogPage user={user} />} />
-                <Route path="/pages/successful" element={<SignUpSuccess />} />
-                <Route path="/" element={<SignInForm />} />
+                <Route path="/" element={<LandingPage user={user} />} />
+                <Route path="/blog" element={<BlogPage user={user} />} />
+                <Route path="/successful" element={<SignUpSuccess />} />
+                <Route path="/blog/:id" element={<ArticlePage />} />
               </Routes>
             )}
             {!user && (
               <Routes>
                 <Route path="/" element={<SignInForm />} />
                 <Route
-                  path="/pages/sign-up"
+                  path="/sign-up"
                   element={<SignUpForm setUser={setUser} />}
                 />
               </Routes>

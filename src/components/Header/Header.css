@@ -1,0 +1,88 @@
+
+/* nav bar start (inside content one) */
+.navBar {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+  }
+  .navLeftSide {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .navRightSide {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .navRightSideContent {
+    font-size: 1.5vw;
+    font-weight: 600;
+  }
+  .navButton {
+    border: none;
+    background: none;
+    color: white;
+    font-weight: 900;
+    font-size: 1vw;
+    margin: 0px 25px;
+    border-bottom: 1px solid #9b9993;
+    cursor: pointer;
+  }
+  .navButton:last-child {
+    padding: 17px 25px;
+    color: #9b9993;
+    border: 2px solid #9b9993;
+    border-radius: 4px;
+  }
+  /* different color mode styling start */
+.navWhiteBackground {
+ color: black;
+ font-size: 2vw;
+    font-weight: 800;
+    margin-left: 15%;
+}
+.navDarkBackground {
+    color: white;
+    font-size: 2vw;
+    font-weight: 800;
+    margin-left: 15%;
+}
+.navDarkRightSideContent .navButton {
+    border: none;
+    background: none;
+    color: white;
+    font-weight: 900;
+    font-size: 1vw;
+    margin: 0px 25px;
+    border-bottom: 1px solid #9b9993;
+    cursor: pointer;
+}
+.navWhiteRightSideContent .navButton {
+    border: none;
+    background: none;
+    color: #6D7D8B;
+    font-weight: 900;
+    font-size: 1vw;
+    margin: 0px 25px;
+    border-bottom: 1px solid #9b9993;
+    cursor: pointer;
+}
+.navDarkRightSideContent .navButton:last-child {
+    padding: 17px 25px;
+    color: #9b9993;
+    border: 2px solid #9b9993;
+    border-radius: 4px;
+}
+.navWhiteRightSideContent .navButton:last-child {
+    padding: 17px 25px;
+    color: #4DA0FD;
+    border: 2px solid rgba(77, 160, 253, 0.42);
+    border-radius: 4px; 
+    background: rgba(77, 160, 253, 0.1);
+}
+  /* different color mode styling end  */
+  /* nav bar end (inside content one) */

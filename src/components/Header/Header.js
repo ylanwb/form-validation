@@ -1,28 +1,29 @@
-import BlueBox from "../components/Icons/BlueBox";
+import BlueBox from "../Icons/BlueBox";
 import React from "react";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import "./Header.css"
 
-export const Header = ({ user }) => {
+export const Header = ({ user, isWhiteBackground }) => {
   const navigate = useNavigate();
   const handleLogoutButton = () => {
     auth.signOut();
     navigate("/");
   };
   const handleBlogButton = () => {
-    navigate("/pages/blog");
+    navigate("/blog");
   };
 
   return (
     <div className="navBar">
       <div className="navLeftSide">
-        <div className="navLeftSideContent">
+        <div className={isWhiteBackground ? "navDarkBackground" : "navWhiteBackground"}>
           <span>team</span>
           <BlueBox id="blueBox" />
         </div>
       </div>
       <div className="navRightSide">
-        <div className="navRightSideContent">
+        <div className={isWhiteBackground ? "navDarkRightSideContent" : "navWhiteRightSideContent"} id="navRightSideContent">
           <button className="navButton">Products</button>
           <button
             className="navButton"

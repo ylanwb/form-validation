@@ -3,8 +3,8 @@ import BlueArrow from "../../components/Icons/BlueArrow";
 import BlueArrowV2 from "../../components/Icons/BlueArrowV2";
 import GrayArrow from "../../components/Icons/GrayArrow";
 import Stars from "../../components/Icons/Stars";
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer/Footer";
+import { Header } from "../../components/Header/Header";
 import { useRef, useState } from "react";
 
 const LandingPage = ({ user }) => {
@@ -31,7 +31,7 @@ const LandingPage = ({ user }) => {
   return (
     <div className="homePageMainContainer">
       <div className="contents contentOne">
-        <Header user={user} />
+        <Header user={user} isWhiteBackground={true} />
         <div className="leftSideOne">
           <div className="leftSideOneContent">
             <span className="titleTexts">

@@ -1,9 +1,10 @@
 import React from "react";
-import BlueBox from "./Icons/BlueBox";
-import Instagram from "./Icons/Instagram";
-import Facebook from "./Icons/Facebook";
-import Twitter from "./Icons/Twitter";
-import BlueArrowV2 from "./Icons/BlueArrowV2";
+import BlueBox from "../Icons/BlueBox";
+import Instagram from "../Icons/Instagram";
+import Facebook from "../Icons/Facebook";
+import Twitter from "../Icons/Twitter";
+import BlueArrowV2 from "../Icons/BlueArrowV2";
+import "./Footer.css"
 
 export const Footer = () => {
   return (
