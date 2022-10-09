@@ -2,11 +2,11 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import * as yup from "yup";
 import { auth } from "../../firebase";
-import LandingPage from "../../pages/LandingPage";
-import { Password, Button, Email } from "../FormComponents";
+import LandingPage from "../LandingPage/LandingPage";
+import { Password, Button, Email } from "../../components/FormComponents";
 import { ValidationSchema } from "./Sign-In-Form-Validation";
 import { useNavigate } from "react-router-dom";
-
+import "./Sign-In.css"
 
 const initialValues = {
   email: "",
@@ -16,7 +16,7 @@ const initialValues = {
 const SignInForm = () => {
   let navigate = useNavigate()
   const handleSubmitButtonTwo = () => {
-    navigate("/sign-up")
+    navigate("/pages/sign-Up")
   };
   const [inputValues, setInputValues] = useState(initialValues);
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -50,7 +50,7 @@ const SignInForm = () => {
       )
         .then((response) => {
           setUser(response.user);
-          setIsSignedIn(true);
+          console.log("went to home")
         })
         .catch((err) => {
           console.log(err);

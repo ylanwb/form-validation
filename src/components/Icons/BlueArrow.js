@@ -6,7 +6,6 @@ const BlueArrow = (props) => {
       width={16}
       height={8}
       viewBox="0 0 16 8"
-      fill="#4DA0FD"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >

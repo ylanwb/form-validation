@@ -1,0 +1,17 @@
+.signUpMainContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signUpContentContainer {
+  width: 30%;
+  height: 80%;
+  display: flex;
+  border: 1.5px solid #ccc;
+  border-radius: 25px;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  align-items: center;
+}

@@ -9,6 +9,10 @@ export const Header = ({ user }) => {
     auth.signOut();
     navigate("/");
   };
+  const handleBlogButton = () => {
+    navigate("/pages/blog");
+  };
+
   return (
     <div className="navBar">
       <div className="navLeftSide">
@@ -20,14 +24,22 @@ export const Header = ({ user }) => {
       <div className="navRightSide">
         <div className="navRightSideContent">
           <button className="navButton">Products</button>
-          <button className="navButton">Services</button>
+          <button
+            className="navButton"
+            onClick={() => {
+              console.log("here");
+              handleBlogButton();
+            }}
+          >
+            Blog
+          </button>
           <button className="navButton">Contact</button>
           <button
-            // className="navButton"
+            className="navButton"
             style={{ cursor: "pointer" }}
             onClick={() => {
               console.log("here");
-              //   handleLogoutButton();
+              handleLogoutButton();
             }}
           >
             {!!user && "Log out"}

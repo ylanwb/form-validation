@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import * as yup from "yup";
-import { Password, Name, Email, Button, Age, Dob } from "../FormComponents";
+import {
+  Password,
+  Name,
+  Email,
+  Button,
+  Age,
+  Dob,
+} from "../../components/FormComponents";
 import { auth } from "../../firebase";
 import { ValidationSchema } from "./Sign-Up-Form-Validation";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import SignUpSuccess from "./SignUpSucess/SignUpSuccessPage";
+import "./Sign-Up.css";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   name: "",
@@ -18,13 +27,15 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
+  const navigate = useNavigate();
+  const successfulNavigation = (e) => {
+    navigate("/pages/successful")
+  }
   const [inputValues, setInputValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({
     ...initialValues,
     required: "",
   });
-  const [success, setSuccess] = useState(false);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     yup
@@ -42,7 +53,6 @@ const SignUpForm = () => {
   const handleSubmit = async () => {
     if (inputValues.password !== inputValues.confirmPassword) {
       setFormErrors({ ...formErrors, required: "Password needs to match" });
-      setSuccess(false);
     }
     if (
       inputValues.name === "" ||
@@ -53,7 +63,6 @@ const SignUpForm = () => {
       inputValues.confirmPassword === ""
     ) {
       setFormErrors({ ...formErrors, required: "All the inputs are required" });
-      setSuccess(false);
     } else if (
       formErrors.name === "" ||
       formErrors.age === "" ||
@@ -74,20 +83,19 @@ const SignUpForm = () => {
             uid: user.uid,
             email: user.email,
           });
-          setSuccess(true);
+          // here is success
+          successfulNavigation()
         })
         .catch((err) => {
           setFormErrors({ ...formErrors, required: err.message });
-          setSuccess(false);
+          console.log("Error")
         });
     }
   };
 
   return (
-    <div>
-      {success && <SignUpSuccess />}
-      {!success && (
-        <div className="signUpContainer">
+    <div className="signUpMainContainer">
+        <div className="signUpContentContainer">
           <h1>Sign up</h1>
           <Name name="name" handleChange={handleChange} />
           <Email name="email" handleChange={handleChange} />
@@ -112,7 +120,6 @@ const SignUpForm = () => {
           <span style={{ color: "red" }}>{formErrors.required}</span>
           <Button onClick={handleSubmit} />
         </div>
-      )}
     </div>
   );
 };
