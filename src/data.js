@@ -4,6 +4,8 @@ export const data = [
     subText:
       "There are times when our work impacts us deeply — sometimes in ways we neither acknowledge nor understand",
     name: "Wade Warren",
+    blogImg:
+      "https://cdn.discordapp.com/attachments/1004621319901552710/1028527636865101874/unknown.png",
     image: (
       <img
         id="blogUserPictures"
@@ -16,14 +18,15 @@ export const data = [
   },
   {
     title: "10 secret tips for managing a team remotely",
-    subText:
-      "There are times when our work impacts us deeply — sometimes in ways we neither acknowledge nor understand",
-    name: "Wade Warren",
+    subText: "Our latest updates and blogs about managing your team",
+    name: "Bessie Cooper",
+    blogImg:
+      "https://media.discordapp.net/attachments/1004621319901552710/1028605641968848937/unknown.png",
     image: (
       <img
         id="blogUserPictures"
         alt="blogUser"
-        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028604183286403122/unknown.png"
+        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028605664190267432/unknown.png"
       />
     ),
     date: "2nd January, 2022",
@@ -32,13 +35,15 @@ export const data = [
   {
     title: "What Ever Happened to Steampunk?",
     subText:
-      "There are times when our work impacts us deeply — sometimes in ways we neither acknowledge nor understand",
-    name: "Wade Warren",
+      "How the iPhone popularized steampunk… and how the iPhone killed it off",
+    name: "Courtney Henry",
+    blogImg:
+      "https://media.discordapp.net/attachments/1004621319901552710/1028605868385779773/unknown.png",
     image: (
       <img
         id="blogUserPictures"
         alt="blogUser"
-        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028604183286403122/unknown.png"
+        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028605889780908062/unknown.png"
       />
     ),
     date: "2nd January, 2022",
@@ -47,13 +52,15 @@ export const data = [
   {
     title: "The 2020 Guide for White Men in Tech",
     subText:
-      "There are times when our work impacts us deeply — sometimes in ways we neither acknowledge nor understand",
-    name: "Wade Warren",
+      "How to use centuries of unfair advantage to make the world a more equal place",
+    name: "Darlene Robert",
+    blogImg:
+      "https://cdn.discordapp.com/attachments/1004621319901552710/1028953141238046750/unknown.png",
     image: (
       <img
         id="blogUserPictures"
         alt="blogUser"
-        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028604183286403122/unknown.png"
+        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028955279741681674/unknown.png"
       />
     ),
     date: "2nd January, 2022",
@@ -62,13 +69,15 @@ export const data = [
   {
     title: "Why Are Women Still Behind in the Design World?",
     subText:
-      "There are times when our work impacts us deeply — sometimes in ways we neither acknowledge nor understand",
-    name: "Wade Warren",
+      "It’s 2020, but women designers still face lower pay and less opportunity. What gives?",
+    name: "Leslie Alexander",
+    blogImg:
+      "https://cdn.discordapp.com/attachments/1004621319901552710/1028955067103060048/unknown.png",
     image: (
       <img
         id="blogUserPictures"
         alt="blogUser"
-        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028604183286403122/unknown.png"
+        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028955304924287016/unknown.png"
       />
     ),
     date: "2nd January, 2022",
@@ -76,14 +85,15 @@ export const data = [
   },
   {
     title: "The Ultimate Guide to Becoming a Great Designer",
-    subText:
-      "There are times when our work impacts us deeply — sometimes in ways we neither acknowledge nor understand",
-    name: "Wade Warren",
+    subText: "Our latest updates and blogs about managing your team",
+    name: "Eleanor Pena",
+    blogImg:
+      "https://cdn.discordapp.com/attachments/1004621319901552710/1028955092554088498/unknown.png",
     image: (
       <img
         id="blogUserPictures"
         alt="blogUser"
-        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028604183286403122/unknown.png"
+        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028955334292815922/unknown.png"
       />
     ),
     date: "2nd January, 2022",
@@ -91,14 +101,15 @@ export const data = [
   },
   {
     title: "Data-Driven Design is Killing Our Instincts",
-    subText:
-      "There are times when our work impacts us deeply — sometimes in ways we neither acknowledge nor understand",
-    name: "Wade Warren",
+    subText: "Our latest updates and blogs about managing your team",
+    name: "Jane Cooper",
+    blogImg:
+      "https://cdn.discordapp.com/attachments/1004621319901552710/1028955120886620200/unknown.png",
     image: (
       <img
         id="blogUserPictures"
         alt="blogUser"
-        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028604183286403122/unknown.png"
+        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028955385417183262/unknown.png"
       />
     ),
     date: "2nd January, 2022",
@@ -107,13 +118,15 @@ export const data = [
   {
     title: "Finding the Blank Spots in Big Data",
     subText:
-      "There are times when our work impacts us deeply — sometimes in ways we neither acknowledge nor understand",
-    name: "Wade Warren",
+      "Artists and designers are working to address a major problem for marginalized communities in the data economy: ‘If the data does not exist…",
+    name: "Jenny Wilson",
+    blogImg:
+      "https://cdn.discordapp.com/attachments/1004621319901552710/1028955147621126194/unknown.png",
     image: (
       <img
         id="blogUserPictures"
         alt="blogUser"
-        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028604183286403122/unknown.png"
+        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028955402773213204/unknown.png"
       />
     ),
     date: "2nd January, 2022",
@@ -122,13 +135,15 @@ export const data = [
   {
     title: "3 Lessons We Learned From Rebranding Gusto",
     subText:
-      "There are times when our work impacts us deeply — sometimes in ways we neither acknowledge nor understand",
-    name: "Wade Warren",
+      "You might not know the music, but designers have certainly taken notice of this small but visceral movement from the late ’80s",
+    name: "Jacob Jones",
+    blogImg:
+      "https://cdn.discordapp.com/attachments/1004621319901552710/1028955182131847188/unknown.png",
     image: (
       <img
         id="blogUserPictures"
         alt="blogUser"
-        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028604183286403122/unknown.png"
+        src="https://cdn.discordapp.com/attachments/1004621319901552710/1028955418527019049/unknown.png"
       />
     ),
     date: "2nd January, 2022",

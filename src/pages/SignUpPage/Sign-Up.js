@@ -29,7 +29,7 @@ const initialValues = {
 const SignUpForm = () => {
   const navigate = useNavigate();
   const successfulNavigation = (e) => {
-    navigate("/pages/successful")
+    navigate("/successful")
   }
   const [inputValues, setInputValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({

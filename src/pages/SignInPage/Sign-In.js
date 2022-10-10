@@ -16,7 +16,7 @@ const initialValues = {
 const SignInForm = () => {
   let navigate = useNavigate()
   const handleSubmitButtonTwo = () => {
-    navigate("/pages/sign-Up")
+    navigate("/sign-Up")
   };
   const [inputValues, setInputValues] = useState(initialValues);
   const [isSignedIn, setIsSignedIn] = useState(false);

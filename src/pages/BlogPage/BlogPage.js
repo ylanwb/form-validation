@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { data } from "../../data";
 
 const BlogCard = (props) => {
-  const { title, date, image, id, subText, name, handleClickArticle } = props;
+  const { title, date, image, id, subText, name, blogImg, handleClickArticle } = props;
   return (
     <div
       className="blogPreviewBox boxOne"
@@ -19,7 +19,7 @@ const BlogCard = (props) => {
       <img
         alt="test"
         className="blogImages"
-        src="https://media.discordapp.net/attachments/1004621319901552710/1028527636865101874/unknown.png"
+        src={blogImg}
       />
       <div className="blogContentContainer">
         <h1 className="blogContentTitles">{title}</h1>

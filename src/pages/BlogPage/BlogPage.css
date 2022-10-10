@@ -70,6 +70,7 @@
 .blogContentTexts {
   font-size: 1vw;
   line-height: 3vh;
+  height: 10vh;
 }
 #blogDate {
   border-left: 1px solid gray;
