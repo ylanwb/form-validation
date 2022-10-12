@@ -38,18 +38,18 @@ const ArticlePage = ({ user }) => {
             src="https://cdn.discordapp.com/attachments/1004621319901552710/1028739992018747472/unknown.png"
           />
           <div className="articleBody">
-            <p>
+            <p className="articleBodyText">
               If you’re thinking of starting a blog of your own, but just don’t
               have a clue on what to blog about, then fear not!{" "}
             </p>
 
-            <p>
+            <p className="articleBodyText">
               In this article, I have included a whole load of blog examples
               from a wide variety of different niches, all run on different
               blogging platforms like WordPress, Joomla! and Drupal.
             </p>
 
-            <p>
+            <p className="articleBodyText">
               Since the beginning of the internet, millions and millions and
               millions of blogs have been created. Many have died due to lost
               interest or their owners giving up on the idea, while others have
@@ -60,50 +60,65 @@ const ArticlePage = ({ user }) => {
               interesting.
             </p>
 
-            <p>
+            <p className="articleBodyText">
               Each example listed in this blog post are all different in some
               way and all bring something unique to their readers & subscribers.
               I want to show you what is possible and how you can take
               inspiration from them and create an awesome blog of your own.
             </p>
 
-            <p>
+            <p className="articleBodyText">
               Some of these blogs make over $100k a month, others are just a
               hobby for their owners, but all have the same purpose at their
               core… the love of writing and sharing information.
             </p>
-            <p>
+            <p className="articleBodyText">
               Some of these blogs make over $100k a month, others are just a
               hobby for their owners, but all have the same purpose at their
               core… the love of writing and{" "}
             </p>
 
-            <p>
+            <p className="articleBodyText">
               Some of these blogs make over $100k a month, others are just a
               hobby for their owners, but all have the same purpose at their
               core… the love of writing and sharing information.
             </p>
-            <p>
+            <p className="articleBodyText">
               Some of these blogs make over $100k a month, others are just a
               hobby for their owners, but all have the same purpose at their
               core… the love of writing and sharing information.
             </p>
             <div className="articleFooter">
               <div className="authorInfoContainer">
-                <img
-                  id="articleUserPictures"
-                  src="https://cdn.discordapp.com/attachments/1004621319901552710/1028740015255212082/unknown.png"
-                />
+                <div>
+                  <img
+                    id="articleUserPictures"
+                    src="https://cdn.discordapp.com/attachments/1004621319901552710/1028740015255212082/unknown.png"
+                  />
+                </div>
+                <div className="articleUserInfo">
+                  <span>Written by</span>
+                  <span>Shedrack Eze</span>
+                  <span>CEO Team App</span>
+                </div>
               </div>
               <div className="readerCommentContainer">
-                <img
-                  id="articleUserPictures"
-                  src="https://cdn.discordapp.com/attachments/1004621319901552710/1028740015255212082/unknown.png"
-                />
+                <span>Join the conversation</span>
+                <div className="readerComment">
+                  <img
+                    id="articleUserPictures"
+                    src="https://cdn.discordapp.com/attachments/1004621319901552710/1028740015255212082/unknown.png"
+                  />
+                  <textarea id="w3review" name="w3review" rows="4" cols="50">
+                    At w3schools.com you will learn how to make a website. They
+                    offer free tutorials in all web development technologies.
+                  </textarea>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+            </div>
+            </div>
+            <Footer />
       </div>
     </>
   );

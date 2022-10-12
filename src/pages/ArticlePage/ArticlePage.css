@@ -33,6 +33,7 @@
 .articleFooter {
     margin-top: 8vh;
     width: 100%;
+    margin-bottom: 25vh;
 }
 /* page content container end */
 /* content styling start */
@@ -42,6 +43,24 @@
 .authorInfoContainer {
     width: 100%;
     height: 30vh;
+    display: flex;
+    border-bottom: 1px solid gray;
+}
+.articleUserInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 10px;
+    height: 2.5vh;
+}
+.readerCommentContainer {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+}
+.readerComment {
+    width: 100%;
+    
 }
 /* content styling end */
 /* article page images styling start*/
@@ -75,7 +94,7 @@
     font-size: 1vw;
     color: #6D7D8B
 }
-.articleBody p {
+.articleBodyText {
     margin-top: 5vh;
     font-size: 1.25vw;
     font-weight: 600;
