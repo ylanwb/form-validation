@@ -1,0 +1,18 @@
+.productsPageMainContainer {
+    width: 100vw;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.dataContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.dataCard {
+    width: 300px;
+    height: 50vh;
+    border: 1px solid gray;
+    margin: 5vw;
+}
