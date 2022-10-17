@@ -104,21 +104,18 @@ const ArticlePage = ({ user }) => {
               </div>
               <div className="readerCommentContainer">
                 <span>Join the conversation</span>
-                <div className="readerComment">
+                <div className="readerCommentContent">
                   <img
                     id="articleUserPictures"
-                    src="https://cdn.discordapp.com/attachments/1004621319901552710/1028740015255212082/unknown.png"
+                    src="https://cdn.discordapp.com/attachments/1004621319901552710/1028955304924287016/unknown.png"
                   />
-                  <textarea id="w3review" name="w3review" rows="4" cols="50">
-                    At w3schools.com you will learn how to make a website. They
-                    offer free tutorials in all web development technologies.
-                  </textarea>
+                  <textarea id="userComment" placeholder="Comments"></textarea>
                 </div>
               </div>
             </div>
-            </div>
-            </div>
-            <Footer />
+          </div>
+        </div>
+        <Footer />
       </div>
     </>
   );

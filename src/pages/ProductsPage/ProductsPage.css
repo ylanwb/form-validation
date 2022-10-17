@@ -11,8 +11,36 @@
     flex-wrap: wrap;
 }
 .dataCard {
-    width: 300px;
+    width: 400px;
     height: 50vh;
     border: 1px solid gray;
     margin: 5vw;
+}
+.cardContentContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cardDataContainer {
+    width: 100%;
+    display: flex;
+}
+.cardDataContainer span {
+    margin-left: 5px;
+}
+.cardButtonContainer {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+#dataPictures {
+    height: 10vh;
+    margin-right: 10px;
 }
