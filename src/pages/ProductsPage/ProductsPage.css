@@ -37,10 +37,22 @@
     justify-content: space-around;
     align-items: center;
 }
-
-
-
 #dataPictures {
     height: 10vh;
     margin-right: 10px;
 }
+
+/* modal styling start */
+.modalX {
+
+}
+.modalTitle {
+
+}
+.modalText {
+
+}
+.modalButtons {
+
+}
+/* modal styling end */
