@@ -1,0 +1,18 @@
+.deleteModalMainContainer {
+    height: 20vh;
+    width: 25vw;
+}
+.deleteTitleContainer {
+    height: 25%;
+}
+.modalText {
+
+}
+.modalButtons {
+
+}
+.modalButtons button {
+    outline: none;
+    background: none;
+    padding: 10px 25px 10px 25px;
+}

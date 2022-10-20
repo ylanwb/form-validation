@@ -1,31 +1,39 @@
-import "./DeleteModal.css"
+import "./DeleteModal.css";
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import Modal from "react-modal";
 
 const deletePost = async (id) => {
-    await axios
-      .delete(`https://dummyapi.io/data/v1/user/${id}`, {
-        headers: { "app-id": "634752bc7580f70e4f699960" },
-      })
+  await axios
+    .delete(`https://dummyapi.io/data/v1/user/${id}`, {
+      headers: { "app-id": "634752bc7580f70e4f699960" },
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => console.log(err));
+};
+const DeleteModal = ({ closeModal, selectedPost, setDeleteSuccess }) => {
+  const handleConfirmButton = async (e, post) => {
+    e.preventDefault();
+    await deletePost(post.id)
       .then((response) => {
-        console.log(response);
+        setDeleteSuccess(true);
+        setTimeout(() => {
+          setDeleteSuccess(false);
+          window.location.reload();
+        }, 2500);
       })
       .catch((err) => console.log(err));
+    closeModal();
   };
-
-const DeleteModal = ({closeModal, selectedPost}) => {
-
-    const handleConfirmButton = async (e, post) => {
-        e.preventDefault();
-        await deletePost(post.id).catch((err) => console.log(err));
-        closeModal();
-      };
   return (
-    <div>
-      <div className="modalX">x</div>
-      <div className="modalTitle">
+    <div className="deleteModalMainContainer">
+      <div className="deleteTitleContainer">
+        <span>Delete User</span>
+      </div>
+      <div className="modalText">
         <span>Are you sure you want to delete this file?</span>
       </div>
       <div className="modalText">

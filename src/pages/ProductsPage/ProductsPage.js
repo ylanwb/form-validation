@@ -7,6 +7,7 @@ import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header";
 import DeleteModal from "../../components/ModalComponents/DeleteModal/DeleteModal";
 import UpdateModal from "../../components/ModalComponents/UpdateModal/UpdateModal";
+import Alert from "@mui/material/Alert";
 
 const customStyles = {
   content: {
@@ -26,6 +27,7 @@ const ProductsPage = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [selectedPost, setSelectedPost] = useState();
   const [buttonType, setButtonType] = useState();
+  const [deleteSuccess, setDeleteSuccess] = useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -117,13 +119,24 @@ const ProductsPage = () => {
       >
         <div>
           {buttonType === "delete" && (
-            <DeleteModal selectedPost={selectedPost} closeModal={closeModal} />
+            <DeleteModal
+              selectedPost={selectedPost}
+              closeModal={closeModal}
+              setDeleteSuccess={setDeleteSuccess}
+            />
           )}
           {buttonType === "update" && (
             <UpdateModal selectedPost={selectedPost} closeModal={closeModal} />
           )}
         </div>
       </Modal>
+      {deleteSuccess && (
+        <div className="alertSuccess">
+          <Alert severity="success" color="success">
+            Successfully deleted user
+          </Alert>
+        </div>
+      )}
     </>
   );
 };
