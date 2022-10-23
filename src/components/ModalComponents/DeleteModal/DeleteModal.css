@@ -1,18 +1,62 @@
-.deleteModalMainContainer {
+/* .deleteModalMainContainer {
     height: 20vh;
     width: 25vw;
 }
-.deleteTitleContainer {
-    height: 25%;
-}
 .modalText {
-
+    
 }
 .modalButtons {
-
+    
 }
 .modalButtons button {
     outline: none;
     background: none;
     padding: 10px 25px 10px 25px;
+} */
+.deleteModalMainContainer {
+  width: 18vw;
 }
+.deleteTitleContainer {
+  height: 3vh;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 23px;
+  margin-bottom: 2vh;
+  padding-bottom: 4vh;
+}
+.deleteModalTextContainer {
+  height: 2vh;
+}
+.deleteModalButtonsContainer {
+  margin-top: 4vh;
+  border-top: 1px solid #e9ecef;
+  padding: 2vh 0vh 0.3vh 0vh;
+  display: flex;
+  justify-content: flex-end;
+}
+.deleteModalButtonsContainer :nth-child(1) {
+  outline: none;
+  background: none;
+  padding: 10px 25px 10px 25px;
+  margin: 5px;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+.deleteModalButtonsContainer :nth-child(1):hover {
+  color: white;
+  background: black;
+  transition: ease-in-out 0.3s;
+}
+.deleteModalButtonsContainer :nth-child(2) {
+  outline: none;
+  border: none;
+  padding: 10px 25px 10px 25px;
+  margin: 5px;
+  background: red;
+  cursor: pointer;
+  color: white;
+}
+.deleteModalButtonsContainer :nth-child(2):hover {
+    background: black;
+    transition: ease-in-out 0.3s;
+  }
+  

@@ -7,6 +7,7 @@ import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header";
 import DeleteModal from "../../components/ModalComponents/DeleteModal/DeleteModal";
 import UpdateModal from "../../components/ModalComponents/UpdateModal/UpdateModal";
+import CreateModal from "../../components/ModalComponents/CreateModal/CreateModal";
 import Alert from "@mui/material/Alert";
 
 const customStyles = {
@@ -23,11 +24,15 @@ const customStyles = {
 
 const ProductsPage = () => {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [q, setQ] = useState("");
+
   const [loading, setLoading] = useState();
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [selectedPost, setSelectedPost] = useState();
   const [buttonType, setButtonType] = useState();
   const [deleteSuccess, setDeleteSuccess] = useState(false);
+  const [updateSuccess, setUpdateSuccess] = useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -49,6 +54,11 @@ const ProductsPage = () => {
     openModal();
     setButtonType("update");
   };
+  const handleCreateButton = (e, post) => {
+    e.preventDefault();
+    openModal();
+    setButtonType("create");
+  };
 
   useEffect(() => {
     axios
@@ -59,22 +69,65 @@ const ProductsPage = () => {
         setLoading(true);
         setTimeout(() => {
           setData(response.data.data);
+          setFilteredData(response.data.data);
           setLoading(false);
         }, 1000);
       })
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    filtered(q);
+  }, [q]);
+
+  const filtered = (e) => {
+    const filtered =
+      data &&
+      data.filter((item) => {
+        const dataItems =
+          item.title + " " + item.firstName + " " + item.lastName;
+        const filteredItem = dataItems
+          .toLowerCase()
+          .startsWith(e.toLowerCase());
+        return filteredItem;
+      });
+    setFilteredData(filtered);
+  };
   return (
     <>
       <div className="productsPageMainContainer">
         <Header />
         <h1>Products</h1>
+        <br />
         {loading && <div>Loading ...</div>}
+        <div className="productInteractives">
+          <div className="searchBarContainer">
+            <input
+              type="search"
+              className="searchBar"
+              placeholder="Search"
+              value={q}
+              onChange={(e) => {
+                setQ(e.target.value);
+              }}
+            />
+          </div>
+          <div className="createProductContainer">
+            <button
+              className="createProductBtn"
+              onClick={(e) => {
+                handleCreateButton(e);
+              }}
+            >
+              Create
+            </button>
+          </div>
+        </div>
         <div className="dataContainer">
           {!loading &&
-            data.length > 1 &&
-            data?.map((post) => {
+            filteredData &&
+            filteredData.length > 0 &&
+            filteredData.map((post) => {
               return (
                 <div className="dataCard" key={post.id}>
                   <div className="cardContentContainer">
@@ -126,7 +179,18 @@ const ProductsPage = () => {
             />
           )}
           {buttonType === "update" && (
-            <UpdateModal selectedPost={selectedPost} closeModal={closeModal} />
+            <UpdateModal
+              selectedPost={selectedPost}
+              closeModal={closeModal}
+              setUpdateSuccess={setUpdateSuccess}
+            />
+          )}
+          {buttonType === "create" && (
+            <CreateModal
+              selectedPost={selectedPost}
+              closeModal={closeModal}
+              setUpdateSuccess={setUpdateSuccess}
+            />
           )}
         </div>
       </Modal>
@@ -137,8 +201,14 @@ const ProductsPage = () => {
           </Alert>
         </div>
       )}
+      {updateSuccess && (
+        <div className="alertSuccess">
+          <Alert severity="success" color="success">
+            Successfully updated user
+          </Alert>
+        </div>
+      )}
     </>
   );
 };
-
 export default ProductsPage;

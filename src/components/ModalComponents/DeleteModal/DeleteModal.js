@@ -33,13 +33,13 @@ const DeleteModal = ({ closeModal, selectedPost, setDeleteSuccess }) => {
       <div className="deleteTitleContainer">
         <span>Delete User</span>
       </div>
-      <div className="modalText">
-        <span>Are you sure you want to delete this file?</span>
+      <div className="deleteModalTextContainer">
+        <div className="modalText">
+          <p>Are you sure you want to delete this file?</p>
+          <p>If you delete this file you can't recover it.</p>
+        </div>
       </div>
-      <div className="modalText">
-        <span>If you delete this file you can't recover it.</span>
-      </div>
-      <div className="modalButtons">
+      <div className="deleteModalButtonsContainer">
         <button onClick={() => closeModal()}>Cancel</button>
         <button
           onClick={(e) => {

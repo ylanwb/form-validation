@@ -18,7 +18,7 @@ const updatePost = async (post) => {
     .catch((err) => console.log(err));
 };
 
-const UpdateModal = ({ selectedPost, closeModal }) => {
+const UpdateModal = ({ selectedPost, closeModal, setUpdateSuccess }) => {
   const [userData, setUserData] = useState(selectedPost);
 
   const handleDataChange = (e) => {
@@ -28,7 +28,13 @@ const UpdateModal = ({ selectedPost, closeModal }) => {
 
   const updateData = async () => {
     await updatePost(userData)
-      .then((response) => console.log(response))
+      .then((response) => {
+        setUpdateSuccess(true);
+        setTimeout(() => {
+          setUpdateSuccess(false);
+          window.location.reload();
+        }, 2500);
+      })
       .catch((err) => console.log(err));
   };
   return (
