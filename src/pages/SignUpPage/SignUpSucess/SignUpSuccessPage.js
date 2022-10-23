@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import CheckIcon from "../../../components/Icons/CheckIcon";
+import { CheckIcon } from "../../../components/index";
 import "./SignUpSucessPage.css";
 
 const SignUpSuccess = () => {

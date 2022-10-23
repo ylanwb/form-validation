@@ -1,10 +1,6 @@
 import React from "react";
-import BlueBox from "../Icons/BlueBox";
-import Instagram from "../Icons/Instagram";
-import Facebook from "../Icons/Facebook";
-import Twitter from "../Icons/Twitter";
-import BlueArrowV2 from "../Icons/BlueArrowV2";
-import "./Footer.css"
+import "./Footer.css";
+import { Bluebox, Instagram, Facebook, Twitter, BlueArrowV2 } from "../index";
 
 export const Footer = () => {
   return (
@@ -13,7 +9,7 @@ export const Footer = () => {
         <div className="footerLeftSide">
           <span id="footerLogo">
             team
-            <BlueBox id="blueBox" />
+            <Bluebox id="blueBox" />
           </span>
           <span id="footerSocialLinks">
             <Instagram />

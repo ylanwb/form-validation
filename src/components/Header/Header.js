@@ -1,4 +1,4 @@
-import BlueBox from "../Icons/BlueBox";
+import { Bluebox } from "../index";
 import React from "react";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
@@ -26,7 +26,7 @@ export const Header = ({ user, isWhiteBackground }) => {
           }
         >
           <span>team</span>
-          <BlueBox id="blueBox" />
+          <Bluebox id="blueBox" />
         </div>
       </div>
       <div className="navRightSide">

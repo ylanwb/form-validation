@@ -18,7 +18,7 @@ const updatePost = async (post) => {
     .catch((err) => console.log(err));
 };
 
-const UpdateModal = ({ selectedPost, closeModal, setUpdateSuccess }) => {
+export const UpdateModal = ({ selectedPost, closeModal, setUpdateSuccess }) => {
   const [userData, setUserData] = useState(selectedPost);
 
   const handleDataChange = (e) => {
@@ -27,6 +27,7 @@ const UpdateModal = ({ selectedPost, closeModal, setUpdateSuccess }) => {
   };
 
   const updateData = async () => {
+    closeModal()
     await updatePost(userData)
       .then((response) => {
         setUpdateSuccess(true);
@@ -68,11 +69,10 @@ const UpdateModal = ({ selectedPost, closeModal, setUpdateSuccess }) => {
         </div>
       </div>
       <div className="updateButtonsContainer">
-        <button onClick={() => closeModal()}>Cancel</button>
+        <button onClick={() => closeModal()}>Close</button>
         <button onClick={() => updateData()}>Update</button>
       </div>
     </div>
   );
 };
 
-export default UpdateModal;

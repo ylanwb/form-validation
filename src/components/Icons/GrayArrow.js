@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const GrayArrow = (props) => {
+export const GrayArrow = (props) => {
   return (
     <svg
       width={26}
@@ -15,4 +15,3 @@ const GrayArrow = (props) => {
     </svg>
   );
 };
-export default GrayArrow;

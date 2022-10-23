@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const Twitter = (props) => {
+export const Twitter = (props) => {
   return (
     <svg
     width={16}
@@ -17,5 +17,3 @@ const Twitter = (props) => {
   </svg>
   );
 };
-
-export default Twitter;

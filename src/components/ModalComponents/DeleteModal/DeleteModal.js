@@ -1,8 +1,6 @@
-import "./DeleteModal.css";
-import React, { useEffect } from "react";
 import axios from "axios";
-import { useState } from "react";
-import Modal from "react-modal";
+import React from "react";
+import "./DeleteModal.css";
 
 const deletePost = async (id) => {
   await axios
@@ -14,7 +12,7 @@ const deletePost = async (id) => {
     })
     .catch((err) => console.log(err));
 };
-const DeleteModal = ({ closeModal, selectedPost, setDeleteSuccess }) => {
+export const DeleteModal = ({ closeModal, selectedPost, setDeleteSuccess }) => {
   const handleConfirmButton = async (e, post) => {
     e.preventDefault();
     await deletePost(post.id)
@@ -52,5 +50,3 @@ const DeleteModal = ({ closeModal, selectedPost, setDeleteSuccess }) => {
     </div>
   );
 };
-
-export default DeleteModal;

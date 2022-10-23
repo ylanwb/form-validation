@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const Stars = (props) => {
+export const Stars = (props) => {
   return (
     <svg
       width={18}
@@ -18,4 +18,3 @@ const Stars = (props) => {
 
   );
 };
-export default Stars;

@@ -3,11 +3,15 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import Modal from "react-modal";
 import { useState } from "react";
-import { Footer } from "../../components/Footer/Footer";
-import { Header } from "../../components/Header/Header";
-import DeleteModal from "../../components/ModalComponents/DeleteModal/DeleteModal";
-import UpdateModal from "../../components/ModalComponents/UpdateModal/UpdateModal";
-import CreateModal from "../../components/ModalComponents/CreateModal/CreateModal";
+import {
+  Footer,
+  Header,
+  Notification,
+  DeleteModal,
+  UpdateModal,
+  CreateModal,
+} from "../../components/index";
+
 import Alert from "@mui/material/Alert";
 
 const customStyles = {
@@ -25,7 +29,7 @@ const customStyles = {
 const ProductsPage = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [q, setQ] = useState("");
+  const [valueOfSearchbar, setValueOfSearchbar] = useState("");
 
   const [loading, setLoading] = useState();
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -33,6 +37,7 @@ const ProductsPage = () => {
   const [buttonType, setButtonType] = useState();
   const [deleteSuccess, setDeleteSuccess] = useState(false);
   const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [createSuccess, setCreateSuccess] = useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -62,7 +67,7 @@ const ProductsPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://dummyapi.io/data/v1/user?limit=10", {
+      .get("https://dummyapi.io/data/v1/user?limit=100", {
         headers: { "app-id": "634752bc7580f70e4f699960" },
       })
       .then((response) => {
@@ -73,12 +78,12 @@ const ProductsPage = () => {
           setLoading(false);
         }, 1000);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => <Notification text={err.message} type="error" />);
   }, []);
 
   useEffect(() => {
-    filtered(q);
-  }, [q]);
+    filtered(valueOfSearchbar);
+  }, [valueOfSearchbar]);
 
   const filtered = (e) => {
     const filtered =
@@ -86,9 +91,7 @@ const ProductsPage = () => {
       data.filter((item) => {
         const dataItems =
           item.title + " " + item.firstName + " " + item.lastName;
-        const filteredItem = dataItems
-          .toLowerCase()
-          .startsWith(e.toLowerCase());
+        const filteredItem = dataItems.toLowerCase().includes(e.toLowerCase());
         return filteredItem;
       });
     setFilteredData(filtered);
@@ -106,9 +109,9 @@ const ProductsPage = () => {
               type="search"
               className="searchBar"
               placeholder="Search"
-              value={q}
+              value={valueOfSearchbar}
               onChange={(e) => {
-                setQ(e.target.value);
+                setValueOfSearchbar(e.target.value);
               }}
             />
           </div>
@@ -189,7 +192,7 @@ const ProductsPage = () => {
             <CreateModal
               selectedPost={selectedPost}
               closeModal={closeModal}
-              setUpdateSuccess={setUpdateSuccess}
+              setCreateSuccess={setCreateSuccess}
             />
           )}
         </div>
@@ -207,6 +210,9 @@ const ProductsPage = () => {
             Successfully updated user
           </Alert>
         </div>
+      )}
+      {createSuccess && (
+        <Notification text="Successfully created user" type="success" />
       )}
     </>
   );

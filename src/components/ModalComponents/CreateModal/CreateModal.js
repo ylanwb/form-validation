@@ -2,22 +2,14 @@ import React from "react";
 import { useState } from "react";
 import "./CreateModal.css";
 import axios from "axios";
+import { Notification } from "../../Notification";
 
 const createPost = async (newUser) => {
-  await axios
-    .post(
-      "https://dummyapi.io/data/v1/user/create",
-      { newUser },
-      {
-        headers: { "app-id": "634752bc7580f70e4f699960" },
-      }
-    )
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((err) => console.log(err));
+  await axios.post("https://dummyapi.io/data/v1/user/create", newUser, {
+    headers: { "app-id": "634752bc7580f70e4f699960" },
+  });
 };
-const CreateModal = ({ closeModal }) => {
+export const CreateModal = ({ closeModal, setCreateSuccess }) => {
   const user = {
     firstName: " ",
     lastName: " ",
@@ -26,9 +18,20 @@ const CreateModal = ({ closeModal }) => {
   const [newUser, setNewUser] = useState(user);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setNewUser({ user, [name]: value });
-};
-console.log(newUser);
+    setNewUser({ ...newUser, [name]: value });
+  };
+
+  const handleCreate = async (e) => {
+    e.preventDefault();
+    await createPost(newUser)
+      .then((response) => {
+        setCreateSuccess(true);
+      })
+      .catch((err) => {
+        closeModal();
+        <Notification text={err.message} type="error" />;
+      });
+  };
 
   return (
     <div className="createModalMainContainer">
@@ -59,11 +62,9 @@ console.log(newUser);
       </div>
       <br />
       <div className="createButtonsContainer">
-        <button onClick={() => closeModal()}>Cancel</button>
-        <button onClick={() => createPost(newUser)}>Create</button>
+        <button onClick={() => closeModal()}>Close</button>
+        <button onClick={handleCreate}>Create</button>
       </div>
     </div>
   );
 };
-
-export default CreateModal;

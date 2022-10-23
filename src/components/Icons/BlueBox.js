@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const Bluebox = (props) => {
+export const Bluebox = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -29,4 +29,3 @@ const Bluebox = (props) => {
     </svg>
   );
 };
-export default Bluebox;

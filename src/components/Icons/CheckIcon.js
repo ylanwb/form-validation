@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const CheckIcon = (props) => (
+export const CheckIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={48}
@@ -38,4 +38,3 @@ const CheckIcon = (props) => (
   </svg>
 );
 
-export default CheckIcon;

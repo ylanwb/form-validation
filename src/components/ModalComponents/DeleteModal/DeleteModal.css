@@ -2,43 +2,50 @@
     height: 20vh;
     width: 25vw;
 }
-.modalText {
-    
-}
 .modalButtons {
-    
+  
 }
 .modalButtons button {
-    outline: none;
-    background: none;
-    padding: 10px 25px 10px 25px;
+  outline: none;
+  background: none;
+  padding: 10px 25px 10px 25px;
 } */
 .deleteModalMainContainer {
-  width: 18vw;
+  width: 450px;
+  height: 250px;
 }
 .deleteTitleContainer {
   height: 3vh;
   border-bottom: 1px solid #e9ecef;
-  font-size: 23px;
-  margin-bottom: 2vh;
-  padding-bottom: 4vh;
+  font-size: 28px;
+  margin-bottom: 10px;
+  padding-bottom: 50px;
 }
 .deleteModalTextContainer {
-  height: 2vh;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+}
+.modalText {
+    font-size: 20px;
 }
 .deleteModalButtonsContainer {
-  margin-top: 4vh;
+  /* margin-top: 4vh;
+   */
+   margin-top: 20px;
+  padding-top: 40px;
   border-top: 1px solid #e9ecef;
-  padding: 2vh 0vh 0.3vh 0vh;
+  /* padding: 2vh 0vh 0.3vh 0vh; */
   display: flex;
   justify-content: flex-end;
 }
 .deleteModalButtonsContainer :nth-child(1) {
   outline: none;
-  background: none;
-  padding: 10px 25px 10px 25px;
+  background: red;
+  color: white;
+  padding: 15px 30px 15px 30px;
   margin: 5px;
-  border: 1px solid gray;
+  border: none;
   cursor: pointer;
 }
 .deleteModalButtonsContainer :nth-child(1):hover {
@@ -49,9 +56,9 @@
 .deleteModalButtonsContainer :nth-child(2) {
   outline: none;
   border: none;
-  padding: 10px 25px 10px 25px;
+  padding: 15px 30px 15px 30px;
   margin: 5px;
-  background: red;
+  background: #027DFE;
   cursor: pointer;
   color: white;
 }

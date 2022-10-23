@@ -46,6 +46,12 @@
     padding: 10px 25px 10px 25px;
     border: 1px solid black;
     border-radius: 4px;
+    cursor: pointer;
+}
+.cardButtonContainer button:hover {
+    background: black;
+    color: white;
+    transition: ease-in-out 0.3s;
 }
 #dataPictures {
     height: 10vh;

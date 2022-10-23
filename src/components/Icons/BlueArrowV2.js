@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const BlueArrowV2 = (props) => {
+export const BlueArrowV2 = (props) => {
   return (
     <svg
       width={26}
@@ -15,4 +15,3 @@ const BlueArrowV2 = (props) => {
     </svg>
   );
 };
-export default BlueArrowV2;

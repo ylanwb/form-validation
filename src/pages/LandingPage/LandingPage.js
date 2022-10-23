@@ -1,11 +1,13 @@
-import "./LandingPage.css";
-import BlueArrow from "../../components/Icons/BlueArrow";
-import BlueArrowV2 from "../../components/Icons/BlueArrowV2";
-import GrayArrow from "../../components/Icons/GrayArrow";
-import Stars from "../../components/Icons/Stars";
-import { Footer } from "../../components/Footer/Footer";
-import { Header } from "../../components/Header/Header";
 import { useRef, useState } from "react";
+import "./LandingPage.css";
+import {
+  BlueArrow,
+  BlueArrowV2,
+  GrayArrow,
+  Stars,
+  Footer,
+  Header,
+} from "../../components/index";
 
 const LandingPage = ({ user }) => {
   const elementRef = useRef(null);
