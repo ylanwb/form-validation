@@ -13,10 +13,12 @@ export const Header = ({ user, isWhiteBackground }) => {
   const handleBlogButton = () => {
     navigate("/blog");
   };
-  const handleProductButton = () => {
-    navigate("/products");
+  const handleUserButton = () => {
+    navigate("/users");
   };
-
+  const handlePostButton = () => {
+    navigate("/posts");
+  };
   return (
     <div className="navBar">
       <div className="navLeftSide">
@@ -42,10 +44,19 @@ export const Header = ({ user, isWhiteBackground }) => {
             className="navButton"
             onClick={() => {
               console.log("here");
-              handleProductButton();
+              handleUserButton();
             }}
           >
-            Products
+            Users
+          </button>
+          <button
+            className="navButton"
+            onClick={() => {
+              console.log("here");
+              handlePostButton();
+            }}
+          >
+            Posts
           </button>
           <button
             className="navButton"

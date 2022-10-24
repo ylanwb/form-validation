@@ -1,4 +1,4 @@
-.productsPageMainContainer {
+.usersPageMainContainer {
     width: 100vw;
     height: max-content;
     display: flex;
@@ -74,8 +74,8 @@
 
 }
 /* modal styling end */
-/* product interactive stuff*/
-.productInteractives {
+/* user interactive stuff*/
+.userInteractives {
     display: flex;
 }
 .searchBarContainer {
@@ -90,11 +90,11 @@
     padding: 10px;
     border-radius: 10px;
 }
-.createProductContainer {
+.createUserContainer {
     width: 60%;
     padding: 1vw;
 }
-.createProductBtn {
+.createUserBtn {
     background: none;
     border: 1px solid black;
     width: 100px;
@@ -102,7 +102,7 @@
     padding: 10px;
     border-radius: 10px;
 }
-/* product interactive end */
+/* user interactive end */
 /* alert success styling start*/
 .alertSuccess {
     position: fixed;

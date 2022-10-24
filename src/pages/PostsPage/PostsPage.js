@@ -1,4 +1,4 @@
-import "./ProductsPage.css";
+import "./PostsPage.css";
 import React, { useEffect } from "react";
 import axios from "axios";
 import Modal from "react-modal";
@@ -26,7 +26,7 @@ const customStyles = {
   },
 };
 
-const ProductsPage = () => {
+const PostsPage = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [valueOfSearchbar, setValueOfSearchbar] = useState("");
@@ -67,10 +67,11 @@ const ProductsPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://dummyapi.io/data/v1/user?limit=100", {
+      .get("https://dummyapi.io/data/v1/post?limit=10", {
         headers: { "app-id": "634752bc7580f70e4f699960" },
       })
       .then((response) => {
+        console.log(response)
         setLoading(true);
         setTimeout(() => {
           setData(response.data.data);
@@ -98,12 +99,12 @@ const ProductsPage = () => {
   };
   return (
     <>
-      <div className="productsPageMainContainer">
+      <div className="postsPageMainContainer">
         <Header />
-        <h1>Products</h1>
+        <h1>Posts</h1>
         <br />
         {loading && <div>Loading ...</div>}
-        <div className="productInteractives">
+        <div className="postInteractives">
           <div className="searchBarContainer">
             <input
               type="search"
@@ -115,9 +116,9 @@ const ProductsPage = () => {
               }}
             />
           </div>
-          <div className="createProductContainer">
+          <div className="createPostContainer">
             <button
-              className="createProductBtn"
+              className="createPostBtn"
               onClick={(e) => {
                 handleCreateButton(e);
               }}
@@ -132,34 +133,8 @@ const ProductsPage = () => {
             filteredData.length > 0 &&
             filteredData.map((post) => {
               return (
-                <div className="dataCard" key={post.id}>
-                  <div className="cardContentContainer">
-                    <div className="cardDataContainer">
-                      <img id="dataPictures" src={post.picture} alt="" />
-                      <span>{post.title}</span>
-                      <span>{post.firstName}</span>
-                      <span>{post.lastName}</span>
-                    </div>
-                    <div className="cardButtonContainer">
-                      <button
-                        id="updateBtn"
-                        onClick={(e) => {
-                          handleUpdateButton(e, post);
-                        }}
-                      >
-                        Update
-                      </button>
-                      <button
-                        id="deleteBtn"
-                        onClick={(e) => {
-                          handleDeleteButton(e, post);
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                    <span>id: {post.id}</span>
-                  </div>
+                <div>
+                    <span>test</span>
                 </div>
               );
             })}
@@ -217,4 +192,4 @@ const ProductsPage = () => {
     </>
   );
 };
-export default ProductsPage;
+export default PostsPage;

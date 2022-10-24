@@ -1,0 +1,121 @@
+.postsPageMainContainer {
+    width: 100vw;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.dataContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.dataCard {
+    width: 350px;
+    height: 30vh;
+    border: 1px solid gray;
+    margin: 5vw;
+    border-radius: 8px;
+    margin-top: 2vw;
+}
+.cardContentContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cardDataContainer {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid black;
+}
+.cardDataContainer span {
+    margin-left: 5px;
+}
+.cardButtonContainer {
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.cardButtonContainer button {
+    outline: none;
+    background: none;
+    padding: 10px 25px 10px 25px;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.cardButtonContainer button:hover {
+    background: black;
+    color: white;
+    transition: ease-in-out 0.3s;
+}
+#dataPictures {
+    height: 10vh;
+    margin-right: 10px;
+    /* border-bottom: 1px solid black; */
+    border-right: 1px solid black;
+}
+
+/* modal styling start */
+.modalX {
+
+}
+.modalTitle {
+
+}                       
+.modalText {
+
+}
+.modalButtons {
+
+}
+/* modal styling end */
+/* user interactive stuff*/
+.postInteractives {
+    display: flex;
+}
+.searchBarContainer {
+    width: 60%;
+    padding: 1vw;
+}
+.searchBar {
+    outline: none;
+    border: 1px solid black;
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.createPostContainer {
+    width: 60%;
+    padding: 1vw;
+}
+.createPostBtn {
+    background: none;
+    border: 1px solid black;
+    width: 100px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+}
+/* user interactive end */
+/* alert success styling start*/
+.alertSuccess {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+.alertSuccess .css-1pxa9xg-MuiAlert-message {
+    font-size: 23px;
+}
+.css-efvcc7-MuiPaper-root-MuiAlert-root .MuiAlert-icon {
+    padding-top: 10px;
+}
+.css-1ytlwq5-MuiAlert-icon {
+    font-size: 30px;
+}
+/* alert success styling end */

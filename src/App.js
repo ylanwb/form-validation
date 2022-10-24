@@ -9,7 +9,8 @@ import { auth } from "./firebase";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import ArticlePage from "./pages/ArticlePage/ArticlePage";
-import ProductsPage from "./pages/ProductsPage/ProductsPage";
+import UsersPage from "./pages/UsersPage/UsersPage";
+import PostsPage from "./pages/PostsPage/PostsPage";
 import axios from "axios";
 
 function App() {
@@ -32,7 +33,8 @@ function App() {
                 <Route path="/blog" element={<BlogPage user={user} />} />
                 <Route path="/successful" element={<SignUpSuccess />} />
                 <Route path="/blog/:id" element={<ArticlePage />} />
-                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/users" element={<UsersPage />} />
+                <Route path="/posts" element={<PostsPage />} />
               </Routes>
             )}
             {!user && (
