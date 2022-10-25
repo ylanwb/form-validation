@@ -71,7 +71,7 @@ const PostsPage = () => {
         headers: { "app-id": "634752bc7580f70e4f699960" },
       })
       .then((response) => {
-        console.log(response)
+        console.log(response);
         setLoading(true);
         setTimeout(() => {
           setData(response.data.data);
@@ -101,11 +101,13 @@ const PostsPage = () => {
     <>
       <div className="postsPageMainContainer">
         <Header />
-        <h1>Posts</h1>
-        <br />
-        {loading && <div>Loading ...</div>}
+        <div className="contentHeaderContainer">
+          <h1>Posts list</h1>
+
+          {loading && <div>Loading ...</div>}
+        </div>
         <div className="postInteractives">
-          <div className="searchBarContainer">
+          <div className="postSearchBarContainer">
             <input
               type="search"
               className="searchBar"
@@ -128,16 +130,33 @@ const PostsPage = () => {
           </div>
         </div>
         <div className="dataContainer">
-          {!loading &&
-            filteredData &&
-            filteredData.length > 0 &&
-            filteredData.map((post) => {
-              return (
-                <div>
-                    <span>test</span>
-                </div>
-              );
-            })}
+          <div className="postContainer">
+            {!loading &&
+              filteredData &&
+              filteredData.length > 0 &&
+              filteredData.map((post) => {
+                console.log(post);
+                return (
+                  // id, image, likes, owner, publishDate, tags, text
+                  <div className="postDataCard" key={post.id}>
+                    <div className="postCardHeader">
+                      <img id="postCardUserImg" src={post.owner.picture} alt="" />
+                      <span>{post.owner.title}</span>
+                      <span>{post.owner.firstName}</span>
+                      <span>{post.owner.lastName}</span>
+                      <br/>
+                      <span>{post.publishDate}</span>
+                    </div>
+                    <div className="postCardBody">
+                      <div className="postCardImgContainer">
+                        <img id="postCardImg" src={post.image} alt="dog" />
+                      </div>
+                      <div className="postCardSideCaptionContainer"></div>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
           {!loading && <Footer />}
         </div>
       </div>
