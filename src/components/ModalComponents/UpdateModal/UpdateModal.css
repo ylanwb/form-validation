@@ -1,15 +1,16 @@
 .updateModalMainContainer {
-  height: 65vh;
-  width: 30vw;
+  width: 400px;
+  height: 450px;
 }
 .updateTitleContainer {
-  height: 10%;
+  height: 50px;
+  text-align: center;
 }
 .updateTitleContainer span {
   font-size: 23px;
 }
 .updateDataContainer {
-  height: 10%;
+  height: 280px;
   display: flex;
   flex-direction: column;
 }

@@ -1,6 +1,8 @@
 import "./PostsPage.css";
 import React, { useEffect } from "react";
 import axios from "axios";
+import { compareAsc, format } from "date-fns";
+import moment from "moment";
 import Modal from "react-modal";
 import { useState } from "react";
 import {
@@ -46,6 +48,18 @@ const PostsPage = () => {
   function closeModal() {
     setIsOpen(false);
   }
+
+  const [isOpen, setOpen] = useState(false);
+  const [items, setItem] = useState(data);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const toggleDropdown = (e, post) => {
+    setOpen(!isOpen);
+    e.preventDefault();
+    console.log("clicked");
+  };
+
+  const handleItemClick = (id) => {};
 
   const handleDeleteButton = (e, post) => {
     e.preventDefault();
@@ -97,14 +111,13 @@ const PostsPage = () => {
       });
     setFilteredData(filtered);
   };
+
   return (
     <>
       <div className="postsPageMainContainer">
         <Header />
         <div className="contentHeaderContainer">
           <h1>Posts list</h1>
-
-          {loading && <div>Loading ...</div>}
         </div>
         <div className="postInteractives">
           <div className="postSearchBarContainer">
@@ -130,28 +143,59 @@ const PostsPage = () => {
           </div>
         </div>
         <div className="dataContainer">
+          {loading && <div>Loading ...</div>}
           <div className="postContainer">
             {!loading &&
               filteredData &&
               filteredData.length > 0 &&
               filteredData.map((post) => {
-                console.log(post);
+                // console.log(post);
                 return (
                   // id, image, likes, owner, publishDate, tags, text
-                  <div className="postDataCard" key={post.id}>
-                    <div className="postCardHeader">
-                      <img id="postCardUserImg" src={post.owner.picture} alt="" />
-                      <span>{post.owner.title}</span>
-                      <span>{post.owner.firstName}</span>
-                      <span>{post.owner.lastName}</span>
-                      <br/>
-                      <span>{post.publishDate}</span>
-                    </div>
-                    <div className="postCardBody">
-                      <div className="postCardImgContainer">
-                        <img id="postCardImg" src={post.image} alt="dog" />
+                  <div className="postDataCardContainer">
+                    <div
+                      className="postDataCard"
+                      key={post.id}
+                      onClick={(e) => {
+                        toggleDropdown(e, post);
+                      }}
+                    >
+                      <div className="postCardHeader">
+                        <img
+                          id="postCardUserImg"
+                          src={post.owner.picture}
+                          alt=""
+                        />
+                        <div>
+                          <div>
+                            <span>{post.owner.title}</span>
+                            <span>{post.owner.firstName}</span>
+                            <span>{post.owner.lastName}</span>
+                          </div>
+                          <span>
+                            {moment(post.publishDate)
+                              .utc()
+                              .format("YYYY-MM-DD kk:mm")}
+                          </span>
+                        </div>
                       </div>
-                      <div className="postCardSideCaptionContainer"></div>
+                      <div className="postCardBody">
+                        <div className="postCardImgContainer">
+                          <img id="postCardImg" src={post.image} alt="dog" />
+                        </div>
+                        <div className="postCardSideCaptionContainer">
+                          <div>
+                          <span>
+                            {moment(post.publishDate)
+                              .utc()
+                              .format("YYYY-MM-DD kk:mm")}
+                          </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={`dropDown ${isOpen && "open"}`}>
+                      <span>test</span>
                     </div>
                   </div>
                 );

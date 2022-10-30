@@ -1,73 +1,98 @@
 .postsPageMainContainer {
-    width: 100vw;
-    height: max-content;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  width: 100vw;
+  height: max-content;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: aliceblue;
 }
 .contentHeaderContainer {
-    width: 100vw;
-    margin-left: 32%;
-    padding-left: 1rem;
-    font-size: 22px;
-    margin-top: 3rem;
+  width: 100vw;
+  /* margin-left: 32%; */
+  /* padding-left: 1rem; */
+  font-size: 22px;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
 }
 .contentHeaderContainer h1 {
-    color: #6b7280;
-    font-weight: 400;
+  color: darkcyan;
+  font-weight: 400;
 }
 .dataContainer {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 .postContainer {
-    width: 68%;
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    gap: 1rem;
-    margin-bottom: 4rem;
-    margin-top: 2rem;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  flex-wrap: wrap;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+.postDataCardContainer {
+  display: flex;
+  flex-direction: column;
 }
 .postDataCard {
-    padding: 1rem;
-    width: 440px;
-    height: 344px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    box-sizing: border-box;
-    border-radius: 4px;
+  padding: 1rem;
+  width: 440px;
+  height: 344px;
+  background-color: white;
+  /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-sizing: border-box;
+  border-radius: 4px 4px 0px 0px;
+  cursor: pointer;
 }
 .postDataCard:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  /* box-shadow: 0 0px 8px rgba(0,0,0,0.25), 0 0px 0px rgba(0,0,0,0.22); */
+}
+.dropDown {
+  border-top: 1px solid #e5e8ec;
+  display: none;
+  width: 440px;
+  padding: 1rem;
+  /* box-shadow: 0 0px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 0px 0px 4px 4px;
+  background-color: white;
+}
+.dropDown.open {
+  display: block;
 }
 .postCardHeader {
-    display: flex;
-    margin-bottom: 1rem;
+  display: flex;
+  margin-bottom: 1rem;
 }
 .postCardHeader span {
-    margin-right: 5px;
-    color: #6b7280;
+  margin-right: 5px;
+  color: cadetblue;
 }
 #postCardUserImg {
-    width: 2.5rem;
-    border-radius: 9999px;
-    margin-right: 1rem;
+  width: 2.5rem;
+  border-radius: 9999px;
+  margin-right: 1rem;
 }
 .postCardBody {
-
+  display: flex;
 }
 .postCardImgContainer {
-    width: 50%;
+  width: 50%;
 }
 #postCardImg {
-    height: 15rem;
-    width: 100%;
-    object-fit: cover;
+  height: 15rem;
+  width: 100%;
+  object-fit: cover;
 }
 
 /* modal styling start */
@@ -75,53 +100,53 @@
 /* modal styling end */
 /* user interactive stuff*/
 .postInteractives {
-    display: flex;
-    width: 100vw;
-    margin-left: 32%;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
 }
 .postSearchBarContainer {
-    padding: 1vw;
+  padding: 1vw;
 }
 .searchBar {
-    outline: none;
-    border: none;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    width: 200px;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
+  outline: none;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  width: 200px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 10px;
 }
 .searchBar::placeholder {
-    color: #6b7280;
+  color: #6b7280;
 }
 .createPostContainer {
-    width: 60%;
-    padding: 1vw;
+  padding: 1vw;
 }
 .createPostBtn {
-    background: none;
-    border: none;
-    color: #6b7280;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.24);
-    width: 100px;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
+  background-color: white;
+  border: none;
+  color: #6b7280;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24);
+  width: 100px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 /* user interactive end */
 /* alert success styling start*/
 .alertSuccess {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 .alertSuccess .css-1pxa9xg-MuiAlert-message {
-    font-size: 23px;
+  font-size: 23px;
 }
 .css-efvcc7-MuiPaper-root-MuiAlert-root .MuiAlert-icon {
-    padding-top: 10px;
+  padding-top: 10px;
 }
 .css-1ytlwq5-MuiAlert-icon {
-    font-size: 30px;
+  font-size: 30px;
 }
 /* alert success styling end */

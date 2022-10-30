@@ -18,7 +18,7 @@
   height: 3vh;
   border-bottom: 1px solid #e9ecef;
   font-size: 28px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   padding-bottom: 50px;
 }
 .deleteModalTextContainer {
@@ -32,7 +32,7 @@
 .deleteModalButtonsContainer {
   /* margin-top: 4vh;
    */
-   margin-top: 20px;
+   margin-top: 10px;
   padding-top: 40px;
   border-top: 1px solid #e9ecef;
   /* padding: 2vh 0vh 0.3vh 0vh; */
