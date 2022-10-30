@@ -7,13 +7,14 @@
     flex-direction: column;
     background-color: aliceblue;
 }
-
 .dataContainer {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
-
+.loadingText {
+    color: cadetblue;
+}
 .userContainer {
     width: fit-content;
     display: grid;

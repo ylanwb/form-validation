@@ -46,13 +46,13 @@ const UsersPage = () => {
   function closeModal() {
     setIsOpen(false);
   }
-  const [selectedDropDown, setSelectedDropDown] = useState()
+  const [selectedDropDown, setSelectedDropDown] = useState();
   const toggleDropdown = (e, post) => {
     // setOpen(!isOpen);
     if (selectedDropDown === "") {
-      setSelectedDropDown(post)
+      setSelectedDropDown(post);
     } else {
-      setSelectedDropDown("")
+      setSelectedDropDown("");
     }
     e.preventDefault();
     console.log("clicked");
@@ -77,7 +77,7 @@ const UsersPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://dummyapi.io/data/v1/user?limit=10", {
+      .get("https://dummyapi.io/data/v1/user?created=1?limit=10", {
         headers: { "app-id": "634752bc7580f70e4f699960" },
       })
       .then((response) => {
@@ -105,14 +105,14 @@ const UsersPage = () => {
         return filteredItem;
       });
     setFilteredData(filtered);
-    console.log(data)
   };
   return (
     <>
-      <div className="usersPageMainContainer" >
+      <div className="usersPageMainContainer">
         <Header />
-        <h1>Users</h1>
-        <br />
+        <div className="contentHeaderContainer">
+          <h1>Users</h1>
+        </div>
         <div className="userInteractives">
           <div className="searchBarContainer">
             <input
@@ -136,7 +136,7 @@ const UsersPage = () => {
             </button>
           </div>
         </div>
-        {loading && <div>Loading ...</div>}
+        {loading && <div className="loadingText">Loading ...</div>}
         <div className="dataContainer">
           <div className="userContainer">
             {!loading &&
@@ -144,22 +144,20 @@ const UsersPage = () => {
               filteredData.length > 0 &&
               filteredData.map((user) => {
                 return (
-                  <div className="userDataCardContainer" key={user.id} onClick={(e) => {
-                    toggleDropdown(e, user);
-                  }} >
+                  <div
+                    className="userDataCardContainer"
+                    key={user.id}
+                    onClick={(e) => {
+                      toggleDropdown(e, user);
+                    }}
+                  >
                     <div className="userDataCard">
                       <img id="userPic" src={user.picture} />
                       <div id="userId">{user.id}</div>
                       <div className="userInfoContainer">
-                        <span>
-                          {user.title}
-                        </span>
-                        <span>
-                          {user.firstName}
-                        </span>
-                        <span>
-                          {user.lastName}
-                        </span>
+                        <span>{user.title}</span>
+                        <span>{user.firstName}</span>
+                        <span>{user.lastName}</span>
                       </div>
                     </div>
                     {selectedDropDown === user && (
@@ -184,8 +182,7 @@ const UsersPage = () => {
                           </button>
                         </div>
                       </div>
-                    )
-                    }
+                    )}
                   </div>
                 );
               })}
@@ -214,6 +211,7 @@ const UsersPage = () => {
               selectedPost={selectedPost}
               closeModal={closeModal}
               setUpdateSuccess={setUpdateSuccess}
+              dataType={"user"}
             />
           )}
           {buttonType === "create" && (
@@ -221,26 +219,31 @@ const UsersPage = () => {
               selectedPost={selectedPost}
               closeModal={closeModal}
               setCreateSuccess={setCreateSuccess}
+              dataType={"user"}
             />
           )}
         </div>
       </Modal>
       {deleteSuccess && (
-        <div className={`alertSuccess ${deleteSuccess && "alertDeleted"}`}>
+        <div className={`alertSuccess ${deleteSuccess && "alertSlide"}`}>
           <Alert severity="success" color="success">
             Successfully deleted user
           </Alert>
         </div>
       )}
       {updateSuccess && (
-        <div className={`alertSuccess ${updateSuccess && "alertDeleted"}`}>
+        <div className={`alertSuccess ${updateSuccess && "alertSlide"}`}>
           <Alert severity="success" color="success">
             Successfully updated user
           </Alert>
         </div>
       )}
       {createSuccess && (
-        <Notification text="Successfully created user" type="success" />
+        <div className={`alertSuccess ${createSuccess && "alertSlide"}`}>
+          <Alert severity="success" color="success">
+            Successfully updated user
+          </Alert>
+        </div>
       )}
     </>
   );

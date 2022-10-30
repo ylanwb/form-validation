@@ -1,7 +1,7 @@
 import "./PostsPage.css";
 import React, { useEffect } from "react";
 import axios from "axios";
-import { compareAsc, format } from "date-fns";
+import { format } from "date-fns";
 import moment from "moment";
 import Modal from "react-modal";
 import { useState } from "react";
@@ -16,6 +16,7 @@ import {
 
 import Alert from "@mui/material/Alert";
 import { id } from "date-fns/locale";
+import { data } from '../../data';
 
 const customStyles = {
   content: {
@@ -42,7 +43,7 @@ const PostsPage = () => {
   const [deleteSuccess, setDeleteSuccess] = useState(false);
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [createSuccess, setCreateSuccess] = useState(false);
-  const [selectedDropDown, setSelectedDropDown] = useState()
+  const [selectedDropDown, setSelectedDropDown] = useState();
 
   function openModal() {
     setIsOpen(true);
@@ -56,14 +57,13 @@ const PostsPage = () => {
   const toggleDropdown = (e, post) => {
     // setOpen(!isOpen);
     if (selectedDropDown === "") {
-      setSelectedDropDown(post)
+      setSelectedDropDown(post);
     } else {
-      setSelectedDropDown("")
+      setSelectedDropDown("");
     }
     e.preventDefault();
     console.log("clicked");
   };
-
 
   const handleDeleteButton = (e, post) => {
     e.preventDefault();
@@ -89,10 +89,9 @@ const PostsPage = () => {
         headers: { "app-id": "634752bc7580f70e4f699960" },
       })
       .then((response) => {
-        console.log(response);
         setLoading(true);
         setTimeout(() => {
-          setData(response.data.data);
+          // setData(response.data.data);
           setFilteredData(response.data.data);
           setLoading(false);
         }, 1000);
@@ -109,12 +108,15 @@ const PostsPage = () => {
       data &&
       data.filter((item) => {
         const dataItems =
-          item.owner.title + " " + item.owner.firstName + " " + item.owner.lastName;
+          item.owner.title +
+          " " +
+          item.owner.firstName +
+          " " +
+          item.owner.lastName;
         const filteredItem = dataItems.toLowerCase().includes(e.toLowerCase());
         return filteredItem;
       });
     setFilteredData(filtered);
-    console.log(filtered)
   };
 
   return (
@@ -147,7 +149,7 @@ const PostsPage = () => {
             </button>
           </div>
         </div>
-          {loading && <div>Loading ...</div>}
+        {loading && <div className="loadingText">Loading ...</div>}
         <div className="dataContainer">
           <div className="postContainer">
             {!loading &&
@@ -157,13 +159,14 @@ const PostsPage = () => {
                 // console.log(post);
                 return (
                   // id, image, likes, owner, publishDate, tags, text
-                  <div className="postDataCardContainer" key={post.id} onClick={(e) => {
-                    toggleDropdown(e, post);
-                  }}>
-                    <div
-                      className="postDataCard"
-                      key={post.id}
-                    >
+                  <div
+                    className="postDataCardContainer"
+                    key={post.id}
+                    onClick={(e) => {
+                      toggleDropdown(e, post);
+                    }}
+                  >
+                    <div className="postDataCard" key={post.id}>
                       <div className="postCardHeader">
                         <img
                           id="postCardUserImg"
@@ -194,16 +197,17 @@ const PostsPage = () => {
                               .utc()
                               .format("YYYY-MM-DD kk:mm")}
                           </span>
-                          <span>
-                            {post.text}
-                          </span>
+                          <span>{post.text}</span>
                           <span className="tagContainer">
                             <div>{post.tags[0]}</div>
                             <div>{post.tags[1]}</div>
                             <div>{post.tags[2]}</div>
                           </span>
                           <span className="likesContainer">
-                            <img id="thumbsUpIcon" src="https://dummyapi.io/img/like.svg" />
+                            <img
+                              id="thumbsUpIcon"
+                              src="https://dummyapi.io/img/like.svg"
+                            />
                             {post.likes}
                           </span>
                           {/* </div> */}
@@ -232,8 +236,7 @@ const PostsPage = () => {
                           </button>
                         </div>
                       </div>
-                    )
-                    }
+                    )}
                   </div>
                 );
               })}
@@ -276,21 +279,25 @@ const PostsPage = () => {
         </div>
       </Modal>
       {deleteSuccess && (
-        <div className={`alertSuccess ${deleteSuccess && "alertDeleted"}`}>
+        <div className={`alertSuccess ${deleteSuccess && "alertSlide"}`}>
           <Alert severity="success" color="success">
-            Successfully deleted user
+            Successfully deleted a post
           </Alert>
         </div>
       )}
       {updateSuccess && (
-        <div className="alertSuccess">
+        <div className={`alertSuccess ${updateSuccess && "alertSlide"}`}>
           <Alert severity="success" color="success">
-            Successfully updated user
+            Successfully updated a post
           </Alert>
         </div>
       )}
       {createSuccess && (
-        <Notification text="Successfully created user" type="success" />
+        <div className={`alertSuccess ${createSuccess && "alertSlide"}`}>
+          <Alert severity="success" color="success">
+            Successfully created a post
+          </Alert>
+        </div>
       )}
     </>
   );
