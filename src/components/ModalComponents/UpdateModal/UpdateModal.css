@@ -1,35 +1,49 @@
 .updateModalMainContainer {
   width: 400px;
-  height: 450px;
 }
+
 .updateTitleContainer {
   height: 50px;
   text-align: center;
 }
+
 .updateTitleContainer span {
-  font-size: 23px;
+  font-size: 28px;
+  color: cadetblue;
 }
+
 .updateDataContainer {
   height: 280px;
   display: flex;
   flex-direction: column;
 }
+
 .updateDataContainer input {
   outline: none;
   padding: 10px 0px 10px 10px;
   border-radius: 4px;
-  border: 1px solid gray;
+  border: 1px solid cadetblue;
+  background-color: aliceblue;
   margin-top: 5px;
+  color: cadetblue;
 }
+
+.updateDataContainer input::placeholder {
+  color: cadetblue;
+}
+
 .updateDataContainer label {
+  color: cadetblue;
   margin-top: 4vh;
 }
+
 .updateButtonsContainer {
-  height: 30%;
+  margin-top: 70px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: flex-end;
 }
+
 .updateButtonsContainer button {
   outline: none;
   background: none;
@@ -38,27 +52,31 @@
   border: 1px solid gray;
   cursor: pointer;
 }
+
 .updateButtonsContainer :nth-child(1) {
   outline: none;
-  background: red;
-  color: white;
+  cursor: pointer;
   padding: 15px 40px 15px 40px;
   margin: 5px;
-  border: none;
-  cursor: pointer;
+  width: 120px;
+  background: aliceblue;
+  border: 1px solid cadetblue;
+  color: cadetblue;
 }
+
 .updateButtonsContainer :nth-child(2) {
   outline: none;
-  background: #027DFE;
-  color: white;
-  padding: 15px 40px 15px 40px;
-  margin: 5px;
-  border: none;
   cursor: pointer;
+  padding: 15px 30px 15px 30px;
+  margin: 5px;
+  width: 120px;
+  background: aliceblue;
+  border: 1px solid cadetblue;
+  color: cadetblue;
 }
+
 .updateButtonsContainer button:hover {
-    background: black;
-    color: white;
-    transition: ease-in-out 0.3s;
-  }
-  
+  background: cadetblue;
+  color: white;
+  transition: ease-in-out 0.3s;
+}

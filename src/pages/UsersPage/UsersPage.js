@@ -46,7 +46,17 @@ const UsersPage = () => {
   function closeModal() {
     setIsOpen(false);
   }
-
+  const [selectedDropDown, setSelectedDropDown] = useState()
+  const toggleDropdown = (e, post) => {
+    // setOpen(!isOpen);
+    if (selectedDropDown === "") {
+      setSelectedDropDown(post)
+    } else {
+      setSelectedDropDown("")
+    }
+    e.preventDefault();
+    console.log("clicked");
+  };
   const handleDeleteButton = (e, post) => {
     e.preventDefault();
     setSelectedPost(post);
@@ -67,7 +77,7 @@ const UsersPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://dummyapi.io/data/v1/user?limit=100", {
+      .get("https://dummyapi.io/data/v1/user?limit=10", {
         headers: { "app-id": "634752bc7580f70e4f699960" },
       })
       .then((response) => {
@@ -95,14 +105,14 @@ const UsersPage = () => {
         return filteredItem;
       });
     setFilteredData(filtered);
+    console.log(data)
   };
   return (
     <>
-      <div className="usersPageMainContainer">
+      <div className="usersPageMainContainer" >
         <Header />
         <h1>Users</h1>
         <br />
-        {loading && <div>Loading ...</div>}
         <div className="userInteractives">
           <div className="searchBarContainer">
             <input
@@ -126,43 +136,60 @@ const UsersPage = () => {
             </button>
           </div>
         </div>
+        {loading && <div>Loading ...</div>}
         <div className="dataContainer">
-          {!loading &&
-            filteredData &&
-            filteredData.length > 0 &&
-            filteredData.map((post) => {
-              return (
-                <div className="dataCard" key={post.id}>
-                  <div className="cardContentContainer">
-                    <div className="cardDataContainer">
-                      <img id="dataPictures" src={post.picture} alt="" />
-                      <span>{post.title}</span>
-                      <span>{post.firstName}</span>
-                      <span>{post.lastName}</span>
+          <div className="userContainer">
+            {!loading &&
+              filteredData &&
+              filteredData.length > 0 &&
+              filteredData.map((user) => {
+                return (
+                  <div className="userDataCardContainer" key={user.id} onClick={(e) => {
+                    toggleDropdown(e, user);
+                  }} >
+                    <div className="userDataCard">
+                      <img id="userPic" src={user.picture} />
+                      <div id="userId">{user.id}</div>
+                      <div className="userInfoContainer">
+                        <span>
+                          {user.title}
+                        </span>
+                        <span>
+                          {user.firstName}
+                        </span>
+                        <span>
+                          {user.lastName}
+                        </span>
+                      </div>
                     </div>
-                    <div className="cardButtonContainer">
-                      <button
-                        id="updateBtn"
-                        onClick={(e) => {
-                          handleUpdateButton(e, post);
-                        }}
-                      >
-                        Update
-                      </button>
-                      <button
-                        id="deleteBtn"
-                        onClick={(e) => {
-                          handleDeleteButton(e, post);
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                    <span>id: {post.id}</span>
+                    {selectedDropDown === user && (
+                      <div className={`dropDown`}>
+                        {/* ${isOpen && "open"} */}
+                        <div className="postCardButtonContainer">
+                          <button
+                            id="updateBtn"
+                            onClick={(e) => {
+                              handleUpdateButton(e, user);
+                            }}
+                          >
+                            Update
+                          </button>
+                          <button
+                            id="deleteBtn"
+                            onClick={(e) => {
+                              handleDeleteButton(e, user);
+                            }}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    )
+                    }
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+          </div>
           {!loading && <Footer />}
         </div>
       </div>
@@ -179,6 +206,7 @@ const UsersPage = () => {
               selectedPost={selectedPost}
               closeModal={closeModal}
               setDeleteSuccess={setDeleteSuccess}
+              dataType={"user"}
             />
           )}
           {buttonType === "update" && (
@@ -198,14 +226,14 @@ const UsersPage = () => {
         </div>
       </Modal>
       {deleteSuccess && (
-        <div className="alertSuccess">
+        <div className={`alertSuccess ${deleteSuccess && "alertDeleted"}`}>
           <Alert severity="success" color="success">
             Successfully deleted user
           </Alert>
         </div>
       )}
       {updateSuccess && (
-        <div className="alertSuccess">
+        <div className={`alertSuccess ${updateSuccess && "alertDeleted"}`}>
           <Alert severity="success" color="success">
             Successfully updated user
           </Alert>

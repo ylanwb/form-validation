@@ -15,6 +15,7 @@ import {
 } from "../../components/index";
 
 import Alert from "@mui/material/Alert";
+import { id } from "date-fns/locale";
 
 const customStyles = {
   content: {
@@ -29,6 +30,7 @@ const customStyles = {
 };
 
 const PostsPage = () => {
+  const ref = React.createRef();
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [valueOfSearchbar, setValueOfSearchbar] = useState("");
@@ -40,6 +42,7 @@ const PostsPage = () => {
   const [deleteSuccess, setDeleteSuccess] = useState(false);
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [createSuccess, setCreateSuccess] = useState(false);
+  const [selectedDropDown, setSelectedDropDown] = useState()
 
   function openModal() {
     setIsOpen(true);
@@ -49,17 +52,18 @@ const PostsPage = () => {
     setIsOpen(false);
   }
 
-  const [isOpen, setOpen] = useState(false);
-  const [items, setItem] = useState(data);
-  const [selectedItem, setSelectedItem] = useState(null);
-
+  // const [isOpen, setOpen] = useState(false);
   const toggleDropdown = (e, post) => {
-    setOpen(!isOpen);
+    // setOpen(!isOpen);
+    if (selectedDropDown === "") {
+      setSelectedDropDown(post)
+    } else {
+      setSelectedDropDown("")
+    }
     e.preventDefault();
     console.log("clicked");
   };
 
-  const handleItemClick = (id) => {};
 
   const handleDeleteButton = (e, post) => {
     e.preventDefault();
@@ -105,11 +109,12 @@ const PostsPage = () => {
       data &&
       data.filter((item) => {
         const dataItems =
-          item.title + " " + item.firstName + " " + item.lastName;
+          item.owner.title + " " + item.owner.firstName + " " + item.owner.lastName;
         const filteredItem = dataItems.toLowerCase().includes(e.toLowerCase());
         return filteredItem;
       });
     setFilteredData(filtered);
+    console.log(filtered)
   };
 
   return (
@@ -142,8 +147,8 @@ const PostsPage = () => {
             </button>
           </div>
         </div>
-        <div className="dataContainer">
           {loading && <div>Loading ...</div>}
+        <div className="dataContainer">
           <div className="postContainer">
             {!loading &&
               filteredData &&
@@ -152,13 +157,12 @@ const PostsPage = () => {
                 // console.log(post);
                 return (
                   // id, image, likes, owner, publishDate, tags, text
-                  <div className="postDataCardContainer">
+                  <div className="postDataCardContainer" key={post.id} onClick={(e) => {
+                    toggleDropdown(e, post);
+                  }}>
                     <div
                       className="postDataCard"
                       key={post.id}
-                      onClick={(e) => {
-                        toggleDropdown(e, post);
-                      }}
                     >
                       <div className="postCardHeader">
                         <img
@@ -184,19 +188,52 @@ const PostsPage = () => {
                           <img id="postCardImg" src={post.image} alt="dog" />
                         </div>
                         <div className="postCardSideCaptionContainer">
-                          <div>
+                          {/* <div className="postCardSideCaption"> */}
                           <span>
                             {moment(post.publishDate)
                               .utc()
                               .format("YYYY-MM-DD kk:mm")}
                           </span>
-                          </div>
+                          <span>
+                            {post.text}
+                          </span>
+                          <span className="tagContainer">
+                            <div>{post.tags[0]}</div>
+                            <div>{post.tags[1]}</div>
+                            <div>{post.tags[2]}</div>
+                          </span>
+                          <span className="likesContainer">
+                            <img id="thumbsUpIcon" src="https://dummyapi.io/img/like.svg" />
+                            {post.likes}
+                          </span>
+                          {/* </div> */}
                         </div>
                       </div>
                     </div>
-                    <div className={`dropDown ${isOpen && "open"}`}>
-                      <span>test</span>
-                    </div>
+                    {selectedDropDown === post && (
+                      <div className={`dropDown`}>
+                        {/* ${isOpen && "open"} */}
+                        <div className="postCardButtonContainer">
+                          <button
+                            id="updateBtn"
+                            onClick={(e) => {
+                              handleUpdateButton(e, post);
+                            }}
+                          >
+                            Update
+                          </button>
+                          <button
+                            id="deleteBtn"
+                            onClick={(e) => {
+                              handleDeleteButton(e, post);
+                            }}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    )
+                    }
                   </div>
                 );
               })}
@@ -217,6 +254,7 @@ const PostsPage = () => {
               selectedPost={selectedPost}
               closeModal={closeModal}
               setDeleteSuccess={setDeleteSuccess}
+              dataType={"post"}
             />
           )}
           {buttonType === "update" && (
@@ -224,6 +262,7 @@ const PostsPage = () => {
               selectedPost={selectedPost}
               closeModal={closeModal}
               setUpdateSuccess={setUpdateSuccess}
+              dataType={"post"}
             />
           )}
           {buttonType === "create" && (
@@ -231,12 +270,13 @@ const PostsPage = () => {
               selectedPost={selectedPost}
               closeModal={closeModal}
               setCreateSuccess={setCreateSuccess}
+              dataType={"post"}
             />
           )}
         </div>
       </Modal>
       {deleteSuccess && (
-        <div className="alertSuccess">
+        <div className={`alertSuccess ${deleteSuccess && "alertDeleted"}`}>
           <Alert severity="success" color="success">
             Successfully deleted user
           </Alert>

@@ -1,23 +1,66 @@
 .usersPageMainContainer {
     width: 100vw;
+    min-height: 100vh;
     height: max-content;
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color: aliceblue;
 }
+
 .dataContainer {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
-.dataCard {
-    width: 350px;
-    height: 30vh;
-    border: 1px solid gray;
-    margin: 5vw;
-    border-radius: 8px;
-    margin-top: 2vw;
+
+.userContainer {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex-wrap: wrap;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    margin-top: 2rem;
+    justify-content: center;
 }
+
+.userDataCardContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.userDataCard {
+    width: 440px;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.userDataCard img {
+    max-width: 100%;
+    height: auto;
+    margin-right: 1rem;
+    float: left;
+}
+
+#userId {
+    color: cadetblue;
+}
+
+.userInfoContainer {
+    margin-top: 5px;
+}
+
+.userInfoContainer span {
+    color: cadetblue;
+    margin-right: 5px;
+}
+
 .cardContentContainer {
     width: 100%;
     height: 100%;
@@ -25,14 +68,17 @@
     flex-direction: column;
     align-items: center;
 }
+
 .cardDataContainer {
     width: 100%;
     display: flex;
     border-bottom: 1px solid black;
 }
+
 .cardDataContainer span {
     margin-left: 5px;
 }
+
 .cardButtonContainer {
     width: 100%;
     height: 75%;
@@ -40,6 +86,7 @@
     justify-content: space-around;
     align-items: center;
 }
+
 .cardButtonContainer button {
     outline: none;
     background: none;
@@ -48,11 +95,13 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
 .cardButtonContainer button:hover {
     background: black;
     color: white;
     transition: ease-in-out 0.3s;
 }
+
 #dataPictures {
     height: 10vh;
     margin-right: 10px;
@@ -61,47 +110,57 @@
 }
 
 /* modal styling start */
-.modalX {
+.modalX {}
 
-}
-.modalTitle {
+.modalTitle {}
 
-}                       
-.modalText {
+.modalText {}
 
-}
-.modalButtons {
+.modalButtons {}
 
-}
 /* modal styling end */
 /* user interactive stuff*/
 .userInteractives {
     display: flex;
+    justify-content: center;
+    width: 100vw;
 }
+
 .searchBarContainer {
-    width: 60%;
     padding: 1vw;
 }
+
 .searchBar {
     outline: none;
-    border: 1px solid black;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     width: 200px;
     height: 50px;
     padding: 10px;
+    color: cadetblue;
     border-radius: 10px;
 }
+
+.searchBar::placeholder {
+    color: cadetblue;
+}
+
 .createUserContainer {
-    width: 60%;
     padding: 1vw;
 }
+
 .createUserBtn {
-    background: none;
-    border: 1px solid black;
+    background-color: white;
+    color: cadetblue;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24);
     width: 100px;
     height: 50px;
     padding: 10px;
     border-radius: 10px;
+    cursor: pointer;
 }
+
 /* user interactive end */
 /* alert success styling start*/
 .alertSuccess {
@@ -109,13 +168,17 @@
     bottom: 0;
     left: 0;
 }
+
 .alertSuccess .css-1pxa9xg-MuiAlert-message {
     font-size: 23px;
 }
+
 .css-efvcc7-MuiPaper-root-MuiAlert-root .MuiAlert-icon {
     padding-top: 10px;
 }
+
 .css-1ytlwq5-MuiAlert-icon {
     font-size: 30px;
 }
+
 /* alert success styling end */

@@ -20,24 +20,24 @@ const updatePost = async (post) => {
 
 export const UpdateModal = ({ selectedPost, closeModal, setUpdateSuccess }) => {
   const [userData, setUserData] = useState(selectedPost);
-
   const handleDataChange = (e) => {
-    const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
-  };
+      e.preventDefault();
+      const { name, value } = e.target;
+      setUserData({ ...userData, [name]: value });
+    };
 
-  const updateData = async () => {
-    closeModal()
-    await updatePost(userData)
-      .then((response) => {
-        setUpdateSuccess(true);
-        setTimeout(() => {
-          setUpdateSuccess(false);
-          window.location.reload();
-        }, 2500);
-      })
-      .catch((err) => console.log(err));
-  };
+    const handleConfirmButton = async () => {
+      closeModal()
+      await updatePost(userData)
+        .then((response) => {
+          setUpdateSuccess(true);
+          setTimeout(() => {
+            setUpdateSuccess(false);
+            window.location.reload();
+          }, 2500);
+        })
+        .catch((err) => console.log(err));
+    };
   return (
     <div className="updateModalMainContainer">
       <div className="updateTitleContainer">
@@ -70,7 +70,9 @@ export const UpdateModal = ({ selectedPost, closeModal, setUpdateSuccess }) => {
       </div>
       <div className="updateButtonsContainer">
         <button onClick={() => closeModal()}>Close</button>
-        <button onClick={() => updateData()}>Update</button>
+        <button onClick={(e) => {
+          handleConfirmButton(e, selectedPost);
+        }}>Update</button>
       </div>
     </div>
   );
