@@ -12,6 +12,7 @@ const createData = async (data, dataType) => {
   });
 };
 const user = {
+  title: " ",
   firstName: " ",
   lastName: " ",
   email: " ",
@@ -87,6 +88,10 @@ export const CreateModal = ({ closeModal, setCreateSuccess, dataType }) => {
       <div className={`${dataType === "post" && "mainDataContainer"}`}>
         {dataType === "user" && (
           <div className="createDataContainer">
+            <label>Title</label>
+            <div class="pronounDropDownMenu">
+              
+            </div>
             <label>First Name</label>
             <input
               name="firstName"

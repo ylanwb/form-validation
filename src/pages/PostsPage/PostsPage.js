@@ -16,7 +16,7 @@ import {
 
 import Alert from "@mui/material/Alert";
 import { id } from "date-fns/locale";
-import { data } from '../../data';
+import { data } from "../../data";
 
 const customStyles = {
   content: {
@@ -139,7 +139,7 @@ const PostsPage = () => {
             />
           </div>
           <div className="createPostContainer">
-            <button
+            <button 
               className="createPostBtn"
               onClick={(e) => {
                 handleCreateButton(e);
@@ -281,21 +281,21 @@ const PostsPage = () => {
       {deleteSuccess && (
         <div className={`alertSuccess ${deleteSuccess && "alertSlide"}`}>
           <Alert severity="success" color="success">
-            Successfully deleted a post
+            Successfully deleted post
           </Alert>
         </div>
       )}
       {updateSuccess && (
         <div className={`alertSuccess ${updateSuccess && "alertSlide"}`}>
           <Alert severity="success" color="success">
-            Successfully updated a post
+            Successfully updated post
           </Alert>
         </div>
       )}
       {createSuccess && (
         <div className={`alertSuccess ${createSuccess && "alertSlide"}`}>
           <Alert severity="success" color="success">
-            Successfully created a post
+            Successfully created post
           </Alert>
         </div>
       )}

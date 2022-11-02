@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./UpdateModal.css";
 import axios from "axios";
-import { data } from '../../../data';
+import { data } from "../../../data";
 
 const updatePost = async (post, dataType) => {
   await axios
@@ -31,7 +31,6 @@ export const UpdateModal = ({
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
   };
-
   const handleConfirmButton = async () => {
     closeModal();
     await updatePost(userData, dataType)
@@ -50,56 +49,56 @@ export const UpdateModal = ({
         <span>Update {dataType === "post" ? "Post" : "User"}</span>
       </div>
       <div>
-      {dataType === "user" && (
-        <div className="updateDataContainer">
-          <label>Title</label>
-          <input
-            name="title"
-            placeholder="Title"
-            defaultValue={selectedPost?.title}
-            onChange={(e) => handleDataChange(e)}
-          />
-          <label>First Name</label>
-          <input
-            name="firstName"
-            defaultValue={selectedPost?.firstName}
-            placeholder="First Name"
-            onChange={(e) => handleDataChange(e)}
-          />
-          <label>Last Name</label>
-          <input
-            name="lastName"
-            placeholder="Last Name"
-            defaultValue={selectedPost?.lastName}
-            onChange={(e) => handleDataChange(e)}
-          />
-        </div>
-      )}
-      {dataType === "post" && (
-        <div className="updateDataContainer">
-          <label>Text</label>
-          <input
-            name="text"
-            placeholder="Text"
-            defaultValue={selectedPost?.text}
-            onChange={(e) => handleDataChange(e)}
-          />
-          <label>Tags</label>
-          <input
-            name="tags"
-            defaultValue={selectedPost?.tags}
-            placeholder="Tags"
-            onChange={(e) => handleDataChange(e)}
-          />
-          <label>Likes</label>
-          <input
-            name="likes"
-            placeholder="Likes"
-            defaultValue={selectedPost?.likes}
-            onChange={(e) => handleDataChange(e)}
-          />
-        </div>
-      )}
+        {dataType === "user" && (
+          <div className="updateDataContainer">
+            <label>Title</label>
+            <input
+              name="title"
+              placeholder="Title"
+              defaultValue={selectedPost?.title}
+              onChange={(e) => handleDataChange(e)}
+            />
+            <label>First Name</label>
+            <input
+              name="firstName"
+              defaultValue={selectedPost?.firstName}
+              placeholder="First Name"
+              onChange={(e) => handleDataChange(e)}
+            />
+            <label>Last Name</label>
+            <input
+              name="lastName"
+              placeholder="Last Name"
+              defaultValue={selectedPost?.lastName}
+              onChange={(e) => handleDataChange(e)}
+            />
+          </div>
+        )}
+        {dataType === "post" && (
+          <div className="updateDataContainer">
+            <label>Text</label>
+            <input
+              name="text"
+              placeholder="Text"
+              defaultValue={selectedPost?.text}
+              onChange={(e) => handleDataChange(e)}
+            />
+            <label>Tags</label>
+            <input
+              name="tags"
+              defaultValue={selectedPost?.tags}
+              placeholder="Tags"
+              onChange={(e) => handleDataChange(e)}
+            />
+            <label>Likes</label>
+            <input
+              name="likes"
+              placeholder="Likes"
+              defaultValue={selectedPost?.likes}
+              onChange={(e) => handleDataChange(e)}
+            />
+          </div>
+        )}
       </div>
       <div className="updateButtonsContainer">
         <button onClick={() => closeModal()}>Close</button>
