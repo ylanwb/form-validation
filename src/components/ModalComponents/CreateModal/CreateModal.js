@@ -3,7 +3,11 @@ import { useState } from "react";
 import "./CreateModal.css";
 import axios from "axios";
 import { Notification } from "../../Notification";
-import { data } from "../../../data";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import { UsersDropdown } from "../../FormComponents";
+
+const titleDropdown = ["miss", "dr"];
 
 const createData = async (data, dataType) => {
   console.log(data, dataType);
@@ -18,7 +22,7 @@ const user = {
   email: " ",
 };
 const post = {
-  owner: "63558a6b3c52d18024cae9e8",
+  owner: "",
   likes: 0,
   text: "",
   tags: [],
@@ -28,22 +32,34 @@ const post = {
 export const CreateModal = ({ closeModal, setCreateSuccess, dataType }) => {
   const [newPost, setNewPost] = useState(post);
   const [newUser, setNewUser] = useState(user);
+
+  const [selectedUser, setSelectedUser] = useState("");
+
+  const [title, setTitle] = React.useState("");
+
+  const handleTitle = (event) => {
+    setTitle(event.target.value);
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (dataType === "post") {
       setNewPost({ ...newPost, [name]: value });
     } else {
-      setNewUser({ ...newUser, [name]: value });
+      setNewUser({ ...newUser, [name]: value, title: title });
     }
   };
 
+  console.log(selectedUser);
+
   const handleCreate = async (e) => {
     e.preventDefault();
-
+    console.log(newUser);
     if (dataType === "post") {
       const postValues = {
         ...newPost,
         tags: newPost.tags.split(","),
+        owner: selectedUser,
         likes: Number(newPost.likes),
       };
       await createData(postValues, dataType)
@@ -90,7 +106,17 @@ export const CreateModal = ({ closeModal, setCreateSuccess, dataType }) => {
           <div className="createDataContainer">
             <label>Title</label>
             <div class="pronounDropDownMenu">
-              
+              <Select
+                className="dropDownTitle"
+                value={title}
+                onChange={handleTitle}
+                defaultValue=""
+                displayEmpty
+              >
+                {titleDropdown?.map((title) => {
+                  return <MenuItem value={title}>{title}</MenuItem>;
+                })}
+              </Select>
             </div>
             <label>First Name</label>
             <input
@@ -114,6 +140,11 @@ export const CreateModal = ({ closeModal, setCreateSuccess, dataType }) => {
         )}
         {dataType === "post" && (
           <div className="createDataContainer">
+            <label>Users</label>
+            <UsersDropdown
+              setSelectedUser={setSelectedUser}
+              selectedUser={selectedUser}
+            />
             <label>Text</label>
             <input
               name="text"

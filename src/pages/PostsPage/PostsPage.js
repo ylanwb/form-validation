@@ -139,7 +139,7 @@ const PostsPage = () => {
             />
           </div>
           <div className="createPostContainer">
-            <button 
+            <button
               className="createPostBtn"
               onClick={(e) => {
                 handleCreateButton(e);
