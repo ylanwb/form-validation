@@ -1,25 +1,64 @@
-Form Validation
------------------
-Installation
-____________
+## Form Validation📝
+
+A react based project created for me to become 
+more familiar with using react and train my skills. 
+
+-------
+## Table of contents 📋
+* [Installation](##installation)
+* [Features](#features)
+* [What I Learned](#what-i-learned)
+* [On this Project](#on-this-project)
+## _Tech_
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+1 - Create new React Project
+2 - Start new Project
+3 - ✨ Magic ✨
+
+React is a free and open-source front-end JavaScript library for building user interfaces based on UI components
+
+
+
+## Installation
+
 If you use macOS, use yarn & yarn start in the terminal to run the project.
+```sh
+yarn & yarn start
+```
+If you use Windows, use npm & npm start in the command line instead.
+```sh
+npm & npm start
+```
 
-If you use windows, use npm & npm start in the command line instead.
 
------------------
-Description
-____________
-This projects provides a basic sign up & login form with several pages you can navigate through, with some of the noticable ones being the posts and users page. In those two pages, you can create new users and posts and update information to your suiting. You can also delete posts and users if desired. 
------------------
-Goal & Language
-____________
-This project uses react js, a language I'm fairly new to and learning much about. The point of building this web application was so that I could practice my react js and also learn new skills.
------------------
-What I've learned
-____________
-Some of the noticable feats I've accomplished while making this project is learning the CRUD method, where you can create, read, update and delete data from databases. I've learned how to write cleaner codes and structure my folders better, as well as staying consistent in naming folders and files. While making this project, I've gone through trial and error learning new skills and writing more complex code with skills I already use, further refining it. I learned how to use components from Material UI, a really useful website with ready to use components. I called datas from databases and displayed them on my page, where I then added new functionality updating, deleting and creating new data for the database. I learned how to use routes, so that I can make different paths and go through different pages in my web application without having to reload the page.
------------------
-What makes this project special?
-____________
-This was my first time ever making a full website with many different functionalities, all while using react js. In all my other projects, I've only used standard html, css and js files while here I created a react project and did every unique functionalities using react, as well as using external sources and libraries.
+## Features
+- A web application made with reactjs.
+- Sign up & login form.
+- Several pages you can navigate through.
+- create new users and posts and update, delete or create new information.
 
+## What I learned
+
+What I've learned and improved on throughout working on this project.
+
+- [CRUD Method] - Creating, Reading, Updating, Deleting data from databases.
+
+- [Routes] - Moving between different parts of an application on user event within the application.
+
+- [Cleaner code] - No repeating codes, easy to read and understand.
+- [Folder Structurizing] - Staying consistent in naming folders and files, etc.
+- [External Libraries] - Axios, filter, modify data.
+- [API calls] - Making API calls from Dummy Datas.
+- [React] - Main goal in practicing react.
+
+And of course a lot of other minor functionalities as well.
+
+## On this Project
+What makes this project special compared to my older projects?
+| Before |  After |
+| ------------ | ------------ |
+| plain html, css, js | react js 😎 |
+| Few functionalities | More Functionalities |
+| Messy Code | Clean Code |
+| messy folder structure | proper folder structure |
