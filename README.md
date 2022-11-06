@@ -5,7 +5,7 @@ more familiar with using react and train my skills.
 
 -------
 ## Table of contents 📋
-* [Installation](##installation)
+* [Installation](#installation)
 * [Features](#features)
 * [What I Learned](#what-i-learned)
 * [On this Project](#on-this-project)
