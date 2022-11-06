@@ -7,7 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { UsersDropdown } from "../../FormComponents";
 
-const titleDropdown = ["miss", "dr"];
+const titleDropdown = ["mr", "mr", "mrs", "miss", "dr"];
 
 const createData = async (data, dataType) => {
   console.log(data, dataType);
@@ -33,7 +33,7 @@ export const CreateModal = ({ closeModal, setCreateSuccess, dataType }) => {
   const [newPost, setNewPost] = useState(post);
   const [newUser, setNewUser] = useState(user);
 
-  const [selectedUser, setSelectedUser] = useState("");
+  const [selectedUser, setSelectedUser] = React.useState("");
 
   const [title, setTitle] = React.useState("");
 
@@ -44,13 +44,12 @@ export const CreateModal = ({ closeModal, setCreateSuccess, dataType }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (dataType === "post") {
-      setNewPost({ ...newPost, [name]: value });
+      setNewPost({ ...newPost, [name]: value, owner: selectedUser.id.id  });
+      console.log(selectedUser.id)
     } else {
       setNewUser({ ...newUser, [name]: value, title: title });
     }
   };
-
-  console.log(selectedUser);
 
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -59,7 +58,7 @@ export const CreateModal = ({ closeModal, setCreateSuccess, dataType }) => {
       const postValues = {
         ...newPost,
         tags: newPost.tags.split(","),
-        owner: selectedUser,
+        owner: selectedUser.id,
         likes: Number(newPost.likes),
       };
       await createData(postValues, dataType)
@@ -105,7 +104,7 @@ export const CreateModal = ({ closeModal, setCreateSuccess, dataType }) => {
         {dataType === "user" && (
           <div className="createDataContainer">
             <label>Title</label>
-            <div class="pronounDropDownMenu">
+            <div className="pronounDropDownMenu">
               <Select
                 className="dropDownTitle"
                 value={title}
@@ -162,6 +161,12 @@ export const CreateModal = ({ closeModal, setCreateSuccess, dataType }) => {
               type="number"
               name="likes"
               placeholder="Likes"
+              onChange={(e) => handleInputChange(e)}
+            />
+            <label>Image</label>
+            <input
+              name="image"
+              placeholder="Url"
               onChange={(e) => handleInputChange(e)}
             />
           </div>

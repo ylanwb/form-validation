@@ -33,8 +33,8 @@
 
 /* blog boxes setup */
 .blogPreviewBox {
-  width: 25vw;
-  height: 65vh;
+  width: 360px;
+  height: 475px;
   background-color: white;
   border-radius: 30px;
   display: flex;
@@ -107,4 +107,84 @@
   border-radius: 4px;
   font-size: 20px;
   color: #727D89;
+}
+@media (max-width: 870px) {
+  .blogPreviewBox {
+    width: 450px;
+    height: 500px;
+  }
+  #blogTitle {
+    font-weight: 800;
+    font-size: 25px;
+    margin-top: 10vh;
+  }
+  #blogText {
+    color: #6d7d8b;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 2.5vh;
+  }
+  .blogContentTitles {
+    font-size: 25px;
+    margin-top: 2.5vh;
+  }
+  .blogContentTexts {
+    font-size: 15px;
+    line-height: 3vh;
+    height: 10vh;
+  }
+  #blogUserName {
+    font-size: 15px;
+  }
+  #blogDate {
+    font-size: 14px;
+  }
+  .blogNextButton {
+    width: 150px;
+  }
+}
+@media (max-width: 500px) {
+  .blogPreviewBox {
+    width: 90vw;
+  }
+  #blogTitle {
+    font-weight: 800;
+    font-size: 20px;
+    margin-top: 10vh;
+  }
+  #blogText {
+    color: #6d7d8b;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 2.5vh;
+  }
+  .blogContentTitles {
+    font-size: 25px;
+    margin-top: 2.5vh;
+  }
+  .blogContentTexts {
+    font-size: 15px;
+    line-height: 3vh;
+    height: 10vh;
+  }
+  #blogUserName {
+    font-size: 15px;
+  }
+  #blogDate {
+    font-size: 14px;
+  }
+  .blogNextButton {
+    width: 150px;
+  }
+}
+@media (max-width: 420px) {
+  #blogUserName {
+    font-size: 8px;
+  }
+  #blogDate {
+    font-size: 8px;
+  }
+  .blogNextButton {
+    width: 150px;
+  }
 }

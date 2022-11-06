@@ -91,7 +91,7 @@ const PostsPage = () => {
       .then((response) => {
         setLoading(true);
         setTimeout(() => {
-          // setData(response.data.data);
+          setData(response.data.data);
           setFilteredData(response.data.data);
           setLoading(false);
         }, 1000);
@@ -105,8 +105,8 @@ const PostsPage = () => {
 
   const filtered = (e) => {
     const filtered =
-      data &&
-      data.filter((item) => {
+    data &&
+    data.filter((item) => {
         const dataItems =
           item.owner.title +
           " " +
@@ -118,7 +118,6 @@ const PostsPage = () => {
       });
     setFilteredData(filtered);
   };
-
   return (
     <>
       <div className="postsPageMainContainer">

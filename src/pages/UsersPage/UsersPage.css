@@ -183,3 +183,11 @@
 }
 
 /* alert success styling end */
+@media (max-width: 980px) {
+    .userContainer {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .userDataCard {
+      width: 90vw;
+    }
+  }

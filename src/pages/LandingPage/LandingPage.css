@@ -182,7 +182,7 @@
   overflow-x: scroll;
 }
 .reviews {
-  width: max-content;
+  width: 400px;
   height: 70%;
   display: flex;
   flex-direction: column;
@@ -197,7 +197,7 @@
 .starContainer {
   margin-left: 30px;
   margin-top: 30px;
-  width: 23vw;
+  width: 250px;
 }
 .userInfo {
   margin-left: 30px;
@@ -267,7 +267,7 @@
   font-weight: 800;
 }
 .contentTexts {
-  padding-top: 4vh;
+  padding-top: 25px;
   padding-right: 10vw;
   font-size: 1.4vw;
   font-weight: 600;
@@ -280,7 +280,7 @@
 .contentTextsV2 {
   padding-top: 4.2vh;
   padding-right: 10vw;
-  font-size: 1.2vw;
+  font-size: 1.3vw;
   font-weight: 400;
 }
 .titleTextsV3 {
@@ -308,3 +308,32 @@
   margin-right: 30px;
 }
 /* different text set ups end */
+@media (max-width: 990px) {
+  .rightSideThree {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    right: 0;
+    position: absolute;
+    justify-content: flex-end;
+  }
+
+  .signInCosignUpContentContainerntainer {
+    width: 50%;
+  }
+
+  .taskManagementImg {
+    height: 50vw;
+  }
+
+  .schedulingImg {
+    height: 50vw;
+  }
+  .contentTextsV2 {
+    padding-top: 4.2vh;
+    padding-right: 10vw;
+    font-size: 10px;
+    font-weight: 400;
+  }
+}

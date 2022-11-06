@@ -9,7 +9,7 @@ export const UsersDropdown = ({ selectedUser, setSelectedUser }) => {
   const [data, setData] = useState([]);
 
   const handleUser = (event) => {
-    setSelectedUser(event.target.value.id);
+    setSelectedUser(event.target.value);
   };
 
   useEffect(() => {

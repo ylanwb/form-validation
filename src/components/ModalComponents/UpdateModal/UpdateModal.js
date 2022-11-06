@@ -25,23 +25,51 @@ export const UpdateModal = ({
   setUpdateSuccess,
   dataType,
 }) => {
-  const [userData, setUserData] = useState(selectedPost);
+  const [updatedPostValues, setNewPost] = useState(selectedPost);
+  const [updatedUserValues, setNewUser] = useState(selectedPost);
+  const [title, setTitle] = React.useState("");
+  const [selectedUser, setSelectedUser] = useState("");
+
   const handleDataChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
+    if (dataType === "post") {
+      setNewPost({ ...updatedPostValues, [name]: value });
+    } else {
+      setNewUser({ ...updatedUserValues, [name]: value, title: title });
+    }
   };
-  const handleConfirmButton = async () => {
-    closeModal();
-    await updatePost(userData, dataType)
-      .then((response) => {
-        setUpdateSuccess(true);
-        setTimeout(() => {
-          setUpdateSuccess(false);
-          window.location.reload();
-        }, 2500);
-      })
-      .catch((err) => console.log(err));
+  const handleConfirmButton = async (e) => {
+    e.preventDefault();
+    if (dataType === "post") {
+      const postValues = {
+        ...updatedPostValues,
+        tags: updatedPostValues.tags.split(","),
+        owner: selectedUser,
+        likes: Number(updatedPostValues.likes),
+      };
+      await updatePost(postValues, dataType)
+        .then((response) => {
+          setUpdateSuccess(true);
+          closeModal();
+          setTimeout(() => {
+            setUpdateSuccess(false);
+            window.location.reload();
+          }, 2500);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      await updatePost(updatedPostValues, dataType)
+        .then((response) => {
+          setUpdateSuccess(true);
+          closeModal();
+          setTimeout(() => {
+            setUpdateSuccess(false);
+            window.location.reload();
+          }, 2500);
+        })
+        .catch((err) => console.log(err));
+    }
   };
   return (
     <div className="updateModalMainContainer">
@@ -86,7 +114,7 @@ export const UpdateModal = ({
             <label>Tags</label>
             <input
               name="tags"
-              defaultValue={selectedPost?.tags}
+              defaultValue={[selectedPost?.tags]}
               placeholder="Tags"
               onChange={(e) => handleDataChange(e)}
             />
