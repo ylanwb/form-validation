@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+Form Validation
+-----------------
+Installation
+____________
+If you use macOS, use yarn & yarn start in the terminal to run the project.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+If you use windows, use npm & npm start in the command line instead.
 
-## Available Scripts
+-----------------
+Description
+____________
+This projects provides a basic sign up & login form with several pages you can navigate through, with some of the noticable ones being the posts and users page. In those two pages, you can create new users and posts and update information to your suiting. You can also delete posts and users if desired. 
+-----------------
+Goal & Language
+____________
+This project uses react js, a language I'm fairly new to and learning much about. The point of building this web application was so that I could practice my react js and also learn new skills.
+-----------------
+What I've learned
+____________
+Some of the noticable feats I've accomplished while making this project is learning the CRUD method, where you can create, read, update and delete data from databases. I've learned how to write cleaner codes and structure my folders better, as well as staying consistent in naming folders and files. While making this project, I've gone through trial and error learning new skills and writing more complex code with skills I already use, further refining it. I learned how to use components from Material UI, a really useful website with ready to use components. I called datas from databases and displayed them on my page, where I then added new functionality updating, deleting and creating new data for the database. I learned how to use routes, so that I can make different paths and go through different pages in my web application without having to reload the page.
+-----------------
+What makes this project special?
+____________
+This was my first time ever making a full website with many different functionalities, all while using react js. In all my other projects, I've only used standard html, css and js files while here I created a react project and did every unique functionalities using react, as well as using external sources and libraries.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
