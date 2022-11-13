@@ -17,7 +17,7 @@ const SignUpSuccess = () => {
         </div>
         <div id="lower-side">
           <p id="message">
-            Congratulations, your account has been successfully created.
+            Your account has been successfully created.
           </p>
           <button onClick={handleContinueButton} id="contBtn">
             Continue

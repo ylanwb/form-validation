@@ -58,7 +58,7 @@ And of course a lot of other minor functionalities as well.
 What makes this project special compared to my older projects?
 | Before |  After |
 | ------------ | ------------ |
-| plain html, css, js | react js 😎 |
+| plain html, css, js | react js |
 | Few functionalities | More Functionalities |
 | Messy Code | Clean Code |
 | messy folder structure | proper folder structure |

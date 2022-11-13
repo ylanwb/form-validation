@@ -1,97 +1,193 @@
 /* footer start */
 .footer {
-    width: 100vw;
-    height: max-content;
-    padding-bottom: 5vh;
-    padding-top: 5vh;
-    display: flex;
-    justify-content: space-evenly;
-    background-color: #252b3b;
+  width: 100vw;
+  height: max-content;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #252b3b;
+}
+
+.footerContents {}
+
+/* footer content one start */
+.footerContentOne {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.footerLeftSide {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+#footerLogo {
+  color: white;
+  font-size: 1.5rem;
+  line-height: 30px;
+}
+
+#footerSocialLinks {
+  margin-top: 1rem;
+  font-size: .7rem;
+}
+
+#footerSocialLinks svg {
+  padding: 3px 1px 0px 0px;
+}
+
+/* footer content one end */
+/* footer content two start */
+.footerContentTwo {
+  width: 40%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+}
+
+#captions {
+  font-family: "Karla", sans-serif;
+  font-weight: 600;
+}
+
+.firstSet {
+  display: flex;
+  flex-direction: column;
+}
+
+.middleLinks {
+  margin-top: 1rem;
+  font-size: .7rem;
+}
+
+.secondSet {
+  display: flex;
+  flex-direction: column;
+}
+
+.thirdSet {
+  display: flex;
+  flex-direction: column;
+}
+
+/* footer content two end */
+/* footer content three start */
+.footerContentThree {
+  width: 30%;
+  color: white;
+  margin-top: 1.5vh;
+  margin-left: 5vw;
+}
+
+.footerRightSide {
+  display: flex;
+  flex-direction: column;
+}
+
+#newsPaper {
+  font-weight: 800;
+  font-size: 1.2vw;
+  line-height: 5px;
+}
+
+#footerButton {
+  outline: none;
+  background: none;
+  border: none;
+  color: #4da0fd;
+  width: 80%;
+  margin-top: 2.5vh;
+  height: 6vh;
+  background-color: #f5f7fa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1.2vw;
+}
+
+/* footer content three end */
+/* footer end */
+@media (max-width: 620px) {
+  span {
+    padding-top: 0;
+    padding-bottom: 0;
   }
-  .footerContents {
-  }
-  /* footer content one start */
-  .footerContentOne {
-    width: 30%;
-    display: flex;
-    justify-content: center;
-  }
-  .footerLeftSide {
-    display: flex;
-    flex-direction: column;
-    color: white;
-  }
-  #footerLogo {
-    color: white;
-    font-size: 2vw;
-    line-height: 30px;
-  }
-  #footerSocialLinks {
-    margin-top: 2.4vh;
-  }
-  #footerSocialLinks svg {
-    padding: 3px 1px 0px 0px;
-  }
-  /* footer content one end */
-  /* footer content two start */
   .footerContentTwo {
     width: 40%;
-    margin-top: 2vh;
+    margin-top: 1rem;
     display: flex;
     justify-content: space-around;
     color: white;
+}
+.footerContentThree {
+  width: 30%;
+  color: white;
+  margin-top: 1.5vh;
+  margin-left: 5vw;
+}
+  #footerLogo {
+    color: white;
+    font-size: 1.3rem;
+    /* line-height: 30px; */
   }
-  #captions {
-    font-family: "Karla", sans-serif;
-    font-weight: 600;
+
+  #footerSocialLinks {
+    margin-top: 0.55rem;
+    font-size: .7rem;
   }
-  .firstSet {
-    display: flex;
-    flex-direction: column;
-  }
+
   .middleLinks {
-    margin-top: 2.3vh;
+    margin-top: 1rem;
+    font-size: 0.7rem;
   }
-  .secondSet {
-    display: flex;
-    flex-direction: column;
+  #newsPaper {
+    font-weight: 800;
+    font-size: .6rem;
+    /* line-height: 5px; */
+}
+}
+
+  @media (max-width: 500px) {
+    #captions {
+      font-size: 0.6rem;
+    }
+    .footerContentTwo {
+      width: 40%;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-around;
+      color: white;
   }
-  .thirdSet {
-    display: flex;
-    flex-direction: column;
-  }
-  /* footer content two end */
-  /* footer content three start */
   .footerContentThree {
     width: 30%;
     color: white;
     margin-top: 1.5vh;
     margin-left: 5vw;
   }
-  .footerRightSide {
-    display: flex;
-    flex-direction: column;
+    #footerLogo {
+      color: white;
+      font-size: 1rem;
+      /* line-height: 30px; */
+    }
+  
+    #footerSocialLinks {
+      margin-top: 0.55rem;
+      font-size: .5rem;
+    }
+  
+    .middleLinks {
+      margin-top: 1rem;
+      font-size: 0.5rem;
+    }
+    #newsPaper {
+      font-weight: 800;
+      font-size: .6rem;
+      line-height: 20px;
   }
-  #newsPaper {
-    font-weight: 800;
-    font-size: 1.2vw;
-    line-height: 5px;
   }
-  #footerButton {
-    outline: none;
-    background: none;
-    border: none;
-    color: #4da0fd;
-    width: 80%;
-    margin-top: 2.5vh;
-    height: 6vh;
-    background-color: #f5f7fa;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 1.2vw;
-  }
-  /* footer content three end */
-  /* footer end */
