@@ -149,13 +149,21 @@
 #darkHamburger {
   color: white;
 }
-
+.menuDropDown {
+  width: 0;
+}
 @media (max-width: 1330px) {
   .hamburgerContainer {
     display: block;
     z-index: 9999;
   }
-
+  .menuDropDown {
+    width: 100vw;
+    background-color: rebeccapurple;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
   .navDarkRightSideMenuBar {
     width: 100%;
     display: flex;

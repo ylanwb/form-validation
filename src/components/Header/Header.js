@@ -25,7 +25,7 @@ export const Header = ({ user, isWhiteBackground }) => {
   }
 
 
-  const [isMenuActive , setIsMenuActive] = useState(false)
+  const [isMenuActive, setIsMenuActive] = useState(false)
 
   const navMenuClicked = () => {
     if (isMenuActive === false) {
@@ -43,7 +43,6 @@ export const Header = ({ user, isWhiteBackground }) => {
       <div className="navLeftSide">
         <div
           onClick={() => {
-            console.log("here");
             handleHomeButton();
           }}
           className={
@@ -54,65 +53,77 @@ export const Header = ({ user, isWhiteBackground }) => {
           <Bluebox id="blueBox" />
         </div>
       </div>
-        <div
+      <div
         className={`${isMenuActive && "menuSlide"} ${isWhiteBackground ? "navDarkRightSide" : "navWhiteRightSide"}`}>
-          <div
-            className={
-              isWhiteBackground
-                ? "navDarkRightSideContent"
-                : "navWhiteRightSideContent"
-            }
-            id="navRightSideContent"
+        <div
+          className={
+            isWhiteBackground
+              ? "navDarkRightSideContent"
+              : "navWhiteRightSideContent"
+          }
+          id="navRightSideContent"
+        >
+          {isMenuActive && (
+            <div className="menuDropDown">
+              <button
+                className="navButton"
+                onClick={() => {
+                  console.log("here");
+                  handleUserButton();
+                }}
+              >
+                Users
+              </button>
+            </div>
+          )}
+          <button
+            className="navButton"
+            onClick={() => {
+              console.log("here");
+              handleUserButton();
+            }}
           >
-            <button
-              className="navButton"
-              onClick={() => {
-                console.log("here");
-                handleUserButton();
-              }}
-            >
-              Users
-            </button>
-            <button
-              className="navButton"
-              onClick={() => {
-                console.log("here");
-                handlePostButton();
-              }}
-            >
-              Posts
-            </button>
-            <button
-              className="navButton"
-              onClick={() => {
-                console.log("here");
-                handleBlogButton();
-              }}
-            >
-              Blog
-            </button>
-            <button className="navButton">Contact</button>
-            <button
-              className="navButton"
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                console.log("here");
-                handleLogoutButton();
-              }}
-            >
-              {!user && "Log out"}
-              {!!user && "Log out"}
-            </button>
-            <button className="navButton">Get Access</button>
-          </div>
+            Users
+          </button>
+          <button
+            className="navButton"
+            onClick={() => {
+              console.log("here");
+              handlePostButton();
+            }}
+          >
+            Posts
+          </button>
+          <button
+            className="navButton"
+            onClick={() => {
+              console.log("here");
+              handleBlogButton();
+            }}
+          >
+            Blog
+          </button>
+          <button className="navButton">Contact</button>
+          <button
+            className="navButton"
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              console.log("here");
+              handleLogoutButton();
+            }}
+          >
+            {!user && "Log out"}
+            {!!user && "Log out"}
+          </button>
+          <button className="navButton">Get Access</button>
         </div>
+      </div>
       <div className={
         isWhiteBackground
           ? "navDarkRightSideMenuBar"
           : "navWhiteRightSideMenuBar"
       }>
-        <div className="hamburgerContainer" id={isWhiteBackground ? "darkHamburger" : "whiteHamburger" } onClick={() => {
-          console.log("here")
+        <div className="hamburgerContainer" id={isWhiteBackground ? "darkHamburger" : "whiteHamburger"} onClick={() => {
           navMenuClicked()
         }}>
           <Hamburger />

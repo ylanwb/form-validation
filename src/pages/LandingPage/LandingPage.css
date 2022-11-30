@@ -4,9 +4,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 *::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
+  display: none;
+  /* Safari and Chrome */
 }
+
 /* fix overflow-x: hidden on other pages */
 .homePageMainContainer {
   width: 100%;
@@ -19,10 +22,12 @@
   align-items: flex-end;
   /* background-color: #f5f7fa; */
 }
+
 .contents {
   width: 100%;
   height: 100vh;
 }
+
 /* main page set up end */
 
 /* start of content one */
@@ -30,9 +35,10 @@
   background-image: url("https://media.discordapp.net/attachments/1004621319901552710/1023527420902527026/unknown.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
-  /* border-bottom: 10px solid #9b9993; */
+  background-size: cover; 
+  border-bottom: 10px solid #9b9993;
 }
+
 .leftSideOne {
   width: 50%;
   height: 100vh;
@@ -41,6 +47,7 @@
   position: absolute;
   top: 0;
 }
+
 .leftSideOneContent {
   width: 75%;
   color: white;
@@ -48,12 +55,14 @@
   flex-direction: column;
   margin-left: 15%;
 }
+
 .rightSideOne {
   width: 50%;
   height: 100%;
   position: absolute;
   top: 0;
 }
+
 .earlyAccessContainer {
   width: 90%;
   display: flex;
@@ -61,6 +70,7 @@
   justify-content: space-between;
   margin-top: 5vh;
 }
+
 #earlyAccessInputBar {
   width: 57%;
   height: 7vh;
@@ -68,6 +78,7 @@
   font-size: 1.2vw;
   border-radius: 4px;
 }
+
 #earlyAccessButton {
   width: 33%;
   height: 7vh;
@@ -77,6 +88,7 @@
   border: none;
   border-radius: 4px;
 }
+
 /* content one end */
 
 /* content two start */
@@ -84,6 +96,7 @@
   background-color: #f5f7fa;
   display: flex;
 }
+
 .leftSideTwo {
   width: 45%;
   height: 100%;
@@ -91,12 +104,14 @@
   justify-content: center;
   align-items: center;
 }
+
 .leftSideTwoContent {
   padding-left: 15%;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
+
 .rightSideTwo {
   width: 55%;
   height: 100%;
@@ -104,11 +119,13 @@
   justify-content: center;
   align-items: center;
 }
+
 .rightSideTwoContent {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
+
 /* content two end */
 
 /* content three start */
@@ -116,27 +133,32 @@
   background-color: #f5f7fa;
   display: flex;
 }
+
 .leftSideThree {
   width: 50%;
   height: 100vh;
   display: flex;
   align-items: center;
 }
+
 .leftSideThreeContent {
   margin-left: 5%;
 }
+
 .rightSideThree {
   width: 50%;
   height: 100vh;
   display: flex;
   align-items: center;
 }
+
 .rightSideThreeContent {
   width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 /* content three end */
 
 /* content four start */
@@ -144,25 +166,30 @@
   background-color: #f5f7fa;
   display: flex;
 }
+
 .leftSideFour {
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .leftSideFourContent {
   width: 80%;
   display: flex;
   flex-direction: column;
 }
+
 .rightSideFour {
   width: 50vw;
   display: flex;
   align-items: center;
 }
+
 .rightSideFourContent {
   width: 100%;
 }
+
 /* content four end */
 
 /* content five start */
@@ -170,10 +197,12 @@
   background-color: #f5f7fa;
   overflow: hidden;
 }
+
 .contentFiveTop {
   text-align: center;
   margin-top: 10vh;
 }
+
 .contentFiveBottom {
   width: max-content;
   height: 65vh;
@@ -181,6 +210,7 @@
   display: flex;
   overflow-x: scroll;
 }
+
 .reviews {
   width: 400px;
   height: 70%;
@@ -194,39 +224,46 @@
   background-color: white;
   filter: drop-shadow(0px 15px 35px rgba(0, 0, 0, 0.25));
 }
+
 .starContainer {
   margin-left: 30px;
   margin-top: 30px;
   width: 250px;
 }
+
 .userInfo {
   margin-left: 30px;
   display: flex;
   align-items: center;
   margin-bottom: 2vh;
 }
+
 #reviewScrollArrow {
   width: 100vw;
   height: 10vh;
   display: flex;
   justify-content: flex-end;
   position: relative;
-  right: 10vh;
+  right: 2vh;
 }
+
 .grayArrow {
   transform: rotate(180deg);
   margin-right: 35px;
 }
+
 #slideLeft:hover {
   fill: blue;
   stroke: #0bbef2;
   stroke-width: 1;
 }
+
 #slideRight:hover {
   fill: blue;
   stroke: #0bbef2;
   stroke-width: 1;
 }
+
 /* content five end */
 
 
@@ -236,10 +273,12 @@
   height: 12px;
   padding-left: 4px;
 }
+
 #blueArrow {
   width: 20px;
   height: 20px;
 }
+
 /* all different icons set ups end */
 
 /* all img set ups start */
@@ -248,16 +287,20 @@
   background-size: cover;
   background-position: center;
 }
+
 .taskManagementImg {
   height: 75vh;
 }
+
 .schedulingImg {
   height: 75vh;
 }
+
 .userPictures {
   width: 3vw;
   margin-right: 25px;
 }
+
 /* all img set ups end */
 
 /* different text set ups start */
@@ -266,34 +309,40 @@
   font-size: 3.2vw;
   font-weight: 800;
 }
+
 .contentTexts {
   padding-top: 25px;
   padding-right: 10vw;
   font-size: 1.4vw;
   font-weight: 600;
 }
+
 .titleTextsV2 {
   font-family: "Work Sans", sans-serif;
   font-size: 3.4vw;
   font-weight: 800;
 }
+
 .contentTextsV2 {
   padding-top: 4.2vh;
   padding-right: 10vw;
   font-size: 1.3vw;
   font-weight: 400;
 }
+
 .titleTextsV3 {
   font-family: "Work Sans", sans-serif;
   font-size: 1.3vw;
   font-weight: 600;
 }
+
 .contentTextsV3 {
   padding-top: 4.2vh;
   padding-right: 10vw;
   font-size: 1vw;
   font-weight: 400;
 }
+
 .learnMoreTexts {
   padding-top: 4vh;
   color: #4da0fd;
@@ -303,12 +352,52 @@
   width: 8.2vw;
   justify-content: space-between;
 }
+
 .reviewTexts {
   margin-top: 30px;
   margin-right: 30px;
 }
+
 /* different text set ups end */
-@media (max-width: 990px) {
+@media (max-width: 1010px) { 
+  .meetingsImg {
+    height: 450px;
+  }
+  .taskManagementImg {
+    height: 400px;
+  }
+  .schedulingImg {
+    height: 400px;
+  }
+}
+@media (max-width: 840px) { 
+  .meetingsImg {
+    height: 450px;
+  }
+  .taskManagementImg {
+    height: 300px;
+  }
+  .schedulingImg {
+    height: 300px;
+  }
+}
+@media (max-width: 660px) { 
+  .meetingsImg {
+    height: 300px;
+  }
+  .taskManagementImg {
+    height: 200px;
+  }
+  .schedulingImg {
+    height: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .homePageMainContainer {
+    overflow: hidden;
+  }
+
   .rightSideThree {
     width: 50%;
     height: 100vh;
@@ -330,10 +419,167 @@
   .schedulingImg {
     height: 50vw;
   }
+
+  .contentsBlur {
+    background-image: url(https://media.discordapp.net/attachments/1004621319901552710/1023527420902527026/unknown.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    filter: blur(5px);
+    z-index: -1;
+    transform: scale(1.1);
+  }
+
+  .leftSideOne {
+    width: 100%;
+    text-align: center;
+  }
+
+  .earlyAccessContainer {
+    width: 90vw;
+    margin-left: -10vw;
+    justify-content: space-around;
+  }
+
+  #earlyAccessInputBar {
+    font-size: 15px;
+  }
+
+  #earlyAccessButton {
+    font-size: 12px;
+  }
+
+  .titleTexts {
+    font-size: 30px;
+  }
+
+  .contentTexts {
+    font-size: 20px;
+    padding-right: 0;
+  }
+
   .contentTextsV2 {
     padding-top: 4.2vh;
-    padding-right: 10vw;
-    font-size: 10px;
+    padding-right: 0vw;
+    font-size: 12px;
     font-weight: 400;
+  }
+
+  .titleTextsV3 { 
+    font-size: 18px;
+  }
+
+  .contentTextsV3 {
+    padding-top: 4.2vh;
+    padding-right: 10vw;
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  .navDarkBackground {
+    font-size: 32px;
+  }
+
+  .userPictures {
+    width: 50px;
+  }
+
+  /* content two */
+  .contentTwo {
+    flex-direction: column-reverse;
+  }
+
+  .rightSideTwo {
+    width: 100%;
+  }
+
+  .leftSideTwo {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  }
+
+  .leftSideTwoContent {
+    padding-left: 5%;
+  }
+
+  .meetingsImg {
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* content two end */
+  /* content three */
+  .contentThree {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .leftSideThree {
+    height: 50vh;
+  }
+
+  .rightSideThree {
+    width: 100vw;
+    height: 0;
+    margin-top: 100px;
+    justify-content: center;
+    position: relative;
+  }
+
+  .rightSideThreeContent {
+    width: 85vw;
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .leftSideThreeContent {
+    margin: 0;
+  }
+
+  .taskManagementImg {
+    height: 102vw;
+  }
+  /* content three end */
+  /* content four */
+  .contentFour {
+    flex-direction: column-reverse;
+    margin-top: 50px;
+  }
+  .leftSideFourContent {
+    width: 85vw;
+    text-align: center;
+    justify-content: center;
+  }
+  .leftSideFour {
+    width: 100vw;
+  }
+  .rightSideFour {
+    width: 100vw;
+  }
+  .schedulingImg {
+    height: 102vw;
+  }
+  .titleTextsV2 {
+    margin-top: 50px;
+    font-size: 18px;
+  }
+  .contentTextsV2 {
+    font-size: 15px;
+  }
+  /* content four end */
+  .learnMoreTexts {
+    width: 100px;
+    font-size: 15px;
+    margin-left: 30vw;
   }
 }

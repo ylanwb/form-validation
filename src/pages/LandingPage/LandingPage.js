@@ -32,6 +32,7 @@ const LandingPage = ({ user }) => {
 
   return (
     <div className="homePageMainContainer">
+      <div className="contentsBlur"></div>
       <div className="contents contentOne">
         <Header user={user} isWhiteBackground={true} />
         <div className="leftSideOne">
