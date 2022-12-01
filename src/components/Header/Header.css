@@ -25,7 +25,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .navWhiteRightSide {
@@ -159,7 +159,8 @@
   }
   .menuDropDown {
     width: 100vw;
-    background-color: rebeccapurple;
+    height: 10vh;
+    background-color: dimgray;
     position: absolute;
     left: 0;
     top: 0;

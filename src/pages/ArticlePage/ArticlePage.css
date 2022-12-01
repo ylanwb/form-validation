@@ -139,3 +139,52 @@
     font-weight: 600;
 }
 /* text styling start */
+@media (max-width: 1050px) {
+    .articleHeader {
+        height: 100px;
+        margin-top: 50px;
+        width: 80vw;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    #articleTitle {
+        font-size: 20px;
+    }
+    #articleUserPictures {
+        width: 25px;
+        height: 25px;
+    }
+    .articleInfoTexts {
+        font-size: 10px;
+    }
+    .articleContentContainer {
+        width: 70vw;
+    }
+    .articleBody {
+        width: 100%;
+        margin-top: 0;
+    }
+    .articleBodyText {
+        font-size: 10px;
+    }
+    .articleUserInfo {
+        justify-content: center;
+    }
+    .articleUserInfo span:nth-child(1) {
+        font-size: 10px;
+    }
+    .articleUserInfo span:nth-child(2) {
+        font-size: 15px;
+    }
+    .articleUserPicturesTwo {
+        width: 50px;
+        height: 50px;
+    }
+  }
+  @media (max-width: 500px) {
+    
+  }
+  @media (max-width: 420px) {
+   
+  }

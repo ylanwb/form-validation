@@ -33,8 +33,8 @@
 
 /* blog boxes setup */
 .blogPreviewBox {
-  width: 360px;
-  height: 475px;
+  width: 33vw;
+  height: 40vw;
   background-color: white;
   border-radius: 30px;
   display: flex;
@@ -48,7 +48,8 @@
   display: flex;
   /* justify-content: space-between; */
   align-items: center;
-  padding-bottom: 2.5vh;
+  padding-bottom: 1.5vh;
+  padding-top: 1.5vh;
 }
 /* blog boxes setup end */
 /* text stylings start */
@@ -108,7 +109,7 @@
   font-size: 20px;
   color: #727D89;
 }
-@media (max-width: 870px) {
+@media (max-width: 1050px) {
   .blogPreviewBox {
     width: 450px;
     height: 500px;

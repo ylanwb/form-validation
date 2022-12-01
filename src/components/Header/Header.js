@@ -3,7 +3,7 @@ import { React, useState, useEffect } from "react";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
-import { Spin as Hamburger } from 'hamburger-react'
+import { Spin as Hamburger } from "hamburger-react";
 
 export const Header = ({ user, isWhiteBackground }) => {
   const navigate = useNavigate();
@@ -21,23 +21,22 @@ export const Header = ({ user, isWhiteBackground }) => {
     navigate("/posts");
   };
   const handleHomeButton = () => {
-    navigate("/")
-  }
+    navigate("/");
+  };
 
-
-  const [isMenuActive, setIsMenuActive] = useState(false)
+  const [isMenuActive, setIsMenuActive] = useState(false);
 
   const navMenuClicked = () => {
     if (isMenuActive === false) {
-      setIsMenuActive(true)
-      console.log("menu is active!")
+      setIsMenuActive(true);
+      console.log("menu is active!");
     } else if (isMenuActive === true) {
-      setIsMenuActive(false)
-      console.log("menu is off!")
+      setIsMenuActive(false);
+      console.log("menu is off!");
     } else {
-      console.log("error")
+      console.log("error");
     }
-  }
+  };
   return (
     <div className="navBar">
       <div className="navLeftSide">
@@ -54,7 +53,10 @@ export const Header = ({ user, isWhiteBackground }) => {
         </div>
       </div>
       <div
-        className={`${isMenuActive && "menuSlide"} ${isWhiteBackground ? "navDarkRightSide" : "navWhiteRightSide"}`}>
+        className={`${isMenuActive && "menuSlide"} ${
+          isWhiteBackground ? "navDarkRightSide" : "navWhiteRightSide"
+        }`}
+      >
         <div
           className={
             isWhiteBackground
@@ -63,19 +65,7 @@ export const Header = ({ user, isWhiteBackground }) => {
           }
           id="navRightSideContent"
         >
-          {isMenuActive && (
-            <div className="menuDropDown">
-              <button
-                className="navButton"
-                onClick={() => {
-                  console.log("here");
-                  handleUserButton();
-                }}
-              >
-                Users
-              </button>
-            </div>
-          )}
+          {isMenuActive && <div className="menuDropDown"></div>}
           <button
             className="navButton"
             onClick={() => {
@@ -118,14 +108,20 @@ export const Header = ({ user, isWhiteBackground }) => {
           <button className="navButton">Get Access</button>
         </div>
       </div>
-      <div className={
-        isWhiteBackground
-          ? "navDarkRightSideMenuBar"
-          : "navWhiteRightSideMenuBar"
-      }>
-        <div className="hamburgerContainer" id={isWhiteBackground ? "darkHamburger" : "whiteHamburger"} onClick={() => {
-          navMenuClicked()
-        }}>
+      <div
+        className={
+          isWhiteBackground
+            ? "navDarkRightSideMenuBar"
+            : "navWhiteRightSideMenuBar"
+        }
+      >
+        <div
+          className="hamburgerContainer"
+          id={isWhiteBackground ? "darkHamburger" : "whiteHamburger"}
+          onClick={() => {
+            navMenuClicked();
+          }}
+        >
           <Hamburger />
         </div>
       </div>
