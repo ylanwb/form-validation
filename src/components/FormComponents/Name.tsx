@@ -1,5 +1,13 @@
 import React from "react";
-export const Name = (props) => {
+
+interface IName {
+  name: string,
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  ref: any,
+
+}
+
+export const Name: React.FC<IName> = (props) => {
   const { name, handleChange } = props;
   return (
     <input

@@ -1,5 +1,12 @@
 import React from "react";
-export const Age = (props) => {
+
+interface IAge {
+  name: string,
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  ref: any,
+}
+
+export const Age: React.FC<IAge> = (props) => {
   const { name, handleChange } = props;
   return (
     <input

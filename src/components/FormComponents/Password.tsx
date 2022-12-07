@@ -1,5 +1,13 @@
 import React from "react";
-export const Password = (props) => {
+
+interface IPassword {
+  name: string,
+  ref: any,
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  placeholder: string
+}
+
+export const Password: React.FC<IPassword> = (props) => {
   const { name, handleChange, placeholder } = props;
   return (
     <input

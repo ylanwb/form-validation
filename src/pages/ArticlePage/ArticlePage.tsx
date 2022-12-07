@@ -1,9 +1,19 @@
+import React from "react"
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header";
 import { useParams } from "react-router-dom";
 import { data } from "../../data";
 import "./ArticlePage.css";
-const ArticlePage = ({ user }) => {
+
+
+interface IArticlePage {
+  className: string, 
+  user: any,
+  id: string,
+  selectedPost: 
+}
+
+const ArticlePage: React.FC<IArticlePage> = () => {
   const { id } = useParams();
   const selectedPost = data.find((post) => {
     return post.id === Number(id);

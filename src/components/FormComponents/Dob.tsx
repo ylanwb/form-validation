@@ -1,5 +1,13 @@
 import React from "react";
-export const Dob = (props) => {
+
+interface IDob {
+  name: string,
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  placeholder: string,
+  ref: any,
+}
+
+export const Dob: React.FC<IDob> = (props) => {
   const { name, handleChange } = props;
   return (
     <input

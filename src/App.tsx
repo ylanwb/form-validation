@@ -5,7 +5,7 @@ import "./App.css";
 import SignInForm from "./pages/SignInPage/Sign-In";
 import SignUpForm from "./pages/SignUpPage/Sign-Up";
 import SignUpSuccess from "./pages/SignUpPage/SignUpSucess/SignUpSuccessPage";
-import { auth } from "./firebase";
+// import { auth } from "./firebase";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import ArticlePage from "./pages/ArticlePage/ArticlePage";
@@ -13,14 +13,17 @@ import UsersPage from "./pages/UsersPage/UsersPage";
 import PostsPage from "./pages/PostsPage/PostsPage";
 import axios from "axios";
 
-function App() {
-  const [user, setUser] = useState();
 
-  if (auth.onAuthStateChanged) {
-    auth.onAuthStateChanged((user) => {
-      setUser(user);
-    });
-  }
+
+
+function App() {
+  const [user, setUser] = useState<boolean>();
+
+  // if (auth.onAuthStateChanged) {
+  //   auth.onAuthStateChanged((user) => {
+  //     setUser(user);
+  //   });
+  // }
 
   return (
     <div>
