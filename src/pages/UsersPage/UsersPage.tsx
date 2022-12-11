@@ -29,15 +29,15 @@ const customStyles = {
 const UsersPage = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [valueOfSearchbar, setValueOfSearchbar] = useState("");
+  const [valueOfSearchbar, setValueOfSearchbar] = useState<string>("");
 
-  const [loading, setLoading] = useState();
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [loading, setLoading] = useState<boolean>();
+  const [modalIsOpen, setIsOpen] = React.useState<boolean>(false);
   const [selectedPost, setSelectedPost] = useState();
-  const [buttonType, setButtonType] = useState();
-  const [deleteSuccess, setDeleteSuccess] = useState(false);
-  const [updateSuccess, setUpdateSuccess] = useState(false);
-  const [createSuccess, setCreateSuccess] = useState(false);
+  const [buttonType, setButtonType] = useState<string>();
+  const [deleteSuccess, setDeleteSuccess] = useState<boolean>(false);
+  const [updateSuccess, setUpdateSuccess] = useState<boolean>(false);
+  const [createSuccess, setCreateSuccess] = useState<boolean>(false);
 
   function openModal() {
     setIsOpen(true);
@@ -46,8 +46,8 @@ const UsersPage = () => {
   function closeModal() {
     setIsOpen(false);
   }
-  const [selectedDropDown, setSelectedDropDown] = useState();
-  const toggleDropdown = (e, post) => {
+  const [selectedDropDown, setSelectedDropDown] = useState<any>();
+  const toggleDropdown = (e: React.MouseEvent, post: any ) => {
     // setOpen(!isOpen);
     if (selectedDropDown === "") {
       setSelectedDropDown(post);
@@ -57,19 +57,19 @@ const UsersPage = () => {
     e.preventDefault();
     console.log("clicked");
   };
-  const handleDeleteButton = (e, post) => {
+  const handleDeleteButton = (e: React.MouseEvent, post: any) => {
     e.preventDefault();
     setSelectedPost(post);
     openModal();
     setButtonType("delete");
   };
-  const handleUpdateButton = (e, post) => {
+  const handleUpdateButton = (e: React.MouseEvent, post: any) => {
     e.preventDefault();
     setSelectedPost(post);
     openModal();
     setButtonType("update");
   };
-  const handleCreateButton = (e, post) => {
+  const handleCreateButton = (e: React.MouseEvent) => {
     e.preventDefault();
     openModal();
     setButtonType("create");
@@ -95,10 +95,10 @@ const UsersPage = () => {
     filtered(valueOfSearchbar);
   }, [valueOfSearchbar]);
 
-  const filtered = (e) => {
+  const filtered = (e: any) => {
     const filtered =
       data &&
-      data.filter((item) => {
+      data.filter((item: any) => {
         const dataItems =
           item.title + " " + item.firstName + " " + item.lastName;
         const filteredItem = dataItems.toLowerCase().includes(e.toLowerCase());
@@ -109,7 +109,7 @@ const UsersPage = () => {
   return (
     <>
       <div className="usersPageMainContainer">
-        <Header />
+        <Header user={user} isWhiteBackground={true} />
         <div className="contentHeaderContainer">
           <h1>Users</h1>
         </div>
@@ -142,7 +142,7 @@ const UsersPage = () => {
             {!loading &&
               filteredData &&
               filteredData.length > 0 &&
-              filteredData.map((user) => {
+              filteredData.map((user: any) => {
                 return (
                   <div
                     className="userDataCardContainer"

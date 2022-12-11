@@ -1,6 +1,10 @@
 import * as React from "react";
 
-export const GrayArrow = (props) => {
+interface IGrayArrow {
+
+}
+
+export const GrayArrow: React.FC<IGrayArrow> = (props) => {
   return (
     <svg
       width={26}

@@ -1,12 +1,13 @@
 import "./BlogPage.css";
-import { Footer } from "../../components/Footer/Footer";
-import { Header } from "../../components/Header/Header";
-import { GrayArrowV2 } from "../../components/Icons/GrayArrowV2";
-import { Navigate } from "react-router";
-import { useNavigate } from "react-router-dom";
-import { data } from "../../data";
+const React = require("react")
+const { Footer } = require("../../components/Footer/Footer");
+const { Header } = require("../../components/Header/Header");
+const { GrayArrowV2 } = require("../../components/Icons/GrayArrowV2");
+const { Navigate } = require("react-router");
+const { useNavigate } = require("react-router-dom");
+const { data } = require("../../data");
 
-const BlogCard = (props) => {
+const BlogCard = (props: any) => {
   const { title, date, image, id, subText, name, blogImg, handleClickArticle } = props;
   return (
     <div
@@ -40,10 +41,10 @@ const BlogCard = (props) => {
   );
 };
 
-const BlogPage = ({ user }) => {
+const BlogPage = ({}) => {
   let navigate = useNavigate();
 
-  const handleClickArticle = (id) => {
+  const handleClickArticle = (id: any) => {
     navigate(`/blog/${id}`);
   };
   return (
@@ -58,7 +59,7 @@ const BlogPage = ({ user }) => {
         </div>
       </div>
       <div className="blogCardContainer">
-        {data.map((blog) => {
+        {data.map((blog: any) => {
           return <BlogCard {...blog} handleClickArticle={handleClickArticle} />;
         })}
       </div>

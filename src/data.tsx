@@ -1,3 +1,4 @@
+import React from "react";
 export const data = [
   {
     title: "The Emotional Toll of Being in UX",

@@ -1,12 +1,17 @@
 import React from "react";
-export const Button = (props) => {
+
+interface IButton {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+export const Button: React.FC<IButton> = (props) => {
   const { onClick } = props;
   return (
     <button
       className="button"
       onClick={(e) => {
         e.preventDefault();
-        onClick();
+        onClick(e)
       }}
     >
       Submit

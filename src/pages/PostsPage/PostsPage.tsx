@@ -36,14 +36,14 @@ const PostsPage = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [valueOfSearchbar, setValueOfSearchbar] = useState("");
 
-  const [loading, setLoading] = useState();
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [loading, setLoading] = useState<boolean>();
+  const [modalIsOpen, setIsOpen] = React.useState<boolean>(false);
   const [selectedPost, setSelectedPost] = useState();
-  const [buttonType, setButtonType] = useState();
-  const [deleteSuccess, setDeleteSuccess] = useState(false);
-  const [updateSuccess, setUpdateSuccess] = useState(false);
-  const [createSuccess, setCreateSuccess] = useState(false);
-  const [selectedDropDown, setSelectedDropDown] = useState();
+  const [buttonType, setButtonType] = useState<string>();
+  const [deleteSuccess, setDeleteSuccess] = useState<boolean>(false);
+  const [updateSuccess, setUpdateSuccess] = useState<boolean>(false);
+  const [createSuccess, setCreateSuccess] = useState<boolean>(false);
+  const [selectedDropDown, setSelectedDropDown] = useState<string>();
 
   function openModal() {
     setIsOpen(true);
@@ -54,7 +54,7 @@ const PostsPage = () => {
   }
 
   // const [isOpen, setOpen] = useState(false);
-  const toggleDropdown = (e, post) => {
+  const toggleDropdown = (e: React.MouseEvent, post: any) => {
     // setOpen(!isOpen);
     if (selectedDropDown === "") {
       setSelectedDropDown(post);
@@ -65,19 +65,19 @@ const PostsPage = () => {
     console.log("clicked");
   };
 
-  const handleDeleteButton = (e, post) => {
+  const handleDeleteButton = (e: React.MouseEvent, post: any) => {
     e.preventDefault();
     setSelectedPost(post);
     openModal();
     setButtonType("delete");
   };
-  const handleUpdateButton = (e, post) => {
+  const handleUpdateButton = (e: React.MouseEvent, post: any) => {
     e.preventDefault();
     setSelectedPost(post);
     openModal();
     setButtonType("update");
   };
-  const handleCreateButton = (e, post) => {
+  const handleCreateButton = (e: React.MouseEvent) => {
     e.preventDefault();
     openModal();
     setButtonType("create");
@@ -103,10 +103,10 @@ const PostsPage = () => {
     filtered(valueOfSearchbar);
   }, [valueOfSearchbar]);
 
-  const filtered = (e) => {
+  const filtered = (e: any) => {
     const filtered =
-    data &&
-    data.filter((item) => {
+      data &&
+      data.filter((item: any) => {
         const dataItems =
           item.owner.title +
           " " +
@@ -154,7 +154,7 @@ const PostsPage = () => {
             {!loading &&
               filteredData &&
               filteredData.length > 0 &&
-              filteredData.map((post) => {
+              filteredData.map((post: any) => {
                 // console.log(post);
                 return (
                   // id, image, likes, owner, publishDate, tags, text

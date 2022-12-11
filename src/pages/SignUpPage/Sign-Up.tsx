@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import * as yup from "yup";
-import {
+const {
   Password,
   Name,
   Email,
   Button,
   Age,
   Dob,
-} from "../../components/FormComponents";
-import { auth } from "../../firebase";
+} = require("../../components/FormComponents");
+const { auth } = require("../../firebase");
 import { ValidationSchema } from "./Sign-Up-Form-Validation";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+const { db } = require("../../firebase");
 import SignUpSuccess from "./SignUpSucess/SignUpSuccessPage";
 import "./Sign-Up.css";
 import { useNavigate } from "react-router-dom";
@@ -28,7 +28,7 @@ const initialValues = {
 
 const SignUpForm = () => {
   const navigate = useNavigate();
-  const successfulNavigation = (e) => {
+  const successfulNavigation = () => {
     navigate("/successful")
   }
   const [inputValues, setInputValues] = useState(initialValues);
@@ -36,16 +36,16 @@ const SignUpForm = () => {
     ...initialValues,
     required: "",
   });
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     yup
       .reach(ValidationSchema, name)
       .validate(value)
-      .then((valid) => {
+      .then((valid: any) => {
         setInputValues({ ...inputValues, [name]: value });
         setFormErrors({ ...formErrors, [name]: "" });
       })
-      .catch((err) => {
+      .catch((err: { message: any; }) => {
         setFormErrors({ ...formErrors, [name]: err.message });
       });
   };
@@ -95,31 +95,31 @@ const SignUpForm = () => {
 
   return (
     <div className="signUpMainContainer">
-        <div className="signUpContentContainer">
-          <h1>Sign up</h1>
-          <Name name="name" handleChange={handleChange} />
-          <Email name="email" handleChange={handleChange} />
-          <Age name="age" handleChange={handleChange} />
-          <Dob name="dob" handleChange={handleChange} />
-          <Password
-            name="password"
-            handleChange={handleChange}
-            placeholder={"Password"}
-          />
-          <Password
-            name="confirmPassword"
-            handleChange={handleChange}
-            placeholder={"Confirm password"}
-          />
-          <span style={{ color: "red" }}>{formErrors.name}</span>
-          <span style={{ color: "red" }}>{formErrors.email}</span>
-          <span style={{ color: "red" }}>{formErrors.age}</span>
-          <span style={{ color: "red" }}>{formErrors.dob}</span>
-          <span style={{ color: "red" }}>{formErrors.password}</span>
-          <span style={{ color: "red" }}>{formErrors.confirmPassword}</span>
-          <span style={{ color: "red" }}>{formErrors.required}</span>
-          <Button onClick={handleSubmit} />
-        </div>
+      <div className="signUpContentContainer">
+        <h1>Sign up</h1>
+        <Name name="name" handleChange={handleChange} />
+        <Email name="email" handleChange={handleChange} />
+        <Age name="age" handleChange={handleChange} />
+        <Dob name="dob" handleChange={handleChange} />
+        <Password
+          name="password"
+          handleChange={handleChange}
+          placeholder={"Password"}
+        />
+        <Password
+          name="confirmPassword"
+          handleChange={handleChange}
+          placeholder={"Confirm password"}
+        />
+        <span style={{ color: "red" }}>{formErrors.name}</span>
+        <span style={{ color: "red" }}>{formErrors.email}</span>
+        <span style={{ color: "red" }}>{formErrors.age}</span>
+        <span style={{ color: "red" }}>{formErrors.dob}</span>
+        <span style={{ color: "red" }}>{formErrors.password}</span>
+        <span style={{ color: "red" }}>{formErrors.confirmPassword}</span>
+        <span style={{ color: "red" }}>{formErrors.required}</span>
+        <Button onClick={handleSubmit} />
+      </div>
     </div>
   );
 };

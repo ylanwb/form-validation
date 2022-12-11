@@ -9,6 +9,7 @@ import { UsersDropdown } from "../../FormComponents";
 
 const titleDropdown = ["mr", "mr", "mrs", "miss", "dr"];
 
+
 const createData = async (data, dataType) => {
   console.log(data, dataType);
   await axios.post(`https://dummyapi.io/data/v1/${dataType}/create`, data, {
@@ -33,15 +34,15 @@ export const CreateModal = ({ closeModal, setCreateSuccess, dataType }) => {
   const [newPost, setNewPost] = useState(post);
   const [newUser, setNewUser] = useState(user);
 
-  const [selectedUser, setSelectedUser] = React.useState("");
+  const [selectedUser, setSelectedUser] = React.useState<string>("");
 
   const [title, setTitle] = React.useState("");
 
-  const handleTitle = (event) => {
+  const handleTitle = (event:any) => {
     setTitle(event.target.value);
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e:any) => {
     const { name, value } = e.target;
     if (dataType === "post") {
       setNewPost({ ...newPost, [name]: value, owner: selectedUser.id.id  });

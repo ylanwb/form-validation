@@ -1,6 +1,10 @@
 import * as React from "react";
 
-export const Facebook = (props) => {
+interface IFacebook {
+
+}
+
+export const Facebook: React.FC<IFacebook> = (props) => {
   return (
     <svg
       width={16}

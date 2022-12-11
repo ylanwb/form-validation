@@ -2,7 +2,6 @@ import React from "react";
 
 interface IPassword {
   name: string,
-  ref: any,
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
   placeholder: string
 }

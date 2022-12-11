@@ -1,6 +1,10 @@
 import * as React from "react";
 
-export const Twitter = (props) => {
+interface ITwitter {
+
+}
+
+export const Twitter: React.FC<ITwitter> = (props) => {
   return (
     <svg
     width={16}

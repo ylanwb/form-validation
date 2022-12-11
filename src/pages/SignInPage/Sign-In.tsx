@@ -1,5 +1,5 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import * as yup from "yup";
 import { auth } from "../../firebase";
 import LandingPage from "../LandingPage/LandingPage";
@@ -20,22 +20,22 @@ const SignInForm = () => {
   };
   const [inputValues, setInputValues] = useState(initialValues);
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState<any>();
   const [formErrors, setFormErrors] = useState({
     ...initialValues,
     required: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     yup
       .reach(ValidationSchema, name)
       .validate(value)
-      .then((valid) => {
+      .then((valid: any) => {
         setInputValues({ ...inputValues, [name]: value });
         setFormErrors({ ...formErrors, [name]: "" });
       })
-      .catch((err) => {
+      .catch((err: { message: any; }) => {
         setFormErrors({ ...formErrors, [name]: err.message });
       });
   };
@@ -60,7 +60,7 @@ const SignInForm = () => {
   };
   return (
     <div className="signInMainContainer">
-      {isSignedIn && <LandingPage email={user.email} />}
+      {isSignedIn && <LandingPage email={user?.email} />}
       {!isSignedIn && (
         <div className="signInContainer">
           <h1>Sign in</h1>

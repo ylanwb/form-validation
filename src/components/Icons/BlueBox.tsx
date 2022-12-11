@@ -1,6 +1,10 @@
 import * as React from "react";
 
-export const Bluebox = (props) => {
+interface IBluebox {
+
+}
+
+export const Bluebox: React.FC<IBluebox> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

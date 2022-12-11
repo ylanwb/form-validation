@@ -1,6 +1,10 @@
 import * as React from "react";
 
-export const CheckIcon = (props) => (
+interface ICheckIcon {
+
+}
+
+export const CheckIcon: React.FC<ICheckIcon> = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={48}

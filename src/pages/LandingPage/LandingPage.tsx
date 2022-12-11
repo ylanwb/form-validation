@@ -1,3 +1,4 @@
+import React from "react";
 import { useRef, useState } from "react";
 import "./LandingPage.css";
 import {
@@ -9,10 +10,10 @@ import {
   Header,
 } from "../../components/index";
 
-const LandingPage = ({ user }) => {
+const LandingPage = ({}) => {
   const elementRef = useRef(null);
   const [arrowDisable, setArrowDisable] = useState(true);
-  const handleHorizantalScroll = (element, speed, distance, step) => {
+  const handleHorizantalScroll = (speed: any, distance: any, step: any) => {
     let scrollAmount = 0;
     const reviewScroll = document.getElementById("contentFiveBtm");
     const slideTimer = setInterval(() => {
@@ -366,7 +367,7 @@ const LandingPage = ({ user }) => {
             id="slideLeft"
             className="grayArrow"
             onClick={() => {
-              handleHorizantalScroll(elementRef.current, 20, 300, -20);
+              handleHorizantalScroll(elementRef.current, 300, -20);
             }}
             disabled={arrowDisable}
           />
@@ -374,7 +375,7 @@ const LandingPage = ({ user }) => {
             fill="#4DA0FD"
             id="slideRight"
             onClick={() => {
-              handleHorizantalScroll(elementRef.current, 20, 300, 20);
+              handleHorizantalScroll(elementRef.current, 300, 20);
             }}
           />
         </div>

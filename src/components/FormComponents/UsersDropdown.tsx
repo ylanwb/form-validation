@@ -4,11 +4,15 @@ import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
-export const UsersDropdown = ({ selectedUser, setSelectedUser }) => {
-  const [loading, setLoading] = useState();
+interface IUsersDropdown {
+
+}
+
+export const UsersDropdown: React.FC<IUsersDropdown> = ( selectedUser, setSelectedUser ) => {
+  const [loading, setLoading] = useState<boolean>();
   const [data, setData] = useState([]);
 
-  const handleUser = (event) => {
+  const handleUser = (event:any) => {
     setSelectedUser(event.target.value);
   };
 
@@ -40,7 +44,7 @@ export const UsersDropdown = ({ selectedUser, setSelectedUser }) => {
           defaultValue=""
           displayEmpty
         >
-          {data.map((id) => {
+          {data.map((id:any) => {
             return <MenuItem value={id}>{id.firstName}</MenuItem>;
           })}
         </Select>

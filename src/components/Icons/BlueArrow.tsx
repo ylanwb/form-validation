@@ -1,6 +1,10 @@
 import * as React from "react";
 
-export const BlueArrow = (props) => {
+interface IBlueArrow {
+
+}
+
+export const BlueArrow: React.FC<IBlueArrow> = (props) => {
   return (
     <svg
       width={16}

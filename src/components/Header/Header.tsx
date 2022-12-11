@@ -1,11 +1,15 @@
+import "./Header.css";
 import { Bluebox } from "../index";
-import { React, useState, useEffect } from "react";
+import React,{ useState, useEffect } from "react";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import "./Header.css";
 import { Spin as Hamburger } from "hamburger-react";
 
-export const Header = ({ user, isWhiteBackground }) => {
+interface IHeader {
+
+}
+
+export const Header: React.FC<IHeader> = ( user, isWhiteBackground ) => {
   const navigate = useNavigate();
   const handleLogoutButton = () => {
     auth.signOut();
