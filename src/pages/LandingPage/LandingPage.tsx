@@ -10,12 +10,16 @@ import {
   Header,
 } from "../../components/index";
 
-const LandingPage = ({}) => {
+interface ILandingPage {
+  user: boolean | undefined;
+}
+
+export const LandingPage: React.FC<ILandingPage> = ({user}) => {
   const elementRef = useRef(null);
   const [arrowDisable, setArrowDisable] = useState(true);
   const handleHorizantalScroll = (speed: any, distance: any, step: any) => {
     let scrollAmount = 0;
-    const reviewScroll = document.getElementById("contentFiveBtm");
+    const reviewScroll = document.getElementById("contentFiveBtm") as HTMLElement;
     const slideTimer = setInterval(() => {
       reviewScroll.scrollLeft += step;
       scrollAmount += Math.abs(step);
@@ -384,5 +388,3 @@ const LandingPage = ({}) => {
     </div>
   );
 };
-
-export default LandingPage;

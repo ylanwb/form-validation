@@ -1,11 +1,11 @@
+import React from "react";
 import "./BlogPage.css";
-const React = require("react")
-const { Footer } = require("../../components/Footer/Footer");
-const { Header } = require("../../components/Header/Header");
-const { GrayArrowV2 } = require("../../components/Icons/GrayArrowV2");
-const { Navigate } = require("react-router");
-const { useNavigate } = require("react-router-dom");
-const { data } = require("../../data");
+import { Footer } from "../../components/Footer/Footer";
+import { Header } from "../../components/Header/Header";
+import { GrayArrowV2 } from "../../components/Icons/GrayArrowV2";
+import { Navigate } from "react-router";
+import { useNavigate } from "react-router-dom";
+import { data } from "../../data";
 
 const BlogCard = (props: any) => {
   const { title, date, image, id, subText, name, blogImg, handleClickArticle } = props;
@@ -41,7 +41,11 @@ const BlogCard = (props: any) => {
   );
 };
 
-const BlogPage = ({}) => {
+interface IBlogPage {
+  user: any
+}
+
+const BlogPage: React.FC<IBlogPage> = ({}) => {
   let navigate = useNavigate();
 
   const handleClickArticle = (id: any) => {

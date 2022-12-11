@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignInForm from "./pages/SignInPage/Sign-In";
 import SignUpForm from "./pages/SignUpPage/Sign-Up";
 import SignUpSuccess from "./pages/SignUpPage/SignUpSucess/SignUpSuccessPage";
-import LandingPage from "./pages/LandingPage/LandingPage";
+import { LandingPage } from "./pages/LandingPage/LandingPage";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import ArticlePage from "./pages/ArticlePage/ArticlePage";
 import UsersPage from "./pages/UsersPage/UsersPage";
@@ -16,7 +16,7 @@ import axios from "axios";
 
 
 function App() {
-  const [user, setUser] = React.useState<object | null>(null);
+  const [user, setUser] = React.useState<| null>(null);
   // if (auth.onAuthStateChanged) {
   //   auth.onAuthStateChanged((user) => {
   //     setUser(user);

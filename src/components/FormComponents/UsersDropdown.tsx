@@ -5,7 +5,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
 interface IUsersDropdown {
-
+  setSelectedUser: any
+  selectedUser: any
 }
 
 export const UsersDropdown: React.FC<IUsersDropdown> = ( selectedUser, setSelectedUser ) => {

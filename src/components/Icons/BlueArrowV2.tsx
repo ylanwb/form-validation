@@ -1,7 +1,9 @@
 import * as React from "react";
 
 interface IBlueArrowV2 {
-
+fill?: string
+id?: string
+onClick?: React.MouseEventHandler
 }
 
 export const BlueArrowV2: React.FC<IBlueArrowV2> = (props) => {

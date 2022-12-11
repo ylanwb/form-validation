@@ -9,8 +9,10 @@ import { UsersDropdown } from "../../FormComponents";
 
 const titleDropdown = ["mr", "mr", "mrs", "miss", "dr"];
 
+interface ICreateData {
+}
 
-const createData = async (data, dataType) => {
+const createData = async (data: string, dataType: string) => {
   console.log(data, dataType);
   await axios.post(`https://dummyapi.io/data/v1/${dataType}/create`, data, {
     headers: { "app-id": "634752bc7580f70e4f699960" },
@@ -30,29 +32,36 @@ const post = {
   image: "",
 };
 
-export const CreateModal = ({ closeModal, setCreateSuccess, dataType }) => {
-  const [newPost, setNewPost] = useState(post);
-  const [newUser, setNewUser] = useState(user);
+interface ICreateModal {
+  selectedPost: any
+  closeModal: any
+  setCreateSuccess: any
+  dataType: string
+}
 
-  const [selectedUser, setSelectedUser] = React.useState<string>("");
+export const CreateModal = (closeModal: , setCreateSuccess, dataType) => {
+  const [newPost, setNewPost] = useState<any>(post);
+  const [newUser, setNewUser] = useState<any>(user);
+
+  const [selectedUser, setSelectedUser] = React.useState<any>("");
 
   const [title, setTitle] = React.useState("");
 
-  const handleTitle = (event:any) => {
+  const handleTitle = (event: any) => {
     setTitle(event.target.value);
   };
 
-  const handleInputChange = (e:any) => {
+  const handleInputChange = (e: any) => {
     const { name, value } = e.target;
     if (dataType === "post") {
-      setNewPost({ ...newPost, [name]: value, owner: selectedUser.id.id  });
+      setNewPost({ ...newPost, [name]: value, owner: selectedUser.id.id });
       console.log(selectedUser.id)
     } else {
       setNewUser({ ...newUser, [name]: value, title: title });
     }
   };
 
-  const handleCreate = async (e) => {
+  const handleCreate = async (e:any) => {
     e.preventDefault();
     console.log(newUser);
     if (dataType === "post") {

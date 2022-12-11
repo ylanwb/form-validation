@@ -26,7 +26,11 @@ const initialValues = {
   confirmPassword: "",
 };
 
-const SignUpForm = () => {
+interface ISignUpForm {
+  setUser: any
+}
+
+const SignUpForm: React.FC<ISignUpForm> = () => {
   const navigate = useNavigate();
   const successfulNavigation = () => {
     navigate("/successful")

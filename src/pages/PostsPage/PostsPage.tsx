@@ -1,7 +1,6 @@
 import "./PostsPage.css";
 import React, { useEffect } from "react";
 import axios from "axios";
-import { format } from "date-fns";
 import moment from "moment";
 import Modal from "react-modal";
 import { useState } from "react";
@@ -15,8 +14,6 @@ import {
 } from "../../components/index";
 
 import Alert from "@mui/material/Alert";
-import { id } from "date-fns/locale";
-import { data } from "../../data";
 
 const customStyles = {
   content: {

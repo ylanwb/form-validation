@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { Spin as Hamburger } from "hamburger-react";
 
 interface IHeader {
-
+  user?: any
+  isWhiteBackground?: boolean
 }
 
 export const Header: React.FC<IHeader> = ( user, isWhiteBackground ) => {

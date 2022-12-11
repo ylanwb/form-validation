@@ -1,7 +1,11 @@
 import * as React from "react";
 
 interface IGrayArrow {
-
+fill?: string
+id?:string
+className?:string
+onClick?:any
+disabled?: any
 }
 
 export const GrayArrow: React.FC<IGrayArrow> = (props) => {

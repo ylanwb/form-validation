@@ -1,10 +1,11 @@
 import * as React from "react";
 
 interface IBluebox {
-
+id: string
 }
 
 export const Bluebox: React.FC<IBluebox> = (props) => {
+  // const { id } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
