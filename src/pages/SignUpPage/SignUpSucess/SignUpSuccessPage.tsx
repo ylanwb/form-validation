@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-const { CheckIcon } = require("../../../components/index");
+import { CheckIcon } from "../../../components/index";
 import "./SignUpSucessPage.css";
 
-const SignUpSuccess = () => {
+export const SignUpSuccess = () => {
   let navigate = useNavigate();
   const handleContinueButton = () => {
     navigate("/");
@@ -16,9 +16,7 @@ const SignUpSuccess = () => {
           <h3 id="status">Success</h3>
         </div>
         <div id="lower-side">
-          <p id="message">
-            Your account has been successfully created.
-          </p>
+          <p id="message">Your account has been successfully created.</p>
           <button onClick={handleContinueButton} id="contBtn">
             Continue
           </button>
@@ -27,5 +25,3 @@ const SignUpSuccess = () => {
     </div>
   );
 };
-
-export default SignUpSuccess;

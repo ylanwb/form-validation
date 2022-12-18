@@ -2,31 +2,31 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import * as yup from "yup";
 import { auth } from "../../firebase";
-import LandingPage from "../LandingPage/LandingPage";
+import { LandingPage } from "../LandingPage/LandingPage";
 import { Password, Button, Email } from "../../components/FormComponents";
 import { ValidationSchema } from "./Sign-In-Form-Validation";
 import { useNavigate } from "react-router-dom";
-import "./Sign-In.css"
+import "./Sign-In.css";
 
 const initialValues = {
   email: "",
   password: "",
 };
 
-const SignInForm = () => {
-  let navigate = useNavigate()
+export const SignInForm = () => {
+  let navigate = useNavigate();
   const handleSubmitButtonTwo = () => {
-    navigate("/sign-Up")
+    navigate("/sign-Up");
   };
   const [inputValues, setInputValues] = useState(initialValues);
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [user, setUser] = useState<any>();
-  const [formErrors, setFormErrors] = useState({
+  const [formErrors, setFormErrors] = useState<any>({
     ...initialValues,
     required: "",
   });
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     yup
       .reach(ValidationSchema, name)
@@ -35,7 +35,7 @@ const SignInForm = () => {
         setInputValues({ ...inputValues, [name]: value });
         setFormErrors({ ...formErrors, [name]: "" });
       })
-      .catch((err: { message: any; }) => {
+      .catch((err: { message: any }) => {
         setFormErrors({ ...formErrors, [name]: err.message });
       });
   };
@@ -50,7 +50,6 @@ const SignInForm = () => {
       )
         .then((response) => {
           setUser(response.user);
-          console.log("went to home")
         })
         .catch((err) => {
           console.log(err);
@@ -76,8 +75,7 @@ const SignInForm = () => {
           <span style={{ color: "red" }}>{formErrors.required}</span>
           <div className="loginSignUpLink">
             <span>
-              Don't have an account?
-              {" "}
+              Don't have an account?{" "}
               <button onClick={handleSubmitButtonTwo} id="signUpLink">
                 Sign Up.
               </button>
@@ -88,5 +86,3 @@ const SignInForm = () => {
     </div>
   );
 };
-
-export default SignInForm;

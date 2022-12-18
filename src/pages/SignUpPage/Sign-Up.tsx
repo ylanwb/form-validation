@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import * as yup from "yup";
+import { ValidationSchema } from "./Sign-Up-Form-Validation";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, doc, setDoc } from "firebase/firestore";
+import "./Sign-Up.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 const {
   Password,
   Name,
@@ -9,13 +15,7 @@ const {
   Dob,
 } = require("../../components/FormComponents");
 const { auth } = require("../../firebase");
-import { ValidationSchema } from "./Sign-Up-Form-Validation";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, doc, setDoc } from "firebase/firestore";
 const { db } = require("../../firebase");
-import SignUpSuccess from "./SignUpSucess/SignUpSuccessPage";
-import "./Sign-Up.css";
-import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   name: "",
@@ -27,20 +27,20 @@ const initialValues = {
 };
 
 interface ISignUpForm {
-  setUser: any
+  setUser: any;
 }
 
 const SignUpForm: React.FC<ISignUpForm> = () => {
   const navigate = useNavigate();
   const successfulNavigation = () => {
-    navigate("/successful")
-  }
+    navigate("/successful");
+  };
   const [inputValues, setInputValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({
     ...initialValues,
     required: "",
   });
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     yup
       .reach(ValidationSchema, name)
@@ -49,52 +49,63 @@ const SignUpForm: React.FC<ISignUpForm> = () => {
         setInputValues({ ...inputValues, [name]: value });
         setFormErrors({ ...formErrors, [name]: "" });
       })
-      .catch((err: { message: any; }) => {
+      .catch((err: { message: any }) => {
         setFormErrors({ ...formErrors, [name]: err.message });
       });
   };
 
   const handleSubmit = async () => {
-    if (inputValues.password !== inputValues.confirmPassword) {
-      setFormErrors({ ...formErrors, required: "Password needs to match" });
-    }
-    if (
-      inputValues.name === "" ||
-      inputValues.age === "" ||
-      inputValues.email === "" ||
-      inputValues.dob === "" ||
-      inputValues.password === "" ||
-      inputValues.confirmPassword === ""
-    ) {
-      setFormErrors({ ...formErrors, required: "All the inputs are required" });
-    } else if (
-      formErrors.name === "" ||
-      formErrors.age === "" ||
-      formErrors.email === "" ||
-      formErrors.dob === "" ||
-      formErrors.required === ""
-    ) {
-      setFormErrors({ ...formErrors, required: "" });
-      await createUserWithEmailAndPassword(
-        auth,
-        inputValues.email,
-        inputValues.password
+    await axios
+      .post(
+        "https://backend-start-qzt7e7j3b-zchi.vercel.app/sign-up",
+        {
+          firstName: "test",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       )
-        .then(async (response) => {
-          const user = response.user;
-          const userRef = doc(collection(db, "users"));
-          await setDoc(userRef, {
-            uid: user.uid,
-            email: user.email,
-          });
-          // here is success
-          successfulNavigation()
-        })
-        .catch((err) => {
-          setFormErrors({ ...formErrors, required: err.message });
-          console.log("Error")
-        });
-    }
+      .then(async (response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        setFormErrors({ ...formErrors, required: err.message });
+        console.log("Error");
+      });
+    // if (inputValues.password !== inputValues.confirmPassword) {
+    //   setFormErrors({ ...formErrors, required: "Password needs to match" });
+    // }
+    // if (
+    //   inputValues.name === "" ||
+    //   inputValues.age === "" ||
+    //   inputValues.email === "" ||
+    //   inputValues.dob === "" ||
+    //   inputValues.password === "" ||
+    //   inputValues.confirmPassword === ""
+    // ) {
+    //   setFormErrors({ ...formErrors, required: "All the inputs are required" });
+    // } else if (
+    //   formErrors.name === "" ||
+    //   formErrors.age === "" ||
+    //   formErrors.email === "" ||
+    //   formErrors.dob === "" ||
+    //   formErrors.required === ""
+    // ) {
+    //   setFormErrors({ ...formErrors, required: "" });
+    //   await axios
+    //     .post("https://backend-start-qzt7e7j3b-zchi.vercel.app/sign-up", {
+    //       firstName: "test",
+    //     })
+    //     .then(async (response) => {
+    //       console.log(response);
+    //     })
+    //     .catch((err) => {
+    //       setFormErrors({ ...formErrors, required: err.message });
+    //       console.log("Error");
+    //     });
+    // }
   };
 
   return (

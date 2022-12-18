@@ -1,22 +1,35 @@
 import axios from "axios";
 import React from "react";
+import { Post } from "@pages/PostsPage/PostsPage";
 import "./DeleteModal.css";
 
-const deletePost = async (id, dataType) => {
+const deletePost = async (id: string, dataType: string) => {
   await axios
     .delete(`https://dummyapi.io/data/v1/${dataType}/${id}`, {
       headers: { "app-id": "634752bc7580f70e4f699960" },
     })
     .then((response) => {
       console.log(response);
-      console.log(dataType)
+      console.log(dataType);
     })
     .catch((err) => console.log(err));
 };
-export const DeleteModal = ({ closeModal, selectedPost, setDeleteSuccess, dataType }) => {
-  const handleConfirmButton = async (e, post) => {
+
+interface deleteModalProps {
+  closeModal: () => void;
+  setDeleteSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+  dataType: string;
+  selectedPost: Post | undefined;
+}
+
+export const DeleteModal = (props: deleteModalProps) => {
+  const { dataType, selectedPost, closeModal, setDeleteSuccess } = props;
+  const handleConfirmButton = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string
+  ) => {
     e.preventDefault();
-    await deletePost(post.id, dataType)
+    await deletePost(id, dataType)
       .then((response) => {
         setDeleteSuccess(true);
         setTimeout(() => {
@@ -42,7 +55,7 @@ export const DeleteModal = ({ closeModal, selectedPost, setDeleteSuccess, dataTy
         <button onClick={() => closeModal()}>Cancel</button>
         <button
           onClick={(e) => {
-            handleConfirmButton(e, selectedPost);
+            selectedPost && handleConfirmButton(e, selectedPost.id);
           }}
         >
           Confirm

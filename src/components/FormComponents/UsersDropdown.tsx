@@ -5,15 +5,24 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
 interface IUsersDropdown {
-  setSelectedUser: any
-  selectedUser: any
+  setSelectedUser: any;
+  selectedUser: string;
 }
 
-export const UsersDropdown: React.FC<IUsersDropdown> = ( selectedUser, setSelectedUser ) => {
-  const [loading, setLoading] = useState<boolean>();
-  const [data, setData] = useState([]);
+type User = {
+  id: string;
+  title: string;
+  firstName: string;
+  lastName: string;
+  picture: string;
+};
 
-  const handleUser = (event:any) => {
+export const UsersDropdown: React.FC<IUsersDropdown> = (props) => {
+  const { setSelectedUser, selectedUser } = props;
+  const [loading, setLoading] = useState<boolean>();
+  const [data, setData] = useState<User[]>([]);
+
+  const handleUser = (event: any) => {
     setSelectedUser(event.target.value);
   };
 
@@ -45,8 +54,8 @@ export const UsersDropdown: React.FC<IUsersDropdown> = ( selectedUser, setSelect
           defaultValue=""
           displayEmpty
         >
-          {data.map((id:any) => {
-            return <MenuItem value={id}>{id.firstName}</MenuItem>;
+          {data.map((user) => {
+            return <MenuItem value={user.id}>{user.firstName}</MenuItem>;
           })}
         </Select>
       )}

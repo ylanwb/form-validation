@@ -47,7 +47,7 @@ const UsersPage = () => {
     setIsOpen(false);
   }
   const [selectedDropDown, setSelectedDropDown] = useState<any>();
-  const toggleDropdown = (e: React.MouseEvent, post: any ) => {
+  const toggleDropdown = (e: React.MouseEvent, post: any) => {
     // setOpen(!isOpen);
     if (selectedDropDown === "") {
       setSelectedDropDown(post);
@@ -109,7 +109,7 @@ const UsersPage = () => {
   return (
     <>
       <div className="usersPageMainContainer">
-        <Header user={user} isWhiteBackground={true} />
+        <Header isWhiteBackground={true} />
         <div className="contentHeaderContainer">
           <h1>Users</h1>
         </div>
@@ -216,7 +216,6 @@ const UsersPage = () => {
           )}
           {buttonType === "create" && (
             <CreateModal
-              selectedPost={selectedPost}
               closeModal={closeModal}
               setCreateSuccess={setCreateSuccess}
               dataType={"user"}

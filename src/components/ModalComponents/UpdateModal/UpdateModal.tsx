@@ -2,9 +2,9 @@ import React from "react";
 import { useState } from "react";
 import "./UpdateModal.css";
 import axios from "axios";
-import { data } from "../../../data";
+import { Post } from "@pages/PostsPage/PostsPage";
 
-const updatePost = async (post, dataType) => {
+const updatePost = async (post: Post, dataType: string) => {
   await axios
     .put(
       `https://dummyapi.io/data/v1/${dataType}/${post.id}`,
@@ -19,27 +19,41 @@ const updatePost = async (post, dataType) => {
     .catch((err) => console.log(err));
 };
 
-export const UpdateModal = ({
-  selectedPost,
-  closeModal,
-  setUpdateSuccess,
-  dataType,
-}) => {
-  const [updatedPostValues, setNewPost] = useState(selectedPost);
+type UpdateModalProps = {
+  closeModal: () => void;
+  selectedPost: Post | undefined;
+  setUpdateSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+  dataType: string;
+};
+
+export const UpdateModal = (props: UpdateModalProps) => {
+  const { closeModal, selectedPost, setUpdateSuccess, dataType } = props;
+  const [updatedPostValues, setNewPost] = useState<Post>({
+    id: "",
+    owner: {
+      firstName: "",
+      lastName: "",
+      title: "",
+    },
+    likes: 0,
+    tags: "",
+    text: "",
+  });
   const [updatedUserValues, setNewUser] = useState(selectedPost);
-  const [title, setTitle] = React.useState("");
   const [selectedUser, setSelectedUser] = useState("");
 
-  const handleDataChange = (e) => {
+  const handleDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { name, value } = e.target;
     if (dataType === "post") {
       setNewPost({ ...updatedPostValues, [name]: value });
     } else {
-      setNewUser({ ...updatedUserValues, [name]: value, title: title });
+      setNewUser({ ...updatedUserValues, [name]: value } as Post);
     }
   };
-  const handleConfirmButton = async (e) => {
+  const handleConfirmButton = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
     if (dataType === "post") {
       const postValues = {
@@ -47,7 +61,7 @@ export const UpdateModal = ({
         tags: updatedPostValues.tags.split(","),
         owner: selectedUser,
         likes: Number(updatedPostValues.likes),
-      };
+      } as unknown as Post;
       await updatePost(postValues, dataType)
         .then((response) => {
           setUpdateSuccess(true);
@@ -83,13 +97,13 @@ export const UpdateModal = ({
             <input
               name="title"
               placeholder="Title"
-              defaultValue={selectedPost?.title}
+              defaultValue={selectedPost?.owner.title}
               onChange={(e) => handleDataChange(e)}
             />
             <label>First Name</label>
             <input
               name="firstName"
-              defaultValue={selectedPost?.firstName}
+              defaultValue={selectedPost?.owner.firstName}
               placeholder="First Name"
               onChange={(e) => handleDataChange(e)}
             />
@@ -97,7 +111,7 @@ export const UpdateModal = ({
             <input
               name="lastName"
               placeholder="Last Name"
-              defaultValue={selectedPost?.lastName}
+              defaultValue={selectedPost?.owner.lastName}
               onChange={(e) => handleDataChange(e)}
             />
           </div>
@@ -114,7 +128,7 @@ export const UpdateModal = ({
             <label>Tags</label>
             <input
               name="tags"
-              defaultValue={[selectedPost?.tags]}
+              defaultValue={selectedPost?.tags || []}
               placeholder="Tags"
               onChange={(e) => handleDataChange(e)}
             />
@@ -132,7 +146,7 @@ export const UpdateModal = ({
         <button onClick={() => closeModal()}>Close</button>
         <button
           onClick={(e) => {
-            handleConfirmButton(e, selectedPost);
+            handleConfirmButton(e);
           }}
         >
           Update

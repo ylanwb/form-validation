@@ -11,15 +11,18 @@ import {
 } from "../../components/index";
 
 interface ILandingPage {
-  user: boolean | undefined;
+  user?: boolean | undefined;
+  email?: string;
 }
 
-export const LandingPage: React.FC<ILandingPage> = ({user}) => {
+export const LandingPage: React.FC<ILandingPage> = ({ user }) => {
   const elementRef = useRef(null);
   const [arrowDisable, setArrowDisable] = useState(true);
   const handleHorizantalScroll = (speed: any, distance: any, step: any) => {
     let scrollAmount = 0;
-    const reviewScroll = document.getElementById("contentFiveBtm") as HTMLElement;
+    const reviewScroll = document.getElementById(
+      "contentFiveBtm"
+    ) as HTMLElement;
     const slideTimer = setInterval(() => {
       reviewScroll.scrollLeft += step;
       scrollAmount += Math.abs(step);

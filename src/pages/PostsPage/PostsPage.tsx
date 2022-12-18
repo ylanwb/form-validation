@@ -27,6 +27,18 @@ const customStyles = {
   },
 };
 
+export type Post = {
+  id: string;
+  owner: {
+    firstName: string;
+    lastName: string;
+    title: string;
+  };
+  likes: number;
+  tags: string;
+  text: string;
+};
+
 const PostsPage = () => {
   const ref = React.createRef();
   const [data, setData] = useState([]);
@@ -35,7 +47,13 @@ const PostsPage = () => {
 
   const [loading, setLoading] = useState<boolean>();
   const [modalIsOpen, setIsOpen] = React.useState<boolean>(false);
-  const [selectedPost, setSelectedPost] = useState();
+  const [selectedPost, setSelectedPost] = useState<Post>({
+    id: "",
+    likes: 0,
+    text: "",
+    tags: "",
+    owner: { firstName: "", lastName: "", title: "" },
+  });
   const [buttonType, setButtonType] = useState<string>();
   const [deleteSuccess, setDeleteSuccess] = useState<boolean>(false);
   const [updateSuccess, setUpdateSuccess] = useState<boolean>(false);
@@ -266,7 +284,6 @@ const PostsPage = () => {
           )}
           {buttonType === "create" && (
             <CreateModal
-              selectedPost={selectedPost}
               closeModal={closeModal}
               setCreateSuccess={setCreateSuccess}
               dataType={"post"}

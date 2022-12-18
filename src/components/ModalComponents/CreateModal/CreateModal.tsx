@@ -4,13 +4,10 @@ import "./CreateModal.css";
 import axios from "axios";
 import { Notification } from "../../Notification";
 import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { UsersDropdown } from "../../FormComponents";
 
 const titleDropdown = ["mr", "mr", "mrs", "miss", "dr"];
-
-interface ICreateData {
-}
 
 const createData = async (data: string, dataType: string) => {
   console.log(data, dataType);
@@ -32,14 +29,14 @@ const post = {
   image: "",
 };
 
-interface ICreateModal {
-  selectedPost: any
-  closeModal: any
-  setCreateSuccess: any
-  dataType: string
+interface CreateModalProps {
+  closeModal: () => void;
+  setCreateSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+  dataType: string;
 }
 
-export const CreateModal = (closeModal: , setCreateSuccess, dataType) => {
+export const CreateModal = (props: CreateModalProps) => {
+  const { dataType, closeModal, setCreateSuccess } = props;
   const [newPost, setNewPost] = useState<any>(post);
   const [newUser, setNewUser] = useState<any>(user);
 
@@ -47,21 +44,21 @@ export const CreateModal = (closeModal: , setCreateSuccess, dataType) => {
 
   const [title, setTitle] = React.useState("");
 
-  const handleTitle = (event: any) => {
+  const handleTitle = (event: SelectChangeEvent<string>) => {
     setTitle(event.target.value);
   };
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     if (dataType === "post") {
       setNewPost({ ...newPost, [name]: value, owner: selectedUser.id.id });
-      console.log(selectedUser.id)
+      console.log(selectedUser.id);
     } else {
       setNewUser({ ...newUser, [name]: value, title: title });
     }
   };
 
-  const handleCreate = async (e:any) => {
+  const handleCreate = async (e: any) => {
     e.preventDefault();
     console.log(newUser);
     if (dataType === "post") {
