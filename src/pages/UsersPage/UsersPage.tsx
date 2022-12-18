@@ -109,7 +109,7 @@ const UsersPage = () => {
   return (
     <>
       <div className="usersPageMainContainer">
-        <Header isWhiteBackground={true} />
+        <Header isWhiteBackground={false} />
         <div className="contentHeaderContainer">
           <h1>Users</h1>
         </div>

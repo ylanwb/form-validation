@@ -7,6 +7,7 @@ import { Password, Button, Email } from "../../components/FormComponents";
 import { ValidationSchema } from "./Sign-In-Form-Validation";
 import { useNavigate } from "react-router-dom";
 import "./Sign-In.css";
+import axios from "axios";
 
 const initialValues = {
   email: "",
@@ -43,18 +44,21 @@ export const SignInForm = () => {
     if (inputValues.email === "" || inputValues.password === "") {
       setFormErrors({ ...formErrors, required: "Required" });
     } else {
-      await signInWithEmailAndPassword(
-        auth,
-        inputValues.email,
-        inputValues.password
-      )
+      await axios
+        .post(
+          "http://localhost:1212/login",
+          {
+            email: inputValues.email,
+            password: inputValues.password,
+          },
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        )
         .then((response) => {
-          setUser(response.user);
+          console.log(response);
         })
-        .catch((err) => {
-          console.log(err);
-          setFormErrors({ ...formErrors, required: err.message });
-        });
+        .catch((err) => console.log(err));
     }
   };
   return (

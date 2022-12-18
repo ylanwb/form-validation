@@ -33,13 +33,12 @@ function App() {
               <Route path="/posts" element={<PostsPage />} />
             </Routes>
             <Routes>
-              <Route path="/" element={<SignInForm />} />
+              <Route path="/sign-in" element={<SignInForm />} />
               <Route
                 path="/sign-up"
                 element={<SignUpForm setUser={setUser} />}
               />
             </Routes>
-            4
           </BrowserRouter>
         </div>
       </div>

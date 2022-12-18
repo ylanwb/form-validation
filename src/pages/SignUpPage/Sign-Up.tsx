@@ -57,9 +57,12 @@ const SignUpForm: React.FC<ISignUpForm> = () => {
   const handleSubmit = async () => {
     await axios
       .post(
-        "https://backend-start-qzt7e7j3b-zchi.vercel.app/sign-up",
+        "http://localhost:1212/signUp",
         {
-          firstName: "test",
+          firstName: inputValues.name,
+          // lastName: inputValues.lastName,
+          email: inputValues.email,
+          password: inputValues.password,
         },
         {
           headers: {
