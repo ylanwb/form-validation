@@ -1,10 +1,8 @@
 import React from "react";
 
 interface IName {
-  name: string,
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-  ref: any,
-
+  name: string;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Name: React.FC<IName> = (props) => {

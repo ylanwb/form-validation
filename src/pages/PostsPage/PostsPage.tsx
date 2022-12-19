@@ -1,9 +1,8 @@
 import "./PostsPage.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
 import Modal from "react-modal";
-import { useState } from "react";
 import {
   Footer,
   Header,
@@ -27,7 +26,7 @@ const customStyles = {
   },
 };
 
-export type Post = {
+export interface Post {
   id: string;
   owner: {
     firstName: string;
@@ -37,7 +36,7 @@ export type Post = {
   likes: number;
   tags: string;
   text: string;
-};
+}
 
 const PostsPage = () => {
   const ref = React.createRef();

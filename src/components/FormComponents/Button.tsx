@@ -11,7 +11,7 @@ export const Button: React.FC<IButton> = (props) => {
       className="button"
       onClick={(e) => {
         e.preventDefault();
-        onClick(e)
+        onClick(e);
       }}
     >
       Submit

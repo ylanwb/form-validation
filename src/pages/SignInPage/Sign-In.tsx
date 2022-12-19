@@ -15,7 +15,7 @@ const initialValues = {
 };
 
 export const SignInForm = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const handleSubmitButtonTwo = () => {
     navigate("/sign-Up");
   };

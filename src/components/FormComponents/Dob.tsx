@@ -1,10 +1,9 @@
 import React from "react";
 
 interface IDob {
-  name: string,
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-  placeholder: string,
-  ref: any,
+  name: string;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
 }
 
 export const Dob: React.FC<IDob> = (props) => {

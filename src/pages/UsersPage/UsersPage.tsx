@@ -1,8 +1,7 @@
-import "./UsersPage.css";
-import React, { useEffect } from "react";
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "react-modal";
-import { useState } from "react";
 import {
   Footer,
   Header,
@@ -11,6 +10,7 @@ import {
   UpdateModal,
   CreateModal,
 } from "../../components/index";
+import "./UsersPage.css";
 
 import Alert from "@mui/material/Alert";
 
@@ -136,10 +136,10 @@ const UsersPage = () => {
             </button>
           </div>
         </div>
-        {loading && <div className="loadingText">Loading ...</div>}
+        {(loading ?? false) && <div className="loadingText">Loading ...</div>}
         <div className="dataContainer">
           <div className="userContainer">
-            {!loading &&
+            {!(loading ?? false) &&
               filteredData &&
               filteredData.length > 0 &&
               filteredData.map((user: any) => {

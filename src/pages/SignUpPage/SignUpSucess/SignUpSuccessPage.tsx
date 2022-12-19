@@ -4,7 +4,7 @@ import { CheckIcon } from "../../../components/index";
 import "./SignUpSucessPage.css";
 
 export const SignUpSuccess = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const handleContinueButton = () => {
     navigate("/");
   };

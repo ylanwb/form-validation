@@ -1,9 +1,8 @@
 import React from "react";
 
 interface IAge {
-  name: string,
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-  ref: any,
+  name: string;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Age: React.FC<IAge> = (props) => {

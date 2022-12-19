@@ -6,14 +6,14 @@ import { collection, doc, setDoc } from "firebase/firestore";
 import "./Sign-Up.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-const {
+import {
   Password,
   Name,
   Email,
   Button,
   Age,
   Dob,
-} = require("../../components/FormComponents");
+} from "../../components/FormComponents";
 const { auth } = require("../../firebase");
 const { db } = require("../../firebase");
 
@@ -118,7 +118,7 @@ const SignUpForm: React.FC<ISignUpForm> = () => {
         <Name name="name" handleChange={handleChange} />
         <Email name="email" handleChange={handleChange} />
         <Age name="age" handleChange={handleChange} />
-        <Dob name="dob" handleChange={handleChange} />
+        <Dob name="dob" handleChange={handleChange} placeholder="test" />
         <Password
           name="password"
           handleChange={handleChange}
