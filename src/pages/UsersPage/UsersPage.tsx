@@ -39,13 +39,13 @@ const UsersPage = () => {
   const [updateSuccess, setUpdateSuccess] = useState<boolean>(false);
   const [createSuccess, setCreateSuccess] = useState<boolean>(false);
 
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
-  }
+  };
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
-  }
+  };
   const [selectedDropDown, setSelectedDropDown] = useState<any>();
   const toggleDropdown = (e: React.MouseEvent, post: any) => {
     // setOpen(!isOpen);
@@ -95,16 +95,25 @@ const UsersPage = () => {
     filtered(valueOfSearchbar);
   }, [valueOfSearchbar]);
 
-  const filtered = (e: any) => {
-    const filtered =
-      data &&
-      data.filter((item: any) => {
-        const dataItems =
-          item.title + " " + item.firstName + " " + item.lastName;
-        const filteredItem = dataItems.toLowerCase().includes(e.toLowerCase());
-        return filteredItem;
-      });
-    setFilteredData(filtered);
+  const filtered = (e: string) => {
+    setFilteredData(
+      data.filter(
+        (item: {
+          owner: { title: string; firstName: string; lastName: string };
+        }) => {
+          const dataItems =
+            item.owner.title +
+            " " +
+            item.owner.firstName +
+            " " +
+            item.owner.lastName;
+          const filteredItem = dataItems
+            .toLowerCase()
+            .includes(e.toLowerCase());
+          return filteredItem;
+        }
+      )
+    );
   };
   return (
     <>

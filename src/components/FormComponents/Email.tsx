@@ -1,7 +1,7 @@
 import React from "react";
 interface IEmail {
-  name: string,
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  name: string;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const Email: React.FC<IEmail> = (props) => {
   const { name, handleChange } = props;

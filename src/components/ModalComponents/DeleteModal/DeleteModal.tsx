@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { Post } from "@pages/PostsPage/PostsPage";
+import { Post } from "@pages/";
 import "./DeleteModal.css";
 
 const deletePost = async (id: string, dataType: string) => {
@@ -48,13 +48,14 @@ export const DeleteModal = (props: deleteModalProps) => {
       <div className="deleteModalTextContainer">
         <div className="modalText">
           <p>Are you sure you want to delete this file?</p>
-          <p>If you delete this file you can't recover it.</p>
+          <p>If you delete this file you cant recover it.</p>
         </div>
       </div>
       <div className="deleteModalButtonsContainer">
         <button onClick={() => closeModal()}>Cancel</button>
         <button
           onClick={(e) => {
+            // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
             selectedPost && handleConfirmButton(e, selectedPost.id);
           }}
         >

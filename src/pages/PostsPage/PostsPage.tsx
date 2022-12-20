@@ -1,4 +1,3 @@
-import "./PostsPage.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
@@ -11,7 +10,7 @@ import {
   UpdateModal,
   CreateModal,
 } from "../../components/index";
-
+import "./PostsPage.css";
 import Alert from "@mui/material/Alert";
 
 const customStyles = {
@@ -59,13 +58,13 @@ const PostsPage = () => {
   const [createSuccess, setCreateSuccess] = useState<boolean>(false);
   const [selectedDropDown, setSelectedDropDown] = useState<string>();
 
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
-  }
+  };
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
-  }
+  };
 
   // const [isOpen, setOpen] = useState(false);
   const toggleDropdown = (e: React.MouseEvent, post: any) => {
@@ -117,20 +116,25 @@ const PostsPage = () => {
     filtered(valueOfSearchbar);
   }, [valueOfSearchbar]);
 
-  const filtered = (e: any) => {
-    const filtered =
-      data &&
-      data.filter((item: any) => {
-        const dataItems =
-          item.owner.title +
-          " " +
-          item.owner.firstName +
-          " " +
-          item.owner.lastName;
-        const filteredItem = dataItems.toLowerCase().includes(e.toLowerCase());
-        return filteredItem;
-      });
-    setFilteredData(filtered);
+  const filtered = (e: string) => {
+    setFilteredData(
+      data.filter(
+        (item: {
+          owner: { title: string; firstName: string; lastName: string };
+        }) => {
+          const dataItems =
+            item.owner.title +
+            " " +
+            item.owner.firstName +
+            " " +
+            item.owner.lastName;
+          const filteredItem = dataItems
+            .toLowerCase()
+            .includes(e.toLowerCase());
+          return filteredItem;
+        }
+      )
+    );
   };
   return (
     <>
@@ -162,11 +166,10 @@ const PostsPage = () => {
             </button>
           </div>
         </div>
-        {loading && <div className="loadingText">Loading ...</div>}
+        {(loading ?? false) && <div className="loadingText">Loading ...</div>}
         <div className="dataContainer">
           <div className="postContainer">
-            {!loading &&
-              filteredData &&
+            {!(loading ?? false) &&
               filteredData.length > 0 &&
               filteredData.map((post: any) => {
                 // console.log(post);
@@ -254,7 +257,7 @@ const PostsPage = () => {
                 );
               })}
           </div>
-          {!loading && <Footer />}
+          {!(loading ?? false) && <Footer />}
         </div>
       </div>
       <Modal

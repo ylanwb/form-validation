@@ -16,10 +16,12 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@pages/*": ["src/pages/*"],
-      "@component/*": ["src/components/*"]
+      "@pages/": ["src/pages/"],
+      "@component/": ["src/components/"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "typeRoots": ["node_modules/@types"], // "typeRoots": [] -> won't work
+  "types": ["node"],
+  "include": ["./src/*.ts", "./src/*.tsx"],
   "exclude": ["node_modules"]
 }

@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
@@ -9,13 +8,13 @@ interface IUsersDropdown {
   selectedUser: string;
 }
 
-type User = {
+interface User {
   id: string;
   title: string;
   firstName: string;
   lastName: string;
   picture: string;
-};
+}
 
 export const UsersDropdown: React.FC<IUsersDropdown> = (props) => {
   const { setSelectedUser, selectedUser } = props;
@@ -55,7 +54,11 @@ export const UsersDropdown: React.FC<IUsersDropdown> = (props) => {
           displayEmpty
         >
           {data.map((user) => {
-            return <MenuItem value={user.id}>{user.firstName}</MenuItem>;
+            return (
+              <MenuItem key={user.id} value={user.id}>
+                {user.firstName}
+              </MenuItem>
+            );
           })}
         </Select>
       )}

@@ -1,9 +1,9 @@
 import React from "react";
 
 interface IPassword {
-  name: string,
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-  placeholder: string
+  name: string;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
 }
 
 export const Password: React.FC<IPassword> = (props) => {

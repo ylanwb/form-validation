@@ -1,4 +1,4 @@
-import "./App.css";
+/* eslint-disable @typescript-eslint/space-before-function-paren */
 // import { auth } from "./firebase";
 // import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
@@ -11,6 +11,7 @@ import BlogPage from "./pages/BlogPage/BlogPage";
 import ArticlePage from "./pages/ArticlePage/ArticlePage";
 import UsersPage from "./pages/UsersPage/UsersPage";
 import PostsPage from "./pages/PostsPage/PostsPage";
+import "./App.css";
 
 function App() {
   const [user, setUser] = React.useState<boolean>();

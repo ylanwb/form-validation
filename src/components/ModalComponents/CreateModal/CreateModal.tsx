@@ -1,5 +1,5 @@
-import React from "react";
-import { useState } from "react";
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import React, { useState } from "react";
 import "./CreateModal.css";
 import axios from "axios";
 import { Notification } from "../../Notification";
@@ -107,7 +107,7 @@ export const CreateModal = (props: CreateModalProps) => {
           Create {dataType === "post" ? "Post" : "User"}
         </span>
       </div>
-      <div className={`${dataType === "post" && "mainDataContainer"}`}>
+      <div className={`${dataType === "post" ? "mainDataContainer" : ""}`}>
         {dataType === "user" && (
           <div className="createDataContainer">
             <label>Title</label>
@@ -119,8 +119,12 @@ export const CreateModal = (props: CreateModalProps) => {
                 defaultValue=""
                 displayEmpty
               >
-                {titleDropdown?.map((title) => {
-                  return <MenuItem value={title}>{title}</MenuItem>;
+                {titleDropdown?.map((titleForDrop) => {
+                  return (
+                    <MenuItem key="item" value={titleForDrop}>
+                      {titleForDrop}
+                    </MenuItem>
+                  );
                 })}
               </Select>
             </div>

@@ -1,19 +1,19 @@
 import "./Header.css";
 import { Bluebox } from "../index";
-import React,{ useState, useEffect } from "react";
+import React, { useState } from "react";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { Spin as Hamburger } from "hamburger-react";
 
 interface IHeader {
-  user?: boolean
-  isWhiteBackground?: boolean
+  user?: boolean;
+  isWhiteBackground?: boolean;
 }
 
-export const Header: React.FC<IHeader> = ( user, isWhiteBackground ) => {
+export const Header: React.FC<IHeader> = (user, isWhiteBackground) => {
   const navigate = useNavigate();
   const handleLogoutButton = () => {
-    auth.signOut();
+    void auth.signOut();
     navigate("/");
   };
   const handleBlogButton = () => {
@@ -32,10 +32,10 @@ export const Header: React.FC<IHeader> = ( user, isWhiteBackground ) => {
   const [isMenuActive, setIsMenuActive] = useState(false);
 
   const navMenuClicked = () => {
-    if (isMenuActive === false) {
+    if (!isMenuActive) {
       setIsMenuActive(true);
       console.log("menu is active!");
-    } else if (isMenuActive === true) {
+    } else if (isMenuActive) {
       setIsMenuActive(false);
       console.log("menu is off!");
     } else {
@@ -58,7 +58,7 @@ export const Header: React.FC<IHeader> = ( user, isWhiteBackground ) => {
         </div>
       </div>
       <div
-        className={`${isMenuActive && "menuSlide"} ${
+        className={`${isMenuActive ? "menuSlide" : ""} ${
           isWhiteBackground ? "navDarkRightSide" : "navWhiteRightSide"
         }`}
       >

@@ -1,8 +1,8 @@
-import React from "react";
-import { useState } from "react";
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+import React, { useState } from "react";
 import "./UpdateModal.css";
 import axios from "axios";
-import { Post } from "@pages/PostsPage/PostsPage";
+import { Post } from "@pages/";
 
 const updatePost = async (post: Post, dataType: string) => {
   await axios
@@ -19,12 +19,12 @@ const updatePost = async (post: Post, dataType: string) => {
     .catch((err) => console.log(err));
 };
 
-type UpdateModalProps = {
+interface UpdateModalProps {
   closeModal: () => void;
   selectedPost: Post | undefined;
   setUpdateSuccess: React.Dispatch<React.SetStateAction<boolean>>;
   dataType: string;
-};
+}
 
 export const UpdateModal = (props: UpdateModalProps) => {
   const { closeModal, selectedPost, setUpdateSuccess, dataType } = props;
@@ -40,7 +40,7 @@ export const UpdateModal = (props: UpdateModalProps) => {
     text: "",
   });
   const [updatedUserValues, setNewUser] = useState(selectedPost);
-  const [selectedUser, setSelectedUser] = useState("");
+  const [selectedUser, setSelectedUser] = useState<Post>();
 
   const handleDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -128,7 +128,7 @@ export const UpdateModal = (props: UpdateModalProps) => {
             <label>Tags</label>
             <input
               name="tags"
-              defaultValue={selectedPost?.tags || []}
+              defaultValue={selectedPost?.tags ?? []}
               placeholder="Tags"
               onChange={(e) => handleDataChange(e)}
             />
@@ -146,7 +146,7 @@ export const UpdateModal = (props: UpdateModalProps) => {
         <button onClick={() => closeModal()}>Close</button>
         <button
           onClick={(e) => {
-            handleConfirmButton(e);
+            void handleConfirmButton(e);
           }}
         >
           Update
