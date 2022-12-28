@@ -6,7 +6,7 @@ import "./SignUpSucessPage.css";
 export const SignUpSuccess = () => {
   const navigate = useNavigate();
   const handleContinueButton = () => {
-    navigate("/");
+    navigate("/sign-in");
   };
   return (
     <div className="signUpSuccessContainer">

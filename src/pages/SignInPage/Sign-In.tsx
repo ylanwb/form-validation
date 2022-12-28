@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+// import { signInWithEmailAndPassword } from "firebase/auth";
 import * as yup from "yup";
-import { auth } from "../../firebase";
+// import { auth } from "../../firebase";
 import { LandingPage } from "../LandingPage/LandingPage";
 import { Password, Button, Email } from "../../components/FormComponents";
 import { ValidationSchema } from "./Sign-In-Form-Validation";
 import { useNavigate } from "react-router-dom";
-import "./Sign-In.css";
 import axios from "axios";
+import "./Sign-In.css";
 
 const initialValues = {
   email: "",
@@ -57,6 +58,9 @@ export const SignInForm = () => {
         )
         .then((response) => {
           console.log(response);
+          const token = response.data.data.token;
+          localStorage.setItem("token", token)
+          setIsSignedIn(true);
         })
         .catch((err) => console.log(err));
     }
@@ -79,7 +83,7 @@ export const SignInForm = () => {
           <span style={{ color: "red" }}>{formErrors.required}</span>
           <div className="loginSignUpLink">
             <span>
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <button onClick={handleSubmitButtonTwo} id="signUpLink">
                 Sign Up.
               </button>

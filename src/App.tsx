@@ -7,11 +7,11 @@ import { SignInForm } from "../src/pages/SignInPage/Sign-In";
 import SignUpForm from "./pages/SignUpPage/Sign-Up";
 import { SignUpSuccess } from "./pages/SignUpPage/SignUpSucess/SignUpSuccessPage";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
-import BlogPage from "./pages/BlogPage/BlogPage";
 import ArticlePage from "./pages/ArticlePage/ArticlePage";
 import UsersPage from "./pages/UsersPage/UsersPage";
 import PostsPage from "./pages/PostsPage/PostsPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
+// import MyPostsPage from "./pages/MyPostsPage/MyPostsPage"
 import "./App.css";
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<LandingPage user={user} />} />
-              <Route path="/blog" element={<BlogPage user={user} />} />
+              {/* <Route path="/myPosts" element={<MyPostsPage />} /> */}
               <Route path="/successful" element={<SignUpSuccess />} />
               <Route path="/blog/:id" element={<ArticlePage />} />
               <Route path="/users" element={<UsersPage />} />

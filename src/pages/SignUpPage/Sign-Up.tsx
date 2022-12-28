@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState } from "react";
 import * as yup from "yup";
 import { ValidationSchema } from "./Sign-Up-Form-Validation";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, doc, setDoc } from "firebase/firestore";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
+// import { collection, doc, setDoc } from "firebase/firestore";
 import "./Sign-Up.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -14,8 +15,8 @@ import {
   Age,
   Dob,
 } from "../../components/FormComponents";
-const { auth } = require("../../firebase");
-const { db } = require("../../firebase");
+// const { auth } = require("../../firebase");
+// const { db } = require("../../firebase");
 
 const initialValues = {
   name: "",
@@ -40,16 +41,16 @@ const SignUpForm: React.FC<ISignUpForm> = () => {
     ...initialValues,
     required: "",
   });
-  const handleChange = (e: { target: { name: any; value: any } }) => {
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     yup
       .reach(ValidationSchema, name)
       .validate(value)
-      .then((valid: any) => {
+      .then((valid: string) => {
         setInputValues({ ...inputValues, [name]: value });
         setFormErrors({ ...formErrors, [name]: "" });
       })
-      .catch((err: { message: any }) => {
+      .catch((err: { message: string }) => {
         setFormErrors({ ...formErrors, [name]: err.message });
       });
   };
@@ -72,6 +73,7 @@ const SignUpForm: React.FC<ISignUpForm> = () => {
       )
       .then(async (response) => {
         console.log(response);
+        successfulNavigation()
       })
       .catch((err) => {
         setFormErrors({ ...formErrors, required: err.message });

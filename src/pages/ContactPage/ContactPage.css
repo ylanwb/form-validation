@@ -126,7 +126,7 @@ h2 {
 }
 
 label,
-input,
+.contactPageInputs,
 textarea {
   font-family: "Poppins", sans-serif;
 }
@@ -141,7 +141,7 @@ label {
   user-select: none;
 }
 
-input,
+.contactPageInputs,
 textarea {
   width: 100%;
   outline: 0;

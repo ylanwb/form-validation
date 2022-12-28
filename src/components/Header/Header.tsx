@@ -1,7 +1,7 @@
 import "./Header.css";
 import { Bluebox } from "../index";
 import React, { useState } from "react";
-import { auth } from "../../firebase";
+// import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { Spin as Hamburger } from "hamburger-react";
 
@@ -15,11 +15,10 @@ export const Header: React.FC<IHeader> = (user, isWhiteBackground) => {
   // useState? Like the menudropdown except this time we get the values from the other pages
   const navigate = useNavigate();
   const handleLogoutButton = () => {
-    void auth.signOut();
     navigate("/");
   };
-  const handleBlogButton = () => {
-    navigate("/blog");
+  const handleMyPostsButton = () => {
+    navigate("/myPosts");
   };
   const handleContactButton = () => {
     navigate("/contact");
@@ -58,7 +57,7 @@ export const Header: React.FC<IHeader> = (user, isWhiteBackground) => {
             isWhiteBackground ? "navDarkBackground" : "navWhiteBackground"
           }`}
         >
-          <span>team</span>
+          <span>C</span>
           <Bluebox id="blueBox" />
         </div>
       </div>
@@ -98,10 +97,10 @@ export const Header: React.FC<IHeader> = (user, isWhiteBackground) => {
             className="navButton"
             onClick={() => {
               console.log("here");
-              handleBlogButton();
+              handleMyPostsButton();
             }}
           >
-            Blog
+            MyPosts
           </button>
           <button
             className="navButton"
@@ -120,8 +119,8 @@ export const Header: React.FC<IHeader> = (user, isWhiteBackground) => {
               handleLogoutButton();
             }}
           >
-            {!user && "Log out"}
-            {!!user && "Log out"}
+            {user && "Log out"}
+            {!user && "Log in"}
           </button>
           <button className="navButton">Get Access</button>
         </div>
