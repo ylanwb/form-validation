@@ -1,0 +1,209 @@
+body {
+  display:grid;
+  grid-template-rows: auto 1fr auto;
+  min-height:100vh;
+}
+.contactMainContainer {
+  background-color: #f5f7fa;
+}
+.contactContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 77vh;
+}
+#contact {
+  background-color: #6a9ac4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-box {
+  width: clamp(100px, 90%, 1000px);
+  margin: 80px 50px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contact-links,
+.contact-form-wrapper {
+  width: 50%;
+  padding: 8% 5% 10% 5%;
+}
+
+.contact-links {
+  /* background-color: #1f2e43;
+  background:
+    radial-gradient(
+      circle at 72% 52%, #263953 0 9%, transparent 9.2%
+    ), 
+    radial-gradient(
+      circle at 94% 72%, #426691 0 10%, transparent 10.2%
+    ), 
+    radial-gradient(
+      circle at 0% max(66%, 350px), #76B3D4 0 7%, transparent 7.2%
+    ), 
+    radial-gradient(
+      circle at 27% max(86%, 350px), #324d64 0 7%, transparent 7.2%
+    ), 
+    radial-gradient(
+      circle at 0% 0%, #263a53 0 20%, transparent 20.2%
+    ), 
+    #1f2e43; */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='600' height='500' preserveAspectRatio='none' viewBox='0 0 600 500'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1193%26quot%3b)' fill='none'%3e%3crect width='600' height='500' x='0' y='0' fill='rgba(39%2c 48%2c 75%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c280.32C51.545%2c286.176%2c94.409%2c242.734%2c136.571%2c212.509C176.794%2c183.674%2c213.56%2c151.619%2c238.861%2c109.084C266.364%2c62.849%2c301.668%2c10.572%2c287.576%2c-41.347C273.462%2c-93.349%2c206.288%2c-107.508%2c169.41%2c-146.794C134.609%2c-183.868%2c125.567%2c-247.508%2c77.77%2c-264.859C29.919%2c-282.23%2c-22.257%2c-254.524%2c-68.458%2c-233.146C-109.661%2c-214.081%2c-141.118%2c-182.305%2c-172.185%2c-149.199C-204.505%2c-114.758%2c-243.826%2c-82.702%2c-253.093%2c-36.389C-262.527%2c10.756%2c-247.523%2c60.579%2c-222.36%2c101.549C-198.721%2c140.037%2c-153.189%2c155.29%2c-117.987%2c183.591C-77.532%2c216.116%2c-51.576%2c274.461%2c0%2c280.32' fill='%23191f31'%3e%3c/path%3e%3cpath d='M600 737.944C643.727 734.656 679.079 703.444 712.509 675.067 742.42 649.677 762.752 617.275 782.26 583.235 803.7 545.825 832.895 509.758 831.953 466.65 830.972 421.73900000000003 800.838 384.682 777.0889999999999 346.551 749.109 301.626 732.559 236.065 680.972 224.236 628.785 212.269 589.223 273.635 538.906 291.93399999999997 493.067 308.605 433.98 291.731 399.773 326.502 365.469 361.371 365.315 417.641 367.151 466.521 368.78200000000004 509.936 390.719 547.823 409.558 586.972 428.004 625.304 442.72900000000004 666.423 476.06399999999996 692.8489999999999 511.226 720.7239999999999 555.255 741.309 600 737.944' fill='%23354165'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1193'%3e%3crect width='600' height='500' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px 0 0 10px;
+}
+
+.contact-form-wrapper {
+  background-color: white;
+  border-radius: 0 10px 10px 0;
+}
+
+@media only screen and (max-width: 800px) {
+  .contact-links,
+  .contact-form-wrapper {
+    width: 100%;
+  }
+
+  .contact-links {
+    border-radius: 10px 10px 0 0;
+  }
+
+  .contact-form-wrapper {
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .contact-box {
+    width: 95%;
+    margin: 8% 5%;
+  }
+}
+
+h2 {
+  font-family: "Arimo", sans-serif;
+  color: #fff;
+  font-size: clamp(30px, 6vw, 60px);
+  letter-spacing: 2px;
+  text-align: center;
+  transform: scale(0.95, 1);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.link {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.contactLinkImg {
+  width: 85px;
+  height: 85px;
+  filter: invert(100%) sepia(14%) saturate(0%) hue-rotate(275deg) brightness(111%) contrast(100%);
+  transition: 0.2s;
+}
+
+.contactLinkImg:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.contactLinkImg:active {
+  transform: scale(1.1, 1.1);
+  filter: hue-rotate(220deg) drop-shadow(2px 4px 4px #222) sepia(0.3);
+}
+
+.form-item {
+  position: relative;
+}
+
+label,
+input,
+textarea {
+  font-family: "Poppins", sans-serif;
+}
+
+label {
+  position: absolute;
+  top: 10px;
+  left: 2%;
+  color: #999;
+  font-size: clamp(14px, 1.5vw, 18px);
+  pointer-events: none;
+  user-select: none;
+}
+
+input,
+textarea {
+  width: 100%;
+  outline: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 12px;
+  font-size: clamp(15px, 1.5vw, 18px);
+}
+
+input:focus + label,
+input:valid + label,
+textarea:focus + label,
+textarea:valid + label {
+  font-size: clamp(13px, 1.3vw, 16px);
+  color: #777;
+  top: -20px;
+  transition: all 0.225s ease;
+}
+
+.submit-btn {
+  background-color: #354165;
+  filter: drop-shadow(2px 2px 3px #0003);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(16px, 1.6vw, 18px);
+  display: block;
+  padding: 12px 20px;
+  margin: 2px auto;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.2s;
+}
+
+.submit-btn:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.submit-btn:active {
+  transform: scale(1.1, 1.1);
+  filter: sepia(0.5);
+}
+
+@media only screen and (max-width: 800px) {
+  h2 {
+    font-size: clamp(40px, 10vw, 60px);
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  h2 {
+    font-size: clamp(30px, 12vw, 60px);
+  }
+
+  .links {
+    padding-top: 30px;
+  }
+
+  img {
+    width: 38px;
+    height: 38px;
+  }
+}

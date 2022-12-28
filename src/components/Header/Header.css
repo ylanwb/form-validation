@@ -3,6 +3,7 @@
   width: 100vw;
   height: 10vh;
   display: flex;
+  background-color: #252b3b;
 }
 
 .navLeftSide {
@@ -10,6 +11,7 @@
   height: 100%;
   display: flex;
   align-items: center;
+  z-index: 9999;
 }
 
 .navLeftSide .navDarkBackground {
@@ -48,14 +50,14 @@
   font-weight: 900;
   font-size: 1vw;
   margin: 0px 25px;
-  border-bottom: 1px solid #9b9993;
+  border-bottom: 1px solid white;
   cursor: pointer;
 }
 
 .navButton:last-child {
   padding: 17px 25px;
-  color: #9b9993;
-  border: 2px solid #9b9993;
+  color: white;
+  border: 2px solid white;
   border-radius: 4px;
 }
 
@@ -81,31 +83,31 @@
   font-weight: 900;
   font-size: 1rem;
   margin: 0px 25px;
-  border-bottom: 1px solid #9b9993;
+  border-bottom: 1px solid white;
   cursor: pointer;
 }
 
 .navWhiteRightSideContent .navButton {
   border: none;
   background: none;
-  color: #6D7D8B;
+  color: #6d7d8b;
   font-weight: 900;
   font-size: 1rem;
   margin: 0px 25px;
-  border-bottom: 1px solid #9b9993;
+  border-bottom: 1px solid white;
   cursor: pointer;
 }
 
 .navDarkRightSideContent .navButton:last-child {
   padding: 17px 25px;
-  color: #9b9993;
-  border: 2px solid #9b9993;
+  color: white;
+  border: 2px solid white;
   border-radius: 4px;
 }
 
 .navWhiteRightSideContent .navButton:last-child {
   padding: 17px 25px;
-  color: #4DA0FD;
+  color: #4da0fd;
   border: 2px solid rgba(77, 160, 253, 0.42);
   border-radius: 4px;
   background: rgba(77, 160, 253, 0.1);
@@ -144,7 +146,7 @@
 .hamburgerContainer {
   display: none;
   margin-right: 1rem;
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+}
 
 #darkHamburger {
   color: white;
@@ -160,7 +162,6 @@
   .menuDropDown {
     width: 100vw;
     height: 10vh;
-    background-color: dimgray;
     position: absolute;
     left: 0;
     top: 0;
@@ -180,21 +181,23 @@
   }
 
   .menuSlide {
-    right: 0 !important;
+    left: 0 !important;
     transition: 1s ease-in-out;
   }
-
   .navDarkRightSide {
     position: fixed;
     left: 100%;
-    background-color: #252b3b;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='2540' height='1200' preserveAspectRatio='none' viewBox='0 0 2540 1200'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1122%26quot%3b)' fill='none'%3e%3crect width='2540' height='1200' x='0' y='0' fill='%231e3266'%3e%3c/rect%3e%3cpath d='M2709.333333333333 1200L0 1200 L0 776.45Q93.47 658.25%2c 211.66666666666669 751.72Q338.61 666.99%2c 423.33333333333337 793.93Q429.54 673.13%2c 550.3333333333334 679.34Q645.78 563.12%2c 762 658.56Q866.67 636.23%2c 889 740.9Q905.82 630.72%2c 1016 647.54Q1058.49 563.03%2c 1143 605.53Q1238.99 574.52%2c 1270 670.51Q1386.2 659.71%2c 1397 775.92Q1468.89 720.82%2c 1524 792.71Q1548.64 605.68%2c 1735.6666666666667 630.32Q1853.55 536.53%2c 1947.3333333333335 654.41Q2105.29 600.7%2c 2159 758.65Q2232.78 620.76%2c 2370.6666666666665 694.54Q2402.82 599.69%2c 2497.6666666666665 631.84Q2619.95 542.46%2c 2709.333333333333 664.75z' fill='%23182f5d'%3e%3c/path%3e%3cpath d='M2582.3333333333335 1200L0 1200 L0 942.8Q108.81 839.95%2c 211.66666666666669 948.76Q237.27 847.36%2c 338.6666666666667 872.96Q392.72 800.02%2c 465.6666666666667 854.07Q533.77 710.51%2c 677.3333333333334 778.62Q791.67 681.29%2c 889 795.63Q967.32 746.95%2c 1016 825.28Q1140.04 737.65%2c 1227.6666666666667 861.69Q1353.98 776.34%2c 1439.3333333333335 902.65Q1489.02 825.34%2c 1566.3333333333335 875.03Q1568.56 750.25%2c 1693.3333333333335 752.48Q1806.1 653.58%2c 1905.0000000000002 766.34Q2053.72 703.39%2c 2116.666666666667 852.11Q2129.5 737.94%2c 2243.666666666667 750.78Q2360.49 655.93%2c 2455.3333333333335 772.75Q2542.74 733.15%2c 2582.3333333333335 820.56z' fill='%2325467d'%3e%3c/path%3e%3cpath d='M2667 1200L0 1200 L0 1089.05Q-27.73 934.32%2c 127 906.58Q306.56 874.48%2c 338.6666666666667 1054.04Q381.75 885.46%2c 550.3333333333334 928.55Q643.01 809.56%2c 762 902.24Q927.57 856.14%2c 973.6666666666667 1021.71Q995.42 916.47%2c 1100.6666666666667 938.22Q1227.23 853.12%2c 1312.3333333333335 979.69Q1481.19 936.88%2c 1524.0000000000002 1105.73Q1545.67 1000.4%2c 1651.0000000000002 1022.07Q1660.2 904.27%2c 1778.0000000000002 913.46Q1850.41 858.87%2c 1905.0000000000002 931.27Q2028.28 842.88%2c 2116.666666666667 966.16Q2221.93 944.42%2c 2243.666666666667 1049.68Q2319.6 913.95%2c 2455.3333333333335 989.88Q2567.09 889.97%2c 2667 1001.72z' fill='%23356cb1'%3e%3c/path%3e%3cpath d='M2624.666666666667 1200L0 1200 L0 1134.51Q114.15 1121.66%2c 127 1235.82Q199.73 1181.55%2c 254 1254.28Q288.63 1161.91%2c 381 1196.54Q447.29 1051.17%2c 592.6666666666667 1117.46Q690.65 1088.45%2c 719.6666666666667 1186.43Q773.36 1113.12%2c 846.6666666666667 1166.81Q945.5 1053.98%2c 1058.3333333333335 1152.81Q1147.11 1029.92%2c 1270.0000000000002 1118.7Q1308.28 1029.98%2c 1397.0000000000002 1068.26Q1550.1 1009.7%2c 1608.666666666667 1162.8Q1619.46 1046.6%2c 1735.666666666667 1057.39Q1851.6 961.66%2c 1947.3333333333337 1077.59Q2087.81 1091.06%2c 2074.333333333334 1231.54Q2191.62 1137.16%2c 2286.0000000000005 1254.45Q2309.75 1151.2%2c 2413.0000000000005 1174.95Q2493.47 1043.76%2c 2624.666666666667 1124.23z' fill='white'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1122'%3e%3crect width='2540' height='1200' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1999;
-    transition: 1s ease-in-out;
+    transition: 0.5s ease-in-out;
+    animation: rightScroll 8s linear infinite alternate;
   }
 
   .navWhiteRightSide {
@@ -208,6 +211,7 @@
     justify-content: center;
     z-index: 9999;
     transition: 1s ease-in-out;
+    animation: rightScroll 2000s linear infinite alternate;
   }
 
   .navWhiteRightSideContent {
@@ -258,5 +262,13 @@
 
   .navDarkBackground {
     font-size: 1.5rem;
+  }
+}
+@keyframes rightScroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
   }
 }

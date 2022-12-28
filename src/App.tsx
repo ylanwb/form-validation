@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/space-before-function-paren */
 // import { auth } from "./firebase";
 // import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { SignInForm } from "../src/pages/SignInPage/Sign-In";
 import SignUpForm from "./pages/SignUpPage/Sign-Up";
@@ -11,6 +11,7 @@ import BlogPage from "./pages/BlogPage/BlogPage";
 import ArticlePage from "./pages/ArticlePage/ArticlePage";
 import UsersPage from "./pages/UsersPage/UsersPage";
 import PostsPage from "./pages/PostsPage/PostsPage";
+import ContactPage from "./pages/ContactPage/ContactPage";
 import "./App.css";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
               <Route path="/blog/:id" element={<ArticlePage />} />
               <Route path="/users" element={<UsersPage />} />
               <Route path="/posts" element={<PostsPage />} />
+              <Route path="/contact" element={<ContactPage />} />
             </Routes>
             <Routes>
               <Route path="/sign-in" element={<SignInForm />} />

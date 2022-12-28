@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: aliceblue;
+    background-color: #f5f7fa;
 }
 .dataContainer {
     display: flex;
@@ -13,7 +13,7 @@
     flex-wrap: wrap;
 }
 .loadingText {
-    color: cadetblue;
+    color: #6d7d8b;
 }
 .userContainer {
     width: fit-content;
@@ -50,7 +50,7 @@
 }
 
 #userId {
-    color: cadetblue;
+    color: #6d7d8b;
 }
 
 .userInfoContainer {
@@ -58,7 +58,7 @@
 }
 
 .userInfoContainer span {
-    color: cadetblue;
+    color: #6d7d8b;
     margin-right: 5px;
 }
 
@@ -138,12 +138,12 @@
     width: 200px;
     height: 50px;
     padding: 10px;
-    color: cadetblue;
+    color: #6d7d8b;
     border-radius: 10px;
 }
 
 .searchBar::placeholder {
-    color: cadetblue;
+    color: #6d7d8b;
 }
 
 .createUserContainer {
@@ -152,7 +152,7 @@
 
 .createUserBtn {
     background-color: white;
-    color: cadetblue;
+    color: #6d7d8b;
     border: none;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24);
     width: 100px;

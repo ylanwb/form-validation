@@ -11,6 +11,8 @@ interface IHeader {
 }
 
 export const Header: React.FC<IHeader> = (user, isWhiteBackground) => {
+  // user and isWhiteBackground values empty hence the problem with logging out and font colors
+  // useState? Like the menudropdown except this time we get the values from the other pages
   const navigate = useNavigate();
   const handleLogoutButton = () => {
     void auth.signOut();
@@ -18,6 +20,9 @@ export const Header: React.FC<IHeader> = (user, isWhiteBackground) => {
   };
   const handleBlogButton = () => {
     navigate("/blog");
+  };
+  const handleContactButton = () => {
+    navigate("/contact");
   };
   const handleUserButton = () => {
     navigate("/users");
@@ -49,9 +54,9 @@ export const Header: React.FC<IHeader> = (user, isWhiteBackground) => {
           onClick={() => {
             handleHomeButton();
           }}
-          className={
+          className={`${
             isWhiteBackground ? "navDarkBackground" : "navWhiteBackground"
-          }
+          }`}
         >
           <span>team</span>
           <Bluebox id="blueBox" />
@@ -63,11 +68,11 @@ export const Header: React.FC<IHeader> = (user, isWhiteBackground) => {
         }`}
       >
         <div
-          className={
+          className={`${
             isWhiteBackground
               ? "navDarkRightSideContent"
               : "navWhiteRightSideContent"
-          }
+          }`}
           id="navRightSideContent"
         >
           {isMenuActive && <div className="menuDropDown"></div>}
@@ -98,7 +103,15 @@ export const Header: React.FC<IHeader> = (user, isWhiteBackground) => {
           >
             Blog
           </button>
-          <button className="navButton">Contact</button>
+          <button
+            className="navButton"
+            onClick={() => {
+              console.log("here");
+              handleContactButton();
+            }}
+          >
+            Contact
+          </button>
           <button
             className="navButton"
             style={{ cursor: "pointer" }}
