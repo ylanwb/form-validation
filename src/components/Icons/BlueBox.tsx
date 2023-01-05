@@ -1,7 +1,7 @@
 import * as React from "react";
 
 interface IBluebox {
-id: string
+  id: string;
 }
 
 export const Bluebox: React.FC<IBluebox> = (props) => {

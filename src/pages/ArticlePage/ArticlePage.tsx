@@ -5,12 +5,7 @@ import { useParams } from "react-router-dom";
 import { data } from "../../data";
 import "./ArticlePage.css";
 
-
-interface IArticlePage {
-
-}
-
-const ArticlePage: React.FC<IArticlePage> = () => {
+const ArticlePage: React.FC = () => {
   const { id } = useParams();
   const selectedPost = data.find((post: any) => {
     return post.id === Number(id);

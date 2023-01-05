@@ -9,39 +9,36 @@ import { SignUpSuccess } from "./pages/SignUpPage/SignUpSucess/SignUpSuccessPage
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import ArticlePage from "./pages/ArticlePage/ArticlePage";
 import UsersPage from "./pages/UsersPage/UsersPage";
+import { useUserProvider } from "./provider/UserProvider";
 import PostsPage from "./pages/PostsPage/PostsPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
-// import MyPostsPage from "./pages/MyPostsPage/MyPostsPage"
 import "./App.css";
 
 function App() {
-  const [user, setUser] = React.useState<boolean>();
-  // if (auth.onAuthStateChanged) {
-  //   auth.onAuthStateChanged((user) => {
-  //     setUser(user);
-  //   });
-  // }
+  const { user } = useUserProvider();
+
   return (
     <div>
       <div className="mainContainer">
         <div className="contentContainer">
           <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<LandingPage user={user} />} />
-              {/* <Route path="/myPosts" element={<MyPostsPage />} /> */}
-              <Route path="/successful" element={<SignUpSuccess />} />
-              <Route path="/blog/:id" element={<ArticlePage />} />
-              <Route path="/users" element={<UsersPage />} />
-              <Route path="/posts" element={<PostsPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-            </Routes>
-            <Routes>
-              <Route path="/sign-in" element={<SignInForm />} />
-              <Route
-                path="/sign-up"
-                element={<SignUpForm setUser={setUser} />}
-              />
-            </Routes>
+            {user && (
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                {/* <Route path="/myPosts" element={<MyPostsPage />} /> */}
+                <Route path="/successful" element={<SignUpSuccess />} />
+                <Route path="/blog/:id" element={<ArticlePage />} />
+                <Route path="/users" element={<UsersPage />} />
+                <Route path="/posts" element={<PostsPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+              </Routes>
+            )}
+            {!user && (
+              <Routes>
+                <Route path="/" element={<SignInForm />} />
+                <Route path="/sign-up" element={<SignUpForm />} />
+              </Routes>
+            )}
           </BrowserRouter>
         </div>
       </div>

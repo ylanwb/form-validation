@@ -1,10 +1,6 @@
 import * as React from "react";
 
-interface IInstagram {
-
-}
-
-export const Instagram: React.FC<IInstagram> = (props) => {
+export const Instagram: React.FC = (props) => {
   return (
     <svg
       width={22}

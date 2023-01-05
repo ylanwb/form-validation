@@ -1,10 +1,6 @@
 import * as React from "react";
 
-interface IStars {
-
-}
-
-export const Stars: React.FC<IStars> = (props) => {
+export const Stars: React.FC = (props) => {
   return (
     <svg
       width={18}
@@ -19,6 +15,5 @@ export const Stars: React.FC<IStars> = (props) => {
         fill="#FFBC01"
       />
     </svg>
-
   );
 };

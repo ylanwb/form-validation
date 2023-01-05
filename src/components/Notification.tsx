@@ -1,5 +1,5 @@
 import Alert from "@mui/material/Alert";
-import { type } from "os";
+
 import React from "react";
 
 interface INotification {

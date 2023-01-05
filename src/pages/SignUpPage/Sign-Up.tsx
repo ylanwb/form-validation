@@ -27,11 +27,7 @@ const initialValues = {
   confirmPassword: "",
 };
 
-interface ISignUpForm {
-  setUser: any;
-}
-
-const SignUpForm: React.FC<ISignUpForm> = () => {
+const SignUpForm: React.FC = () => {
   const navigate = useNavigate();
   const successfulNavigation = () => {
     navigate("/successful");
@@ -73,7 +69,7 @@ const SignUpForm: React.FC<ISignUpForm> = () => {
       )
       .then(async (response) => {
         console.log(response);
-        successfulNavigation()
+        successfulNavigation();
       })
       .catch((err) => {
         setFormErrors({ ...formErrors, required: err.message });

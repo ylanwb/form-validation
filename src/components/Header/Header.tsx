@@ -4,17 +4,21 @@ import React, { useState } from "react";
 // import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { Spin as Hamburger } from "hamburger-react";
+import Cookies from "js-cookie";
+import { useUserProvider } from "src/provider/UserProvider";
 
 interface IHeader {
-  user?: boolean;
   isWhiteBackground?: boolean;
 }
 
-export const Header: React.FC<IHeader> = (user, isWhiteBackground) => {
+export const Header: React.FC<IHeader> = (isWhiteBackground) => {
+  const { user, setUser } = useUserProvider();
   // user and isWhiteBackground values empty hence the problem with logging out and font colors
   // useState? Like the menudropdown except this time we get the values from the other pages
   const navigate = useNavigate();
   const handleLogoutButton = () => {
+    Cookies.remove("userToken");
+    setUser(false);
     navigate("/");
   };
   const handleMyPostsButton = () => {
@@ -115,7 +119,6 @@ export const Header: React.FC<IHeader> = (user, isWhiteBackground) => {
             className="navButton"
             style={{ cursor: "pointer" }}
             onClick={() => {
-              console.log("here");
               handleLogoutButton();
             }}
           >

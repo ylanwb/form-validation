@@ -37,15 +37,20 @@ export const UsersDropdown: React.FC<IUsersDropdown> = (props) => {
 
           setLoading(false);
         }, 1000);
+      })
+      .catch((response) => {
+        console.log(response);
       });
     //   .catch((err) => <Notification text={err.message} type="error" />);
   }, []);
 
   return (
     <div>
-      {loading ? (
-        "Loading"
-      ) : (
+      {loading
+        ? (
+            "Loading"
+          )
+        : (
         <Select
           className="dropDownTitle"
           value={selectedUser}
@@ -61,7 +66,7 @@ export const UsersDropdown: React.FC<IUsersDropdown> = (props) => {
             );
           })}
         </Select>
-      )}
+          )}
     </div>
   );
 };
