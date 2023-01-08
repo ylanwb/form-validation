@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
-import {
-  Footer,
-  Header,
-  Notification,
-} from "../../components/index";
+import { Footer, Header, Notification } from "../../components/index";
 import "./LandingPage.css";
 
 export interface Post {
-  id: string;
+  _id?: string;
   title: string;
   owner: string;
   publishDate: string;
@@ -22,14 +18,14 @@ export const LandingPage = () => {
   const [filteredData, setFilteredData] = useState([]);
 
   const [loading, setLoading] = useState<boolean>();
-  const [selectedPost, setSelectedPost] = useState<Post>({
-    id: "",
-    title: "",
-    owner: "",
-    publishDate: "",
-    content: "",
-    image: "",
-  });
+  // const [selectedPost, setSelectedPost] = useState<Post>({
+  //   _id: "",
+  //   title: "",
+  //   owner: "",
+  //   publishDate: "",
+  //   content: "",
+  //   image: "",
+  // });
 
   useEffect(() => {
     axios
@@ -58,7 +54,6 @@ export const LandingPage = () => {
             {filteredData?.map((post: any) => {
               return (
                 <>
-                // id, image, likes, owner, publishDate, tags, text
                   <div id="scroll-progress"></div>
                   <ul key={post.id} id="scroller">
                     <li>{post.title}</li>

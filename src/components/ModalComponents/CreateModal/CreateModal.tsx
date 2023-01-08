@@ -6,13 +6,13 @@ import { Notification } from "../../Notification";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { UsersDropdown } from "../../FormComponents";
+import { useUserProvider } from "src/provider/UserProvider";
 
 const titleDropdown = ["mr", "mr", "mrs", "miss", "dr"];
 
-const createData = async (data: string, dataType: string) => {
-  console.log(data, dataType);
-  await axios.post(`https://dummyapi.io/data/v1/${dataType}/create`, data, {
-    headers: { "app-id": "634752bc7580f70e4f699960" },
+const createData = async (data: string) => {
+  await axios.post("http://localhost:1212/posts", data, {
+    headers: { "Content-Type": "application/json" },
   });
 };
 const user = {
@@ -22,10 +22,9 @@ const user = {
   email: " ",
 };
 const post = {
+  title: "",
+  content: "",
   owner: "",
-  likes: 0,
-  text: "",
-  tags: [],
   image: "",
 };
 
@@ -40,8 +39,6 @@ export const CreateModal = (props: CreateModalProps) => {
   const [newPost, setNewPost] = useState<any>(post);
   const [newUser, setNewUser] = useState<any>(user);
 
-  const [selectedUser, setSelectedUser] = React.useState<any>("");
-
   const [title, setTitle] = React.useState("");
 
   const handleTitle = (event: SelectChangeEvent<string>) => {
@@ -50,128 +47,63 @@ export const CreateModal = (props: CreateModalProps) => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    const userId = localStorage.getItem("userId")
     if (dataType === "post") {
-      setNewPost({ ...newPost, [name]: value, owner: selectedUser.id.id });
-      console.log(selectedUser.id);
+      setNewPost({ ...newPost, [name]: value, owner: userId });
     } else {
       setNewUser({ ...newUser, [name]: value, title: title });
     }
   };
+  const userId = localStorage.getItem("userId");
 
   const handleCreate = async (e: any) => {
     e.preventDefault();
-    console.log(newUser);
-    if (dataType === "post") {
-      const postValues = {
-        ...newPost,
-        tags: newPost.tags.split(","),
-        owner: selectedUser.id,
-        likes: Number(newPost.likes),
-      };
-      await createData(postValues, dataType)
-        .then((response) => {
-          setCreateSuccess(true);
-          closeModal();
-          setTimeout(() => {
-            setCreateSuccess(false);
-            window.location.reload();
-          }, 2500);
-        })
-        .catch((err) => {
-          console.log(err);
-          closeModal();
-          <Notification text={err.message} type="error" />;
-        });
-    } else {
-      await createData(newUser, dataType)
-        .then((response) => {
-          setCreateSuccess(true);
-          closeModal();
-          setTimeout(() => {
-            setCreateSuccess(false);
-            window.location.reload();
-          }, 2500);
-        })
-        .catch((err) => {
-          console.log(err);
-          closeModal();
-          <Notification text={err.message} type="error" />;
-        });
-    }
+    console.log(newPost)
+
+    const postValues = {
+      ...newPost,
+      title: newPost.title,
+      content: newPost.content,
+      image: newPost.image,
+      userId: userId,
+    };
+    await createData(postValues)
+      .then((response) => {
+        console.log(response);
+        setCreateSuccess(true);
+        closeModal();
+        setTimeout(() => {
+          setCreateSuccess(false);
+          window.location.reload();
+        }, 2500);
+      })
+      .catch((err) => {
+        console.log(err);
+        closeModal();
+        <Notification text={err.message} type="error" />;
+      });
   };
 
   return (
     <div className="createModalMainContainer">
       <div className="createTitleContainer">
         <span id="createModalTitle">
-          Create {dataType === "post" ? "Post" : "User"}
+          Create Post
         </span>
       </div>
       <div className={`${dataType === "post" ? "mainDataContainer" : ""}`}>
-        {dataType === "user" && (
-          <div className="createDataContainer">
-            <label>Title</label>
-            <div className="pronounDropDownMenu">
-              <Select
-                className="dropDownTitle"
-                value={title}
-                onChange={handleTitle}
-                defaultValue=""
-                displayEmpty
-              >
-                {titleDropdown?.map((titleForDrop) => {
-                  return (
-                    <MenuItem key="item" value={titleForDrop}>
-                      {titleForDrop}
-                    </MenuItem>
-                  );
-                })}
-              </Select>
-            </div>
-            <label>First Name</label>
-            <input
-              name="firstName"
-              placeholder="First Name"
-              onChange={(e) => handleInputChange(e)}
-            />
-            <label>Last Name</label>
-            <input
-              name="lastName"
-              placeholder="Last Name"
-              onChange={(e) => handleInputChange(e)}
-            />
-            <label>Email</label>
-            <input
-              name="email"
-              placeholder="Email"
-              onChange={(e) => handleInputChange(e)}
-            />
-          </div>
-        )}
         {dataType === "post" && (
           <div className="createDataContainer">
-            <label>Users</label>
-            <UsersDropdown
-              setSelectedUser={setSelectedUser}
-              selectedUser={selectedUser}
-            />
-            <label>Text</label>
+            <label>Title</label>
             <input
-              name="text"
-              placeholder="Text"
+              name="title"
+              placeholder="Title"
               onChange={(e) => handleInputChange(e)}
             />
-            <label>Tags</label>
+            <label>Content</label>
             <input
-              name="tags"
-              placeholder="Tags"
-              onChange={(e) => handleInputChange(e)}
-            />
-            <label>Likes</label>
-            <input
-              type="number"
-              name="likes"
-              placeholder="Likes"
+              name="content"
+              placeholder="Content"
               onChange={(e) => handleInputChange(e)}
             />
             <label>Image</label>

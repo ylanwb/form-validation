@@ -11,6 +11,7 @@ import ArticlePage from "./pages/ArticlePage/ArticlePage";
 import UsersPage from "./pages/UsersPage/UsersPage";
 import { useUserProvider } from "./provider/UserProvider";
 import PostsPage from "./pages/PostsPage/PostsPage";
+import MyPostsPage from "./pages/MyPostsPage/MyPostsPage"
 import ContactPage from "./pages/ContactPage/ContactPage";
 import "./App.css";
 
@@ -25,11 +26,11 @@ function App() {
             {user && (
               <Routes>
                 <Route path="/" element={<LandingPage />} />
-                {/* <Route path="/myPosts" element={<MyPostsPage />} /> */}
+                <Route path="/myPosts" element={<MyPostsPage />} />
                 <Route path="/successful" element={<SignUpSuccess />} />
                 <Route path="/blog/:id" element={<ArticlePage />} />
                 {/* <Route path="/users" element={<UsersPage />} /> */}
-                <Route path="/myPosts" element={<PostsPage />} />
+                <Route path="/posts" element={<PostsPage />} />
                 <Route path="/contact" element={<ContactPage />} />
               </Routes>
             )}

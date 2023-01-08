@@ -22,6 +22,9 @@ export const Header: React.FC<IHeader> = (isWhiteBackground) => {
     setUser(false);
     navigate("/");
   };
+  const handlePostsButton = () => {
+    navigate("/posts");
+  };
   const handleMyPostsButton = () => {
     navigate("/myPosts");
   };
@@ -90,6 +93,15 @@ export const Header: React.FC<IHeader> = (isWhiteBackground) => {
             }}
           >
             Home
+          </button>
+          <button
+            className="navButton"
+            onClick={() => {
+              console.log("here");
+              handlePostsButton();
+            }}
+          >
+            Posts
           </button>
           <button
             className="navButton"

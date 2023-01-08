@@ -7,7 +7,7 @@ import { Post } from "@pages/";
 const updatePost = async (post: Post, dataType: string) => {
   await axios
     .put(
-      `https://dummyapi.io/data/v1/${dataType}/${post.id}`,
+      `http://localhost:1212/posts/v1/${dataType}/${post._id ?? ""}`,
       { ...post },
       {
         headers: { "app-id": "634752bc7580f70e4f699960" },
@@ -29,7 +29,7 @@ interface UpdateModalProps {
 export const UpdateModal = (props: UpdateModalProps) => {
   const { closeModal, selectedPost, setUpdateSuccess, dataType } = props;
   const [updatedPostValues, setNewPost] = useState<Post>({
-    id: "",
+    _id: "",
     title: "",
     owner: "",
     publishDate: "",

@@ -1,11 +1,11 @@
 import axios from "axios";
 import React from "react";
-import { Post } from "@pages/";
+// import { Post } from "@pages/";
 import "./DeleteModal.css";
 
 const deletePost = async (id: string, dataType: string) => {
   await axios
-    .delete(`https://dummyapi.io/data/v1/${dataType}/${id}`, {
+    .delete(`http://localhost:1212/posts/${id}`, {
       headers: { "app-id": "634752bc7580f70e4f699960" },
     })
     .then((response) => {
@@ -19,22 +19,23 @@ interface deleteModalProps {
   closeModal: () => void;
   setDeleteSuccess: React.Dispatch<React.SetStateAction<boolean>>;
   dataType: string;
-  selectedPost: Post | undefined;
+  selectedPost: any;
 }
 
 export const DeleteModal = (props: deleteModalProps) => {
   const { dataType, selectedPost, closeModal, setDeleteSuccess } = props;
+  console.log(selectedPost)
   const handleConfirmButton = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    id: string
+    _id: string
   ) => {
     e.preventDefault();
-    await deletePost(id, dataType)
+    await deletePost(_id, dataType)
       .then((response) => {
         setDeleteSuccess(true);
         setTimeout(() => {
           setDeleteSuccess(false);
-          window.location.reload();
+          // window.location.reload();
         }, 2500);
       })
       .catch((err) => console.log(err));
@@ -56,7 +57,7 @@ export const DeleteModal = (props: deleteModalProps) => {
         <button
           onClick={(e) => {
             // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-            selectedPost && handleConfirmButton(e, selectedPost.id);
+            selectedPost && handleConfirmButton(e, selectedPost._id);
           }}
         >
           Confirm

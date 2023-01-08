@@ -10,8 +10,9 @@ import {
   UpdateModal,
   CreateModal,
 } from "../../components/index";
-import "./PostsPage.css";
+import "./MyPostsPage.css";
 import Alert from "@mui/material/Alert";
+import { useUserProvider } from "src/provider/UserProvider";
 
 const customStyles = {
   content: {
@@ -34,11 +35,11 @@ export interface Post {
   image: string;
 }
 
-const PostsPage = () => {
+const MyPostsPage = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [valueOfSearchbar, setValueOfSearchbar] = useState("");
-
+  const { token } = useUserProvider();
   const [loading, setLoading] = useState<boolean>();
   const [modalIsOpen, setIsOpen] = React.useState<boolean>(false);
   const [selectedPost, setSelectedPost] = useState<Post>({
@@ -77,13 +78,13 @@ const PostsPage = () => {
 
   const handleDeleteButton = (e: React.MouseEvent, post: any) => {
     e.preventDefault();
-    setSelectedPost(post._id);
+    setSelectedPost(post);
     openModal();
     setButtonType("delete");
   };
   const handleUpdateButton = (e: React.MouseEvent, post: any) => {
     e.preventDefault();
-    setSelectedPost(post._d);
+    setSelectedPost(post);
     openModal();
     setButtonType("update");
   };
@@ -94,20 +95,28 @@ const PostsPage = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:1212/posts`, {
-        headers: { "Content-Type": "application/json" },
-      })
-      .then((response) => {
-        setLoading(true);
-        setTimeout(() => {
-          setData(response.data);
-          setFilteredData(response.data);
-          console.log(response);
-          setLoading(false);
-        }, 1000);
-      })
-      .catch((err) => <Notification text={err.message} type="error" />);
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      console.log("no user");
+    } else {
+      axios
+        .get(`http://localhost:1212/users/${userId}/posts`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          setLoading(true);
+          setTimeout(() => {
+            setData(response.data);
+            setFilteredData(response.data);
+            console.log(response);
+            setLoading(false);
+          }, 1000);
+        })
+        .catch((err) => <Notification text={err.message} type="error" />);
+    }
   }, []);
 
   // search bar
@@ -129,7 +138,7 @@ const PostsPage = () => {
       <div className="postsPageMainContainer">
         <Header />
         <div className="contentHeaderContainer">
-          <h1>Posts</h1>
+          <h1>My Posts</h1>
         </div>
         <div className="postInteractives">
           <div className="postSearchBarContainer">
@@ -249,7 +258,33 @@ const PostsPage = () => {
         style={customStyles}
         ariaHideApp={false}
         contentLabel="Example Modal"
-      ></Modal>
+      >
+        <div>
+          {buttonType === "delete" && (
+            <DeleteModal
+              selectedPost={selectedPost}
+              closeModal={closeModal}
+              setDeleteSuccess={setDeleteSuccess}
+              dataType={"post"}
+            />
+          )}
+          {buttonType === "update" && (
+            <UpdateModal
+              selectedPost={selectedPost}
+              closeModal={closeModal}
+              setUpdateSuccess={setUpdateSuccess}
+              dataType={"post"}
+            />
+          )}
+          {buttonType === "create" && (
+            <CreateModal
+              closeModal={closeModal}
+              setCreateSuccess={setCreateSuccess}
+              dataType={"post"}
+            />
+          )}
+        </div>
+      </Modal>
       {deleteSuccess && (
         <div className={`alertSuccess ${deleteSuccess && "alertSlide"}`}>
           <Alert severity="success" color="success">
@@ -274,4 +309,4 @@ const PostsPage = () => {
     </>
   );
 };
-export default PostsPage;
+export default MyPostsPage;

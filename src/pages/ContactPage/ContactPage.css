@@ -125,13 +125,13 @@ h2 {
   position: relative;
 }
 
-label,
+.contactMainContainer label,
 .contactPageInputs,
 textarea {
   font-family: "Poppins", sans-serif;
 }
 
-label {
+.contactMainContainer label {
   position: absolute;
   top: 10px;
   left: 2%;
@@ -152,10 +152,10 @@ textarea {
   font-size: clamp(15px, 1.5vw, 18px);
 }
 
-input:focus + label,
-input:valid + label,
-textarea:focus + label,
-textarea:valid + label {
+.contactMainContainer input:focus + label,
+.contactMainContainer input:valid + label,
+.contactMainContainer textarea:focus + label,
+.contactMainContainer textarea:valid + label {
   font-size: clamp(13px, 1.3vw, 16px);
   color: #777;
   top: -20px;
