@@ -30,14 +30,11 @@ export const UpdateModal = (props: UpdateModalProps) => {
   const { closeModal, selectedPost, setUpdateSuccess, dataType } = props;
   const [updatedPostValues, setNewPost] = useState<Post>({
     id: "",
-    owner: {
-      firstName: "",
-      lastName: "",
-      title: "",
-    },
-    likes: 0,
-    tags: "",
-    text: "",
+    title: "",
+    owner: "",
+    publishDate: "",
+    content: "",
+    image: "",
   });
   const [updatedUserValues, setNewUser] = useState(selectedPost);
   const [selectedUser, setSelectedUser] = useState<Post>();
@@ -58,9 +55,9 @@ export const UpdateModal = (props: UpdateModalProps) => {
     if (dataType === "post") {
       const postValues = {
         ...updatedPostValues,
-        tags: updatedPostValues.tags.split(","),
+        title: updatedPostValues.title,
         owner: selectedUser,
-        likes: Number(updatedPostValues.likes),
+        content: Number(updatedPostValues.content),
       } as unknown as Post;
       await updatePost(postValues, dataType)
         .then((response) => {
@@ -97,13 +94,13 @@ export const UpdateModal = (props: UpdateModalProps) => {
             <input
               name="title"
               placeholder="Title"
-              defaultValue={selectedPost?.owner.title}
+              defaultValue={selectedPost?.title}
               onChange={(e) => handleDataChange(e)}
             />
             <label>First Name</label>
             <input
               name="firstName"
-              defaultValue={selectedPost?.owner.firstName}
+              defaultValue={selectedPost?.image}
               placeholder="First Name"
               onChange={(e) => handleDataChange(e)}
             />
@@ -111,32 +108,32 @@ export const UpdateModal = (props: UpdateModalProps) => {
             <input
               name="lastName"
               placeholder="Last Name"
-              defaultValue={selectedPost?.owner.lastName}
+              defaultValue={selectedPost?.content}
               onChange={(e) => handleDataChange(e)}
             />
           </div>
         )}
         {dataType === "post" && (
           <div className="updateDataContainer">
-            <label>Text</label>
+            <label>title</label>
             <input
               name="text"
               placeholder="Text"
-              defaultValue={selectedPost?.text}
+              defaultValue={selectedPost?.title}
               onChange={(e) => handleDataChange(e)}
             />
-            <label>Tags</label>
+            <label>content</label>
             <input
               name="tags"
-              defaultValue={selectedPost?.tags ?? []}
+              defaultValue={selectedPost?.content ?? []}
               placeholder="Tags"
               onChange={(e) => handleDataChange(e)}
             />
-            <label>Likes</label>
+            <label>image</label>
             <input
               name="likes"
               placeholder="Likes"
-              defaultValue={selectedPost?.likes}
+              defaultValue={selectedPost?.image}
               onChange={(e) => handleDataChange(e)}
             />
           </div>

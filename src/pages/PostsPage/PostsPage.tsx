@@ -27,14 +27,11 @@ const customStyles = {
 
 export interface Post {
   id: string;
-  owner: {
-    firstName: string;
-    lastName: string;
-    title: string;
-  };
-  likes: number;
-  tags: string;
-  text: string;
+  title: string;
+  owner: string;
+  publishDate: string;
+  content: string;
+  image: string;
 }
 
 const PostsPage = () => {
@@ -47,10 +44,11 @@ const PostsPage = () => {
   const [modalIsOpen, setIsOpen] = React.useState<boolean>(false);
   const [selectedPost, setSelectedPost] = useState<Post>({
     id: "",
-    likes: 0,
-    text: "",
-    tags: "",
-    owner: { firstName: "", lastName: "", title: "" },
+    title: "",
+    owner: "",
+    publishDate: "",
+    content: "",
+    image: "",
   });
   const [buttonType, setButtonType] = useState<string>();
   const [deleteSuccess, setDeleteSuccess] = useState<boolean>(false);
@@ -97,21 +95,25 @@ const PostsPage = () => {
   };
 
   useEffect(() => {
+    const owner = localStorage.getItem("userId")
+    console.log(owner)
     axios
-      .get("https://dummyapi.io/data/v1/post?limit=10", {
+      .get(`http://localhost:1212/users/${owner}`, {
         headers: { "app-id": "634752bc7580f70e4f699960" },
       })
       .then((response) => {
         setLoading(true);
         setTimeout(() => {
-          setData(response.data.data);
-          setFilteredData(response.data.data);
+          setData(response.data);
+          setFilteredData(response.data);
+          console.log(response);
           setLoading(false);
         }, 1000);
       })
       .catch((err) => <Notification text={err.message} type="error" />);
   }, []);
 
+  // search bar
   useEffect(() => {
     filtered(valueOfSearchbar);
   }, [valueOfSearchbar]);
@@ -120,14 +122,14 @@ const PostsPage = () => {
     setFilteredData(
       data.filter(
         (item: {
-          owner: { title: string; firstName: string; lastName: string };
+          title: string; id: string; content: string
         }) => {
           const dataItems =
-            item.owner.title +
+            item.title +
             " " +
-            item.owner.firstName +
+            item.id +
             " " +
-            item.owner.lastName;
+            item.content;
           const filteredItem = dataItems
             .toLowerCase()
             .includes(e.toLowerCase());
@@ -141,7 +143,7 @@ const PostsPage = () => {
       <div className="postsPageMainContainer">
         <Header />
         <div className="contentHeaderContainer">
-          <h1>Posts list</h1>
+          <h1>My Posts</h1>
         </div>
         <div className="postInteractives">
           <div className="postSearchBarContainer">
@@ -170,9 +172,8 @@ const PostsPage = () => {
         <div className="dataContainer">
           <div className="postContainer">
             {!(loading ?? false) &&
-              filteredData.length > 0 &&
+              filteredData &&
               filteredData.map((post: any) => {
-                // console.log(post);
                 return (
                   // id, image, likes, owner, publishDate, tags, text
                   <div
@@ -186,14 +187,14 @@ const PostsPage = () => {
                       <div className="postCardHeader">
                         <img
                           id="postCardUserImg"
-                          src={post.owner.picture}
+                          src={post.image}
                           alt=""
                         />
                         <div>
                           <div>
-                            <span>{post.owner.title}</span>
-                            <span>{post.owner.firstName}</span>
-                            <span>{post.owner.lastName}</span>
+                            {/* <span>{post.owner}</span> */}
+                            <span>{post.title}</span>
+                            <span>{post.content}</span>
                           </div>
                           <span>
                             {moment(post.publishDate)
@@ -213,12 +214,12 @@ const PostsPage = () => {
                               .utc()
                               .format("YYYY-MM-DD kk:mm")}
                           </span>
-                          <span>{post.text}</span>
-                          <span className="tagContainer">
+                          <span>{post.owner}</span>
+                          {/* <span className="tagContainer">
                             <div>{post.tags[0]}</div>
                             <div>{post.tags[1]}</div>
                             <div>{post.tags[2]}</div>
-                          </span>
+                          </span> */}
                           <span className="likesContainer">
                             <img
                               id="thumbsUpIcon"

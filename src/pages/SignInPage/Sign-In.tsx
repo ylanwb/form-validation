@@ -63,6 +63,9 @@ export const SignInForm = () => {
         )
         .then((response) => {
           const token = response.data.data.token;
+          const userId = response.data.data.id
+          console.log(response)
+          localStorage.setItem("userId", userId)
           setCookie(token);
           navigate("/");
           window.location.reload()

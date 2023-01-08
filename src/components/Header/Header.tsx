@@ -18,6 +18,7 @@ export const Header: React.FC<IHeader> = (isWhiteBackground) => {
   const navigate = useNavigate();
   const handleLogoutButton = () => {
     Cookies.remove("userToken");
+    localStorage.clear()
     setUser(false);
     navigate("/");
   };
@@ -29,9 +30,6 @@ export const Header: React.FC<IHeader> = (isWhiteBackground) => {
   };
   const handleUserButton = () => {
     navigate("/users");
-  };
-  const handlePostButton = () => {
-    navigate("/posts");
   };
   const handleHomeButton = () => {
     navigate("/");
@@ -57,29 +55,26 @@ export const Header: React.FC<IHeader> = (isWhiteBackground) => {
           onClick={() => {
             handleHomeButton();
           }}
-          className={`${
-            isWhiteBackground ? "navDarkBackground" : "navWhiteBackground"
-          }`}
+          className={`${isWhiteBackground ? "navDarkBackground" : "navWhiteBackground"
+            }`}
         >
           <span>C</span>
           <Bluebox id="blueBox" />
         </div>
       </div>
       <div
-        className={`${isMenuActive ? "menuSlide" : ""} ${
-          isWhiteBackground ? "navDarkRightSide" : "navWhiteRightSide"
-        }`}
+        className={`${isMenuActive ? "menuSlide" : ""} ${isWhiteBackground ? "navDarkRightSide" : "navWhiteRightSide"
+          }`}
       >
         <div
-          className={`${
-            isWhiteBackground
+          className={`${isWhiteBackground
               ? "navDarkRightSideContent"
               : "navWhiteRightSideContent"
-          }`}
+            }`}
           id="navRightSideContent"
         >
           {isMenuActive && <div className="menuDropDown"></div>}
-          <button
+          {/* <button
             className="navButton"
             onClick={() => {
               console.log("here");
@@ -87,15 +82,14 @@ export const Header: React.FC<IHeader> = (isWhiteBackground) => {
             }}
           >
             Users
-          </button>
+          </button> */}
           <button
             className="navButton"
             onClick={() => {
-              console.log("here");
-              handlePostButton();
+              handleHomeButton();
             }}
           >
-            Posts
+            Home
           </button>
           <button
             className="navButton"
@@ -104,7 +98,7 @@ export const Header: React.FC<IHeader> = (isWhiteBackground) => {
               handleMyPostsButton();
             }}
           >
-            MyPosts
+            My Posts
           </button>
           <button
             className="navButton"

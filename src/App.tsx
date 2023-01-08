@@ -28,8 +28,8 @@ function App() {
                 {/* <Route path="/myPosts" element={<MyPostsPage />} /> */}
                 <Route path="/successful" element={<SignUpSuccess />} />
                 <Route path="/blog/:id" element={<ArticlePage />} />
-                <Route path="/users" element={<UsersPage />} />
-                <Route path="/posts" element={<PostsPage />} />
+                {/* <Route path="/users" element={<UsersPage />} /> */}
+                <Route path="/myPosts" element={<PostsPage />} />
                 <Route path="/contact" element={<ContactPage />} />
               </Routes>
             )}
