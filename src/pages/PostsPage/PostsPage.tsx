@@ -143,7 +143,7 @@ const PostsPage = () => {
               }}
             />
           </div>
-          <div className="createPostContainer">
+          {/* <div className="createPostContainer">
             <button
               className="createPostBtn"
               onClick={(e) => {
@@ -152,7 +152,7 @@ const PostsPage = () => {
             >
               Create
             </button>
-          </div>
+          </div> */}
         </div>
         {(loading ?? false) && <div className="loadingText">Loading ...</div>}
         <div className="dataContainer">
@@ -176,7 +176,6 @@ const PostsPage = () => {
                           <div>
                             {/* <span>{post.owner}</span> */}
                             <span>{post.title}</span>
-                            <span>{post.content}</span>
                           </div>
                           <span>
                             {moment(post.publishDate)
@@ -196,51 +195,16 @@ const PostsPage = () => {
                               .utc()
                               .format("YYYY-MM-DD kk:mm")}
                           </span>
+                          <span>{post.content}</span>
+                        </div>
+                      </div>
                           <span>{post.owner}</span>
-                          {/* <span className="tagContainer">
-                            <div>{post.tags[0]}</div>
-                            <div>{post.tags[1]}</div>
-                            <div>{post.tags[2]}</div>
-                          </span> */}
-                          <span className="likesContainer">
-                            <img
-                              id="thumbsUpIcon"
-                              src="https://dummyapi.io/img/like.svg"
-                            />
-                            {post.likes}
-                          </span>
-                          {/* </div> */}
-                        </div>
-                      </div>
                     </div>
-                    {selectedDropDown === post && (
-                      <div className={`dropDown`}>
-                        {/* ${isOpen && "open"} */}
-                        <div className="postCardButtonContainer">
-                          <button
-                            id="updateBtn"
-                            onClick={(e) => {
-                              handleUpdateButton(e, post);
-                            }}
-                          >
-                            Update
-                          </button>
-                          <button
-                            id="deleteBtn"
-                            onClick={(e) => {
-                              handleDeleteButton(e, post);
-                            }}
-                          >
-                            Delete
-                          </button>
-                        </div>
-                      </div>
-                    )}
                   </div>
                 );
               })}
           </div>
-          {!(loading ?? false) && <Footer />}
+          <Footer />
         </div>
       </div>
       <Modal

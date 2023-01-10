@@ -4,13 +4,18 @@ import "./UpdateModal.css";
 import axios from "axios";
 import { Post } from "@pages/";
 
-const updatePost = async (post: Post, dataType: string) => {
+const updatePost = async (post: Post) => {
+  console.log();
   await axios
     .put(
-      `http://localhost:1212/posts/v1/${dataType}/${post._id ?? ""}`,
-      { ...post },
+      `http://localhost:1212/posts/${post._id ?? ""}`,
       {
-        headers: { "app-id": "634752bc7580f70e4f699960" },
+        title: post.title,
+        content: post.content,
+        image: post.image,
+      },
+      {
+        headers: { "Content-Type": "application/json" },
       }
     )
     .then((response) => {
@@ -18,7 +23,6 @@ const updatePost = async (post: Post, dataType: string) => {
     })
     .catch((err) => console.log(err));
 };
-
 interface UpdateModalProps {
   closeModal: () => void;
   selectedPost: Post | undefined;
@@ -37,13 +41,13 @@ export const UpdateModal = (props: UpdateModalProps) => {
     image: "",
   });
   const [updatedUserValues, setNewUser] = useState(selectedPost);
-  const [selectedUser, setSelectedUser] = useState<Post>();
 
   const handleDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { name, value } = e.target;
     if (dataType === "post") {
       setNewPost({ ...updatedPostValues, [name]: value });
+      console.log(updatedPostValues);
     } else {
       setNewUser({ ...updatedUserValues, [name]: value } as Post);
     }
@@ -51,93 +55,57 @@ export const UpdateModal = (props: UpdateModalProps) => {
   const handleConfirmButton = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
+    const userId = localStorage.getItem("userId");
     e.preventDefault();
-    if (dataType === "post") {
-      const postValues = {
-        ...updatedPostValues,
-        title: updatedPostValues.title,
-        owner: selectedUser,
-        content: Number(updatedPostValues.content),
-      } as unknown as Post;
-      await updatePost(postValues, dataType)
-        .then((response) => {
-          setUpdateSuccess(true);
-          closeModal();
-          setTimeout(() => {
-            setUpdateSuccess(false);
-            window.location.reload();
-          }, 2500);
-        })
-        .catch((err) => console.log(err));
-    } else {
-      await updatePost(updatedPostValues, dataType)
-        .then((response) => {
-          setUpdateSuccess(true);
-          closeModal();
-          setTimeout(() => {
-            setUpdateSuccess(false);
-            window.location.reload();
-          }, 2500);
-        })
-        .catch((err) => console.log(err));
-    }
+
+    const postValues = {
+      ...updatedPostValues,
+      title: updatedPostValues.title,
+      owner: userId,
+      content: updatedPostValues.content,
+      _id: selectedPost?._id
+    } as unknown as Post;
+    await updatePost(postValues)
+      .then((response) => {
+        console.log(postValues);
+        setUpdateSuccess(true);
+        closeModal();
+        setTimeout(() => {
+          setUpdateSuccess(false);
+          window.location.reload();
+        }, 2500);
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="updateModalMainContainer">
       <div className="updateTitleContainer">
-        <span>Update {dataType === "post" ? "Post" : "User"}</span>
+        <span>Update Post</span>
       </div>
       <div>
-        {dataType === "user" && (
-          <div className="updateDataContainer">
-            <label>Title</label>
-            <input
-              name="title"
-              placeholder="Title"
-              defaultValue={selectedPost?.title}
-              onChange={(e) => handleDataChange(e)}
-            />
-            <label>First Name</label>
-            <input
-              name="firstName"
-              defaultValue={selectedPost?.image}
-              placeholder="First Name"
-              onChange={(e) => handleDataChange(e)}
-            />
-            <label>Last Name</label>
-            <input
-              name="lastName"
-              placeholder="Last Name"
-              defaultValue={selectedPost?.content}
-              onChange={(e) => handleDataChange(e)}
-            />
-          </div>
-        )}
-        {dataType === "post" && (
-          <div className="updateDataContainer">
-            <label>title</label>
-            <input
-              name="text"
-              placeholder="Text"
-              defaultValue={selectedPost?.title}
-              onChange={(e) => handleDataChange(e)}
-            />
-            <label>content</label>
-            <input
-              name="tags"
-              defaultValue={selectedPost?.content ?? []}
-              placeholder="Tags"
-              onChange={(e) => handleDataChange(e)}
-            />
-            <label>image</label>
-            <input
-              name="likes"
-              placeholder="Likes"
-              defaultValue={selectedPost?.image}
-              onChange={(e) => handleDataChange(e)}
-            />
-          </div>
-        )}
+        <div className="updateDataContainer">
+          <label>Title</label>
+          <input
+            name="title"
+            placeholder="Title"
+            defaultValue={selectedPost?.title}
+            onChange={(e) => handleDataChange(e)}
+          />
+          <label>Content</label>
+          <input
+            name="content"
+            defaultValue={selectedPost?.content ?? []}
+            placeholder="Content"
+            onChange={(e) => handleDataChange(e)}
+          />
+          <label>Image</label>
+          <input
+            name="image"
+            placeholder="Image"
+            defaultValue={selectedPost?.image}
+            onChange={(e) => handleDataChange(e)}
+          />
+        </div>
       </div>
       <div className="updateButtonsContainer">
         <button onClick={() => closeModal()}>Close</button>

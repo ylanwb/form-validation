@@ -35,7 +35,7 @@ export const DeleteModal = (props: deleteModalProps) => {
         setDeleteSuccess(true);
         setTimeout(() => {
           setDeleteSuccess(false);
-          // window.location.reload();
+          window.location.reload();
         }, 2500);
       })
       .catch((err) => console.log(err));

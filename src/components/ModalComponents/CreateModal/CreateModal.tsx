@@ -3,23 +3,13 @@ import React, { useState } from "react";
 import "./CreateModal.css";
 import axios from "axios";
 import { Notification } from "../../Notification";
-import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { UsersDropdown } from "../../FormComponents";
-import { useUserProvider } from "src/provider/UserProvider";
 
-const titleDropdown = ["mr", "mr", "mrs", "miss", "dr"];
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 const createData = async (data: string) => {
   await axios.post("http://localhost:1212/posts", data, {
     headers: { "Content-Type": "application/json" },
   });
-};
-const user = {
-  title: " ",
-  firstName: " ",
-  lastName: " ",
-  email: " ",
 };
 const post = {
   title: "",
@@ -37,28 +27,21 @@ interface CreateModalProps {
 export const CreateModal = (props: CreateModalProps) => {
   const { dataType, closeModal, setCreateSuccess } = props;
   const [newPost, setNewPost] = useState<any>(post);
-  const [newUser, setNewUser] = useState<any>(user);
 
   const [title, setTitle] = React.useState("");
 
-  const handleTitle = (event: SelectChangeEvent<string>) => {
-    setTitle(event.target.value);
-  };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    const userId = localStorage.getItem("userId")
+    const userId = localStorage.getItem("userId");
     if (dataType === "post") {
       setNewPost({ ...newPost, [name]: value, owner: userId });
-    } else {
-      setNewUser({ ...newUser, [name]: value, title: title });
     }
   };
   const userId = localStorage.getItem("userId");
 
   const handleCreate = async (e: any) => {
     e.preventDefault();
-    console.log(newPost)
+    console.log(newPost);
 
     const postValues = {
       ...newPost,
@@ -69,7 +52,6 @@ export const CreateModal = (props: CreateModalProps) => {
     };
     await createData(postValues)
       .then((response) => {
-        console.log(response);
         setCreateSuccess(true);
         closeModal();
         setTimeout(() => {
@@ -87,9 +69,7 @@ export const CreateModal = (props: CreateModalProps) => {
   return (
     <div className="createModalMainContainer">
       <div className="createTitleContainer">
-        <span id="createModalTitle">
-          Create Post
-        </span>
+        <span id="createModalTitle">Create Post</span>
       </div>
       <div className={`${dataType === "post" ? "mainDataContainer" : ""}`}>
         {dataType === "post" && (

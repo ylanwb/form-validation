@@ -111,7 +111,6 @@ const MyPostsPage = () => {
           setTimeout(() => {
             setData(response.data);
             setFilteredData(response.data);
-            console.log(response);
             setLoading(false);
           }, 1000);
         })
@@ -170,7 +169,6 @@ const MyPostsPage = () => {
               filteredData &&
               filteredData.map((post: any) => {
                 return (
-                  // id, image, likes, owner, publishDate, tags, text
                   <div
                     className="postDataCardContainer"
                     key={post.id}
@@ -185,7 +183,6 @@ const MyPostsPage = () => {
                           <div>
                             {/* <span>{post.owner}</span> */}
                             <span>{post.title}</span>
-                            <span>{post.content}</span>
                           </div>
                           <span>
                             {moment(post.publishDate)
@@ -199,28 +196,10 @@ const MyPostsPage = () => {
                           <img id="postCardImg" src={post.image} alt="dog" />
                         </div>
                         <div className="postCardSideCaptionContainer">
-                          {/* <div className="postCardSideCaption"> */}
-                          <span>
-                            {moment(post.publishDate)
-                              .utc()
-                              .format("YYYY-MM-DD kk:mm")}
-                          </span>
-                          <span>{post.owner}</span>
-                          {/* <span className="tagContainer">
-                            <div>{post.tags[0]}</div>
-                            <div>{post.tags[1]}</div>
-                            <div>{post.tags[2]}</div>
-                          </span> */}
-                          <span className="likesContainer">
-                            <img
-                              id="thumbsUpIcon"
-                              src="https://dummyapi.io/img/like.svg"
-                            />
-                            {post.likes}
-                          </span>
-                          {/* </div> */}
+                          <span>{post.content}</span>
                         </div>
                       </div>
+                          <span>{post.owner}</span>
                     </div>
                     {selectedDropDown === post && (
                       <div className={`dropDown`}>
