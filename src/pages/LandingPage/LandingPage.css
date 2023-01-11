@@ -207,60 +207,6 @@
   display: flex;
   overflow-x: scroll;
 }
-
-.reviews {
-  width: 400px;
-  height: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-right: 40px;
-  position: relative;
-  left: 18vw;
-  top: 8vh;
-  background-color: white;
-  filter: drop-shadow(0px 15px 35px rgba(0, 0, 0, 0.25));
-}
-
-.starContainer {
-  margin-left: 30px;
-  margin-top: 30px;
-  width: 250px;
-}
-
-.userInfo {
-  margin-left: 30px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 2vh;
-}
-
-#reviewScrollArrow {
-  width: 100vw;
-  height: 10vh;
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-  right: 2vh;
-}
-
-.grayArrow {
-  transform: rotate(180deg);
-  margin-right: 35px;
-}
-
-#slideLeft:hover {
-  fill: blue;
-  stroke: #0bbef2;
-  stroke-width: 1;
-}
-
-#slideRight:hover {
-  fill: blue;
-  stroke: #0bbef2;
-  stroke-width: 1;
-}
-
 /* content five end */
 
 /* all different icons set ups start */
@@ -347,11 +293,6 @@
   align-items: center;
   width: 8.2vw;
   justify-content: space-between;
-}
-
-.reviewTexts {
-  margin-top: 30px;
-  margin-right: 30px;
 }
 .contentsBlur {
   background-image: url(https://media.discordapp.net/attachments/1004621319901552710/1023527420902527026/unknown.png);
@@ -593,18 +534,11 @@
   margin: 0;
   overflow: auto;
   white-space: nowrap;
+  background-color: #f5f7fa;
 }
-#scroller li {
-  background: #b0bec5;
-  color: #fff;
+#scroller .postDataCard {
   display: inline-block;
-  font-size: 80px;
-  font-weight: bold;
-  height: 200px;
-  width: 200px;
-  line-height: 200px;
-  text-align: center;
-  margin-inline: 10px;
+  margin-right: 25px;
 }
 
 @media (max-width: 820px) {

@@ -66,7 +66,6 @@ export const LandingPage: React.FC<ILandingPage> = ({ user }) => {
             </div>
           </div>
         </div>
-        <div className="rightSideOne"></div>
       </div>
       <div className="contents contentTwo">
         <div className="leftSideTwo">
@@ -150,23 +149,51 @@ export const LandingPage: React.FC<ILandingPage> = ({ user }) => {
           </div>
         </div>
       </div>
-        <div className="homePostsContainer">
-          <div className="dataContainer">
-            <div className="postContainer">
+      <div className="homePostsContainer">
+        <div className="homeDataContainer">
+            <ul id="scroller">
               {filteredData?.map((post: Post) => {
                 return (
                   <>
-                    <div id="scroll-progress"></div>
-                    <ul key={post._id} id="scroller">
-                      <li>{post.title}</li>
-                      <li>{post.content}</li>
-                    </ul>
+                    <div className="postDataCard" key={post._id}>
+                      <div className="postCardHeader">
+                        <img id="postCardUserImg" src={post.image} alt="" />
+                        <div>
+                          <div>
+                            {/* <span>{post.owner}</span> */}
+                            <span>{post.title}</span>
+                          </div>
+                          <span>
+                            {/* {moment(post.publishDate) */}
+                              {/* .utc() */}
+                              {/* .format("YYYY-MM-DD kk:mm")} */}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="postCardBody">
+                        <div className="postCardImgContainer">
+                          <img id="postCardImg" src={post.image} alt="dog" />
+                        </div>
+                        <div className="postCardSideCaptionContainer">
+                          {/* <div className="postCardSideCaption"> */}
+                          <span>
+                            {/* {moment(post.publishDate) */}
+                              {/* .utc() */}
+                              {/* .format("YYYY-MM-DD kk:mm")} */}
+                          </span>
+                          <span>{post.content}</span>
+                        </div>
+                      </div>
+                          <span>{post.owner}</span>
+                    </div>
+                    {/* <li>{post.title}</li> */}
+                    {/* <li>{post.content}</li> */}
                   </>
                 );
               })}
-            </div>
-          </div>
+            </ul>
         </div>
+      </div>
       <Footer />
     </div>
   );
