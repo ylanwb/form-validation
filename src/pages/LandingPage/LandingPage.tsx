@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./LandingPage.css";
+import moment from "moment";
+import { useNavigate } from "react-router-dom";
 import {
   BlueArrow,
   Footer,
@@ -22,10 +24,15 @@ export interface Post {
 }
 
 export const LandingPage: React.FC<ILandingPage> = ({ user }) => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
   const [loading, setLoading] = useState<boolean>();
+
+  const handlePostsButton = () => {
+    navigate("/posts");
+  };
 
   useEffect(() => {
     axios
@@ -151,112 +158,49 @@ export const LandingPage: React.FC<ILandingPage> = ({ user }) => {
       </div>
       <div className="homePostsContainer">
         <div className="homeDataContainer">
-            <ul id="scroller">
-              {filteredData?.map((post: Post) => {
-                return (
-                  <>
-                    <div className="postDataCard" key={post._id}>
-                      <div className="postCardHeader">
-                        <img id="postCardUserImg" src={post.image} alt="" />
+          <h1>Posts</h1>
+          <button
+            onClick={() => {
+              console.log("here");
+              handlePostsButton();
+            }}
+          >
+            Posts Page &gt;
+          </button>
+          <ul id="scroller">
+            {filteredData?.map((post: Post) => {
+              return (
+                <>
+                  <div className="postDataCard" key={post._id}>
+                    <div className="postCardHeader">
+                      <div>
                         <div>
-                          <div>
-                            {/* <span>{post.owner}</span> */}
-                            <span>{post.title}</span>
-                          </div>
-                          <span>
-                            {/* {moment(post.publishDate) */}
-                              {/* .utc() */}
-                              {/* .format("YYYY-MM-DD kk:mm")} */}
-                          </span>
+                          <span id="postTitle">{post.title}</span>
                         </div>
+                        <span>
+                          {moment(post.publishDate)
+                            .utc()
+                            .format("YYYY-MM-DD kk:mm")}
+                        </span>
                       </div>
-                      <div className="postCardBody">
-                        <div className="postCardImgContainer">
-                          <img id="postCardImg" src={post.image} alt="dog" />
-                        </div>
-                        <div className="postCardSideCaptionContainer">
-                          {/* <div className="postCardSideCaption"> */}
-                          <span>
-                            {/* {moment(post.publishDate) */}
-                              {/* .utc() */}
-                              {/* .format("YYYY-MM-DD kk:mm")} */}
-                          </span>
-                          <span>{post.content}</span>
-                        </div>
-                      </div>
-                          <span>{post.owner}</span>
                     </div>
-                    {/* <li>{post.title}</li> */}
-                    {/* <li>{post.content}</li> */}
-                  </>
-                );
-              })}
-            </ul>
+                    <div className="postCardBody">
+                      <div className="postCardImgContainer">
+                        <img id="postCardImg" src={post.image} alt="dog" />
+                      </div>
+                      <div className="postCardSideCaptionContainer">
+                        <span>{post.content}</span>
+                      </div>
+                    </div>
+                    <span id="postOwner">{post.owner}</span>
+                  </div>
+                </>
+              );
+            })}
+          </ul>
         </div>
       </div>
       <Footer />
     </div>
   );
 };
-// export default LandingPage;
-
-// import React, { useRef, useState } from "react";
-// import "./LandingPage.css";
-// import { Footer, Header } from "../../components/index";
-
-// interface ILandingPage {
-//   user?: boolean | undefined;
-//   email?: string;
-// }
-
-// export const LandingPage: React.FC<ILandingPage> = ({ user }) => {
-//   // const elementRef = useRef(null);
-//   // const [arrowDisable, setArrowDisable] = useState(true);
-//   // const handleHorizantalScroll = (speed: any, distance: any, step: any) => {
-//   // let scrollAmount = 0;
-//   // const reviewScroll = document.getElementById(
-//   // "contentFiveBtm"
-//   // ) as HTMLElement;
-//   // const slideTimer = setInterval(() => {
-//   //   reviewScroll.scrollLeft += step;
-//   //   scrollAmount += Math.abs(step);
-//   //   if (scrollAmount >= distance) {
-//   //     clearInterval(slideTimer);
-//   //   }
-//   //   if (reviewScroll.scrollLeft === 0) {
-//   //     setArrowDisable(true);
-//   //   } else {
-//   //     setArrowDisable(false);
-//   //   }
-//   // }, speed);
-//   //   console.log("clicked");
-//   // };
-
-//   return (
-//     <div className="homePageMainContainer">
-//       <Header isWhiteBackground={true} />
-//       <div className="homePageContentContainer">
-//         <h1>Most Favorited Posts</h1>
-//         <div id="scroll-progress"></div>
-//         <ul id="scroller">
-//           <li></li>
-//           <li></li>
-//           <li></li>
-//           <li></li>
-//           <li></li>
-//           <li></li>
-//           <li></li>
-//           <li></li>
-//           <li></li>
-//           <li></li>
-//           <li></li>
-//           <li></li>
-//           <li></li>
-//           <li></li>
-//           <li></li>
-//         </ul>
-//       </div>
-//       <Footer />
-//     </div>
-//   );
-// };

@@ -15,6 +15,7 @@
   width: 100%;
   height: max-content;
   position: absolute;
+  background-color: #f6f7fa;
   top: 0;
   left: 0;
   align-items: flex-end;
@@ -519,12 +520,30 @@
     font-size: 15px;
     margin-left: 30vw;
   }
-  /* home Posts styling */
-  .homePostsContainer {
-    width: 100vw;
-    height: 100vh;
-  }
-  /*  */
+}
+
+.homeDataContainer h1 {
+  text-align: center;
+  font-family: "Work Sans", sans-serif;
+  font-size: 3.4vw;
+  font-weight: 800;
+  margin-top: 5vh;
+}
+.homeDataContainer button {
+  position: relative;
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+  font-size: calc(12px + 1vw);
+  padding-bottom: 3px;
+	cursor: pointer;
+	outline: inherit;
+  left: 85vw;
+  top: 10vh;
+}
+.homeDataContainer button:hover {
+  border-bottom: 1px solid black;
 }
 
 /* x scroll */
@@ -534,17 +553,34 @@
   margin: 0;
   overflow: auto;
   white-space: nowrap;
-  background-color: #f5f7fa;
+  background-color: #f6f7fa;
+  margin-top: 15vh;
+  margin-bottom: 20vh;
+  margin-left: 2vw;
 }
 #scroller .postDataCard {
   display: inline-block;
-  margin-right: 25px;
+  margin-right: 50px;
 }
 
 @media (max-width: 820px) {
   .homePageContentContainer {
     padding: calc(10px * 4) calc(10px * 1);
   }
-  #scroller li {
+  .homeDataContainer button {
+  font-size: calc(8px + 1vw);
+  }
+}
+@media (max-width: 420px) {
+  .homeDataContainer button {
+    font-size: 1rem;
+    left: 72vw;
+  }
+  .homeDataContainer h1 {
+    text-align: center;
+    font-family: "Work Sans", sans-serif;
+    font-size: 3.4vh;
+    font-weight: 800;
+    margin-top: 5vh;
   }
 }

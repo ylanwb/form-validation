@@ -9,6 +9,7 @@ import {
   DeleteModal,
   UpdateModal,
   CreateModal,
+  PostModal,
 } from "../../components/index";
 import "./MyPostsPage.css";
 import Alert from "@mui/material/Alert";
@@ -92,6 +93,14 @@ const MyPostsPage = () => {
     e.preventDefault();
     openModal();
     setButtonType("create");
+  };
+
+  // comments
+  const handleCommentButton = (e: React.MouseEvent, post: any) => {
+    e.preventDefault();
+    setSelectedPost(post);
+    openModal();
+    setButtonType("comment");
   };
 
   useEffect(() => {
@@ -178,13 +187,11 @@ const MyPostsPage = () => {
                   >
                     <div className="postDataCard" key={post.id}>
                       <div className="postCardHeader">
-                        <img id="postCardUserImg" src={post.image} alt="" />
                         <div>
                           <div>
-                            {/* <span>{post.owner}</span> */}
-                            <span>{post.title}</span>
+                            <span id="postTitle">{post.title}</span>
                           </div>
-                          <span>
+                          <span id="postDate">
                             {moment(post.publishDate)
                               .utc()
                               .format("YYYY-MM-DD kk:mm")}
@@ -196,10 +203,20 @@ const MyPostsPage = () => {
                           <img id="postCardImg" src={post.image} alt="dog" />
                         </div>
                         <div className="postCardSideCaptionContainer">
-                          <span>{post.content}</span>
+                          <span id="postContent">{post.content}</span>
                         </div>
                       </div>
-                          <span>{post.owner}</span>
+                      <div className="postCardFooter">
+                        <span id="postOwner">{post.owner}</span>
+                        <p
+                          id="commentDropDown"
+                          onClick={(e) => {
+                            handleCommentButton(e, post);
+                          }}
+                        >
+                          ...
+                        </p>
+                      </div>
                     </div>
                     {selectedDropDown === post && (
                       <div className={`dropDown`}>
@@ -261,6 +278,9 @@ const MyPostsPage = () => {
               setCreateSuccess={setCreateSuccess}
               dataType={"post"}
             />
+          )}
+          {buttonType === "post" && (
+            <PostModal selectedPost={selectedPost} closeModal={closeModal} />
           )}
         </div>
       </Modal>

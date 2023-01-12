@@ -171,11 +171,9 @@ const PostsPage = () => {
                   >
                     <div className="postDataCard" key={post.id}>
                       <div className="postCardHeader">
-                        <img id="postCardUserImg" src={post.image} alt="" />
                         <div>
                           <div>
-                            {/* <span>{post.owner}</span> */}
-                            <span>{post.title}</span>
+                            <span id="postTitle">{post.title}</span>
                           </div>
                           <span>
                             {moment(post.publishDate)
@@ -198,7 +196,7 @@ const PostsPage = () => {
                           <span>{post.content}</span>
                         </div>
                       </div>
-                          <span>{post.owner}</span>
+                      <span id="postOwner">{post.owner}</span>
                     </div>
                   </div>
                 );
