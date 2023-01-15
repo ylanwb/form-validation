@@ -37,9 +37,9 @@ function App() {
             {!user && (
               <Routes>
                 <Route path="/" element={<SignInForm />} />
-                <Route path="/sign-in" element={<SignInForm />} />
+                {/* <Route path="/sign-in" element={<SignInForm />} /> */}
                 <Route path="/sign-up" element={<SignUpForm />} />
-                <Route path="/successful" element={<SignUpSuccess />} />
+                {/* <Route path="/successful" element={<SignUpSuccess />} /> */}
               </Routes>
             )}
           </BrowserRouter>
