@@ -182,7 +182,7 @@ const MyPostsPage = () => {
                     className="postDataCardContainer"
                     key={post.id}
                     onClick={(e) => {
-                      toggleDropdown(e, post);
+                      // toggleDropdown(e, post);
                     }}
                   >
                     <div className="postDataCard" key={post.id}>
@@ -211,7 +211,7 @@ const MyPostsPage = () => {
                         <p
                           id="commentDropDown"
                           onClick={(e) => {
-                            handleCommentButton(e, post);
+                            // handleCommentButton(e, post);
                           }}
                         >
                           ...

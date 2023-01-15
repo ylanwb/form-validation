@@ -136,7 +136,6 @@
   position: relative;
   font-size: calc(30px + 1vw);
   color: #6d7d8b;
-  z-index: 20000;
   cursor: pointer;
 }
 
