@@ -12,6 +12,7 @@ more familiar with using react and train my skills.
 ## _Tech_
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+<br />
 1 - Create new React Project
 2 - Start new Project
 3 - ✨ Magic ✨
